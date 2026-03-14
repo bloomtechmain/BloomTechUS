@@ -1,18 +1,30 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, CheckCircle2, Laptop, ArrowRight, User, ExternalLink, Activity, Network, ShieldCheck, Microscope, Sparkles } from 'lucide-react';
+import { Menu, X, ChevronDown, CheckCircle2, Laptop, ArrowRight, User, ExternalLink, Activity, Network, ShieldCheck, Microscope, Sparkles, LogOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
   const [hoveredService, setHoveredService] = useState(null);
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+    setShowUserMenu(false);
+  };
 
   const megaMenuData = [
     {
@@ -68,18 +80,18 @@ const Navbar = () => {
     >
       <div className="max-w-[1550px] mx-auto px-6 xl:px-12 flex justify-between items-center h-[64px]">
         {/* Logo Section */}
-        <div className="flex items-center gap-2.5 cursor-pointer group shrink-0">
+        <Link to="/" className="flex items-center gap-2.5 cursor-pointer group shrink-0">
           <div className="w-9 h-9 bg-gradient-to-br from-[#0c1a36] to-[#ff6b00] rounded-[8px] flex items-center justify-center shadow-md transform group-hover:rotate-12 transition-all duration-500">
              <span className="text-white font-black text-lg tracking-tighter">B</span>
           </div>
           <span className={`text-[22px] font-black tracking-tighter transition-all group-hover:tracking-normal ${scrolled || activeMenu ? 'text-[#0c1a36]' : 'text-white'}`}>
             BloomTech<span className="text-[#ff6b00]">US</span>
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <div className="hidden lg:flex items-center gap-9">
-          <a href="#" className={`font-bold transition-colors text-[13px] uppercase tracking-wide ${scrolled || activeMenu ? 'text-[#0c1a36] hover:text-[#ff6b00]' : 'text-white/90 hover:text-white'}`}>Home</a>
+          <Link to="/" className={`font-bold transition-colors text-[13px] uppercase tracking-wide ${scrolled || activeMenu ? 'text-[#0c1a36] hover:text-[#ff6b00]' : 'text-white/90 hover:text-white'}`}>Home</Link>
           
           <div 
             className="group relative h-[64px] flex items-center"
@@ -106,16 +118,59 @@ const Navbar = () => {
           <a href="#" className={`font-bold transition-colors text-[13px] uppercase tracking-wide ${scrolled || activeMenu ? 'text-[#0c1a36] hover:text-[#ff6b00]' : 'text-white/90 hover:text-white'}`}>Contact Us</a>
         </div>
 
-        {/* Action Buttons */}
+        {/* Action Buttons / User Menu */}
         <div className="hidden lg:flex items-center gap-4 shrink-0">
-          <button className={`font-bold transition-all text-[13px] uppercase tracking-widest px-3 ${scrolled || activeMenu ? 'text-[#0c1a36] hover:text-[#ff6b00]' : 'text-white hover:text-[#ff6b00]'}`}>
-             Login
-          </button>
+          {!user ? (
+            <>
+              <Link to="/login" className={`font-bold transition-all text-[13px] uppercase tracking-widest px-3 ${scrolled || activeMenu ? 'text-[#0c1a36] hover:text-[#ff6b00]' : 'text-white hover:text-[#ff6b00]'}`}>
+                Login
+              </Link>
+              <Link to="/register" className={`border-[2.5px] rounded-xl font-black text-[13px] uppercase tracking-widest transition-all active:scale-95 px-8 py-2.5 ${scrolled || activeMenu ? 'border-[#0c1a36] text-[#0c1a36] hover:bg-[#0c1a36] hover:text-white' : 'border-white text-white hover:bg-white hover:text-[#0c1a36]'}`}>
+                Register
+              </Link>
+            </>
+          ) : (
+            <div className="relative">
+              <button 
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                className={`w-11 h-11 rounded-full flex items-center justify-center transition-all border-2 ${scrolled || activeMenu ? 'bg-gray-50 border-gray-100' : 'bg-white/10 border-white/20'}`}
+              >
+                <User size={20} className={scrolled || activeMenu ? 'text-[#0c1a36]' : 'text-white'} />
+              </button>
+              
+              <AnimatePresence>
+                {showUserMenu && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute right-0 top-full mt-4 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden py-4"
+                  >
+                    <div className="px-6 py-4 border-b border-gray-50 mb-2">
+                       <p className="text-[10px] font-black text-[#ff6b00] uppercase tracking-widest mb-1">Authenticated</p>
+                       <p className="text-sm font-black text-[#0c1a36] truncate">{user.name}</p>
+                       <p className="text-[11px] font-medium text-gray-500 truncate">{user.email}</p>
+                    </div>
+                    <button className="w-full text-left px-6 py-3 text-[12px] font-bold text-[#0c1a36] hover:bg-gray-50 flex items-center gap-3 transition-colors">
+                       <User size={16} className="text-gray-400" /> Account Settings
+                    </button>
+                    <button className="w-full text-left px-6 py-3 text-[12px] font-bold text-[#0c1a36] hover:bg-gray-50 flex items-center gap-3 transition-colors">
+                       <ShieldCheck size={16} className="text-gray-400" /> Identity Hub
+                    </button>
+                    <div className="mx-6 my-2 border-t border-gray-50"></div>
+                    <button 
+                      onClick={handleLogout}
+                      className="w-full text-left px-6 py-3 text-[12px] font-bold text-red-500 hover:bg-red-50 flex items-center gap-3 transition-colors"
+                    >
+                       <LogOut size={16} /> Secure Sign Out
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
           <button className="bg-[#ff6b00] hover:bg-[#e65c00] text-white px-8 py-3 rounded-xl font-black text-[13px] uppercase tracking-widest transition-all shadow-lg shadow-orange-200/50 active:scale-95">
             Get a demo
-          </button>
-          <button className={`border-[2.5px] rounded-xl font-black text-[13px] uppercase tracking-widest transition-all active:scale-95 px-8 py-2.5 ${scrolled || activeMenu ? 'border-[#0c1a36] text-[#0c1a36] hover:bg-[#0c1a36] hover:text-white' : 'border-white text-white hover:bg-white hover:text-[#0c1a36]'}`}>
-            Register
           </button>
         </div>
 
@@ -243,10 +298,20 @@ const Navbar = () => {
                 <a key={link} className="text-4xl font-black text-[#0c1a36] hover:text-blue-600 transition-colors">{link}</a>
               ))}
             </div>
-            <div className="mt-auto grid grid-cols-1 gap-4">
-               <button className="py-5 bg-gray-50 font-bold rounded-[20px] text-gray-700">Login</button>
-               <button className="py-5 bg-[#cc0099] text-white font-black rounded-[20px] shadow-xl shadow-pink-200">Get Start</button>
-            </div>
+            {!user ? (
+               <div className="mt-auto grid grid-cols-1 gap-4">
+                  <Link to="/login" onClick={() => setIsOpen(false)} className="py-5 bg-gray-50 font-bold rounded-[20px] text-gray-700 text-center">Login</Link>
+                  <Link to="/register" onClick={() => setIsOpen(false)} className="py-5 bg-[#ff6b00] text-white font-black rounded-[20px] shadow-xl shadow-orange-200 text-center">Get Start</Link>
+               </div>
+            ) : (
+               <div className="mt-auto flex flex-col gap-4">
+                  <div className="p-6 bg-gray-50 rounded-[24px]">
+                     <p className="text-xs font-black text-[#ff6b00] uppercase mb-1">Authenticated</p>
+                     <p className="text-xl font-black text-[#0c1a36]">{user.name}</p>
+                  </div>
+                  <button onClick={handleLogout} className="py-5 bg-red-50 text-red-600 font-black rounded-[20px]">Secure Sign Out</button>
+               </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

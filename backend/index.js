@@ -11,7 +11,10 @@ app.use(express.json());
 
 // Import Routes
 const userRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/authRoutes');
+
 app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 // Basic Route
 app.get('/', (req, res) => {
