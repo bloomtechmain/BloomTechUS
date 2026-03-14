@@ -1,6 +1,6 @@
-const { query } = require('./db');
+import { query } from './db';
 
-const migrateGoogleAuth = async () => {
+const migrateGoogleAuth = async (): Promise<void> => {
   const sql = `
     ALTER TABLE users ADD COLUMN IF NOT EXISTS google_id VARCHAR(255) UNIQUE;
     ALTER TABLE users ALTER COLUMN password DROP NOT NULL;

@@ -1,6 +1,6 @@
-const { query } = require('./db');
+import { query } from './db';
 
-const createUsersTable = async () => {
+const createUsersTable = async (): Promise<void> => {
   const sql = `
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,

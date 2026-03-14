@@ -1,13 +1,15 @@
-const db = require('../db');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const { OAuth2Client } = require('google-auth-library');
+import { Request, Response } from 'express';
+import * as db from '../db';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { OAuth2Client } from 'google-auth-library';
+import { User } from '../types';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'bloomtech_secret_key';
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
-exports.googleLogin = async (req, res) => {
-  const { token } = req.body;
+export const googleLogin = async (req: Request, res: Response): Promise<void> => {
+  const { token } = req.body as { token: string };
 
   try {
     const ticket = await client.verifyIdToken({
@@ -15,11 +17,17 @@ exports.googleLogin = async (req, res) => {
       audience: process.env.GOOGLE_CLIENT_ID,
     });
 
-    const { name, email, sub: google_id } = ticket.getPayload();
+    const payload = ticket.getPayload();
+    if (!payload) {
+      res.status(400).json({ error: 'Invalid Google token' });
+      return;
+    }
+
+    const { name, email, sub: google_id } = payload;
 
     // Check if user exists
     let userResult = await db.query('SELECT * FROM users WHERE email = $1', [email]);
-    let user = userResult.rows[0];
+    let user: User = userResult.rows[0];
 
     if (!user) {
       // Create new user for google login
@@ -44,25 +52,22 @@ exports.googleLogin = async (req, res) => {
     res.status(200).json({
       message: 'Google login successful',
       token: jwtToken,
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email
-      }
+      user: { id: user.id, name: user.name, email: user.email },
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: (err as Error).message });
   }
 };
 
-exports.register = async (req, res) => {
-  const { name, email, password } = req.body;
+export const register = async (req: Request, res: Response): Promise<void> => {
+  const { name, email, password } = req.body as { name: string; email: string; password: string };
 
   try {
     // Check if user exists
     const userExist = await db.query('SELECT * FROM users WHERE email = $1', [email]);
     if (userExist.rows.length > 0) {
-      return res.status(400).json({ message: 'User already exists' });
+      res.status(400).json({ message: 'User already exists' });
+      return;
     }
 
     // Hash password
@@ -77,27 +82,29 @@ exports.register = async (req, res) => {
 
     res.status(201).json({
       message: 'User registered successfully',
-      user: newUser.rows[0]
+      user: newUser.rows[0],
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: (err as Error).message });
   }
 };
 
-exports.login = async (req, res) => {
-  const { email, password } = req.body;
+export const login = async (req: Request, res: Response): Promise<void> => {
+  const { email, password } = req.body as { email: string; password: string };
 
   try {
     const userResult = await db.query('SELECT * FROM users WHERE email = $1', [email]);
-    const user = userResult.rows[0];
+    const user: User = userResult.rows[0];
 
     if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      res.status(400).json({ message: 'Invalid credentials' });
+      return;
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password!);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      res.status(400).json({ message: 'Invalid credentials' });
+      return;
     }
 
     // Generate JWT
@@ -110,22 +117,18 @@ exports.login = async (req, res) => {
     res.status(200).json({
       message: 'Login successful',
       token,
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email
-      }
+      user: { id: user.id, name: user.name, email: user.email },
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: (err as Error).message });
   }
 };
 
-exports.getMe = async (req, res) => {
+export const getMe = async (req: Request, res: Response): Promise<void> => {
   try {
-    const user = await db.query('SELECT id, name, email FROM users WHERE id = $1', [req.user.id]);
+    const user = await db.query('SELECT id, name, email FROM users WHERE id = $1', [req.user!.id]);
     res.json(user.rows[0]);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: (err as Error).message });
   }
 };

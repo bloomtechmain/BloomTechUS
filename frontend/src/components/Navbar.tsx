@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, CheckCircle2, Laptop, ArrowRight, User, ExternalLink, Activity, Network, ShieldCheck, Microscope, Sparkles, LogOut } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, User, ShieldCheck, Sparkles, LogOut, Activity } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
+interface ServiceItem {
+  name: string;
+  desc: string;
+}
+
+interface MegaMenuColumn {
+  title: string;
+  items: ServiceItem[];
+}
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null);
-  const [hoveredService, setHoveredService] = useState(null);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [hoveredService, setHoveredService] = useState<ServiceItem | null>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   const { user, logout } = useAuth();
@@ -26,7 +36,7 @@ const Navbar = () => {
     setShowUserMenu(false);
   };
 
-  const megaMenuData = [
+  const megaMenuData: MegaMenuColumn[] = [
     {
       title: 'Software & AI Development',
       items: [
@@ -92,8 +102,8 @@ const Navbar = () => {
         {/* Desktop Navigation Links */}
         <div className="hidden lg:flex items-center gap-9">
           <Link to="/" className={`font-bold transition-colors text-[13px] uppercase tracking-wide ${scrolled || activeMenu ? 'text-[#0c1a36] hover:text-[#ff6b00]' : 'text-white/90 hover:text-white'}`}>Home</Link>
-          
-          <div 
+
+          <div
             className="group relative h-[64px] flex items-center"
             onMouseEnter={() => setActiveMenu('services')}
             onMouseLeave={() => {setActiveMenu(null); setHoveredService(null);}}
@@ -104,7 +114,7 @@ const Navbar = () => {
             <div className={`absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#ff6b00] to-[#cc4400] transition-all duration-300 transform rounded-t-full ${activeMenu === 'services' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></div>
           </div>
 
-          <div 
+          <div
             className="group relative h-[64px] flex items-center"
             onMouseEnter={() => setActiveMenu('company')}
             onMouseLeave={() => setActiveMenu(null)}
@@ -131,16 +141,16 @@ const Navbar = () => {
             </>
           ) : (
             <div className="relative">
-              <button 
+              <button
                 onClick={() => setShowUserMenu(!showUserMenu)}
                 className={`w-11 h-11 rounded-full flex items-center justify-center transition-all border-2 ${scrolled || activeMenu ? 'bg-gray-50 border-gray-100' : 'bg-white/10 border-white/20'}`}
               >
                 <User size={20} className={scrolled || activeMenu ? 'text-[#0c1a36]' : 'text-white'} />
               </button>
-              
+
               <AnimatePresence>
                 {showUserMenu && (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
@@ -158,7 +168,7 @@ const Navbar = () => {
                        <ShieldCheck size={16} className="text-gray-400" /> Identity Hub
                     </button>
                     <div className="mx-6 my-2 border-t border-gray-50"></div>
-                    <button 
+                    <button
                       onClick={handleLogout}
                       className="w-full text-left px-6 py-3 text-[12px] font-bold text-red-500 hover:bg-red-50 flex items-center gap-3 transition-colors"
                     >
@@ -192,13 +202,13 @@ const Navbar = () => {
             onMouseLeave={() => {setActiveMenu(null); setHoveredService(null);}}
           >
             <div className="max-w-[1550px] mx-auto px-6 xl:px-12 grid grid-cols-12 min-h-[480px]">
-              
+
               {/* Refined Left Preview Card (3 cols) */}
               <div className="col-span-3 py-10 pr-10 border-r border-gray-50 flex flex-col justify-start">
                  <div className="relative h-full w-full overflow-hidden rounded-[32px] group/card">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#0c1a36] via-[#1a305c] to-[#ff6b00]/20 transition-transform duration-700 group-hover/card:scale-110"></div>
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff6b00]/10 blur-[60px] rounded-full"></div>
-                    
+
                     <div className="relative h-full p-10 flex flex-col items-start z-10">
                        <AnimatePresence mode="wait">
                          {hoveredService ? (
@@ -243,8 +253,8 @@ const Navbar = () => {
                       </h4>
                       <ul className="flex flex-col gap-1">
                         {col.items.map((item, i) => (
-                          <li 
-                            key={i} 
+                          <li
+                            key={i}
                             className="group/item relative -ml-3 px-3 py-2 rounded-xl transition-all hover:bg-blue-50/50 cursor-pointer"
                             onMouseEnter={() => setHoveredService(item)}
                           >
@@ -262,7 +272,7 @@ const Navbar = () => {
               </div>
 
             </div>
-            
+
             {/* Bottom Footer Strip */}
             <div className="bg-gray-50/50 border-t border-gray-100 py-6 px-12">
                <div className="max-w-[1550px] mx-auto flex justify-between items-center text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">
@@ -280,7 +290,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      {/* Mobile Drawer (Same premium styling) */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

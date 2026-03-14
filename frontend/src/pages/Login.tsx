@@ -2,28 +2,29 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
-import { User, Lock, Mail, ArrowRight, Activity } from 'lucide-react';
-import { GoogleLogin } from '@react-oauth/google';
+import { Lock, Mail, Activity } from 'lucide-react';
+import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  
+
   const { login, googleLogin } = useAuth();
   const navigate = useNavigate();
 
-  const handleGoogleSuccess = async (response) => {
+  const handleGoogleSuccess = async (response: CredentialResponse) => {
     try {
-      await googleLogin(response.credential);
+      await googleLogin(response.credential!);
       navigate('/');
-    } catch (err) {
+    } catch {
       setError('Google login failed.');
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
     setLoading(true);
@@ -31,7 +32,11 @@ const Login = () => {
       await login(email, password);
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Please try again.');
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || 'Login failed. Please try again.');
+      } else {
+        setError('Login failed. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
@@ -39,7 +44,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen pt-32 pb-20 px-6 bg-gray-50 flex items-center justify-center">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="max-w-md w-full bg-white rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden"
@@ -63,8 +68,8 @@ const Login = () => {
             <div className="space-y-2">
               <label className="text-[11px] font-black uppercase tracking-widest text-gray-400 ml-1">Email Address</label>
               <div className="relative">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-gray-50 border border-gray-100 px-12 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#ff6b00]/20 focus:border-[#ff6b00] transition-all font-semibold"
@@ -78,8 +83,8 @@ const Login = () => {
             <div className="space-y-2">
               <label className="text-[11px] font-black uppercase tracking-widest text-gray-400 ml-1">Password</label>
               <div className="relative">
-                <input 
-                  type="password" 
+                <input
+                  type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full bg-gray-50 border border-gray-100 px-12 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#ff6b00]/20 focus:border-[#ff6b00] transition-all font-semibold"
@@ -90,8 +95,8 @@ const Login = () => {
               </div>
             </div>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={loading}
               className="w-full bg-[#ff6b00] text-white py-5 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-orange-100 hover:bg-[#e65c00] transition-all transform active:scale-[0.98]"
             >

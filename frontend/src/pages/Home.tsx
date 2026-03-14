@@ -1,6 +1,6 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Rocket, Shield, Zap, ArrowRight, Globe, Users, Network, Activity } from 'lucide-react';
+import { ArrowRight, Globe, Users, Network, Activity } from 'lucide-react';
 
 // Hero background images
 import heroBg1 from '../assets/hero_bg_1.jpg';
@@ -14,9 +14,9 @@ const Home = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000); // Change slide every 6 seconds
+    }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   const stats = [
     { label: 'Fortune 500 Clients', val: '250+' },
@@ -29,7 +29,7 @@ const Home = () => {
     <div className="bg-white">
       {/* Hero Section - Redesigned with Smooth Image Slideshow */}
       <section className="relative h-screen min-h-[900px] flex items-center justify-center overflow-hidden">
-        
+
         {/* Background Image Slideshow Layer */}
         <div className="absolute inset-0 w-full h-full z-0 bg-black">
           <AnimatePresence mode="wait">
@@ -41,8 +41,8 @@ const Home = () => {
               transition={{ duration: 1.5, ease: "easeInOut" }}
               className="absolute inset-0 w-full h-full"
             >
-              <img 
-                src={slides[currentSlide]} 
+              <img
+                src={slides[currentSlide]}
                 alt={`Slide ${currentSlide + 1}`}
                 className="w-full h-full object-cover"
               />
@@ -65,19 +65,19 @@ const Home = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-[#ff6b00] animate-pulse shadow-[0_0_12px_#ff6b00]"></span>
               2026 Enterprise Innovation
             </div>
-            
+
             <h1 className="text-6xl md:text-8xl lg:text-[115px] font-black mb-8 leading-[0.85] tracking-tighter text-white">
               Securing the <br />
               <span className="text-[#ff6b00] underline decoration-[#ff6b00]/30 underline-offset-[12px]">Future Hub</span>
             </h1>
-            
+
             <p className="max-w-2xl text-gray-200 text-lg md:text-2xl mb-14 leading-relaxed font-medium">
-               Orchestrating complex IT infrastructure with human-centric AI. 
+               Orchestrating complex IT infrastructure with human-centric AI.
                Where deep security meets limitless automation.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row items-center gap-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -157,8 +157,8 @@ const Home = () => {
                       <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#ff6b00]/20 blur-3xl animate-pulse"></div>
                       <div className="grid grid-cols-3 gap-6 relative z-10">
                          {Array.from({length: 9}).map((_, i) => (
-                           <motion.div 
-                            key={i} 
+                           <motion.div
+                            key={i}
                             animate={{ scale: [1, 1.1, 1], opacity: [0.3, 1, 0.3] }}
                             transition={{ repeat: Infinity, duration: 3, delay: i * 0.2 }}
                             className="w-12 h-12 bg-white/10 border border-white/20 rounded-xl"
@@ -181,7 +181,7 @@ const Home = () => {
                </div>
                <span className="text-4xl font-black tracking-tighter">BloomTechUS</span>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center md:text-left w-full border-y border-white/10 py-16 mb-12">
                <div>
                   <h5 className="font-black text-xs uppercase tracking-widest text-[#5b6e8a] mb-8">Platform</h5>

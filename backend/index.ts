@@ -1,6 +1,8 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -10,14 +12,14 @@ app.use(cors());
 app.use(express.json());
 
 // Import Routes
-const userRoutes = require('./routes/userRoutes');
-const authRoutes = require('./routes/authRoutes');
+import userRoutes from './routes/userRoutes';
+import authRoutes from './routes/authRoutes';
 
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 
 // Basic Route
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.send('BloomTechUS API is running...');
 });
 
