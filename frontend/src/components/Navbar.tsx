@@ -3,16 +3,7 @@ import { Menu, X, ChevronDown, ArrowRight, User, ShieldCheck, Sparkles, LogOut, 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-
-interface ServiceItem {
-  name: string;
-  desc: string;
-}
-
-interface MegaMenuColumn {
-  title: string;
-  items: ServiceItem[];
-}
+import { megaMenuData, ServiceItem } from '../data/servicesData';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,50 +26,6 @@ const Navbar = () => {
     navigate('/login');
     setShowUserMenu(false);
   };
-
-  const megaMenuData: MegaMenuColumn[] = [
-    {
-      title: 'Software & AI Development',
-      items: [
-        { name: 'AI & Machine Learning (ML)', desc: 'Predictive intelligence and neural networking.' },
-        { name: 'AI Custom Development for Automation', desc: 'Smart agent orchestration for your workflows.' },
-        { name: 'Custom CRM Solutions', desc: 'Manage your client lifecycle with precision.' },
-        { name: 'Custom ERP Solutions', desc: 'Integrated enterprise planning at scale.' },
-        { name: 'Employee Time Management Systems', desc: 'Next-gen tracking and performance metrics.' },
-      ]
-    },
-    {
-      title: 'Infrastructure & Data Centres',
-      items: [
-        { name: 'IT Network & Infrastructure', desc: 'Building the backbone of your digital empire.' },
-        { name: 'Enterprise Networking', desc: 'High-speed, redundant connectivity solutions.' },
-        { name: 'Data Centre Operations', desc: 'Powering your workload with expert care.' },
-        { name: 'Custom Server Design & Deployment', desc: 'Workstation-grade hardware for any task.' },
-        { name: 'Custom NAS (Network Attached Storage)', desc: 'Secure, private, and tiered storage.' },
-        { name: 'Rack & Roll Services', desc: 'Efficient global deployment of server racks.' },
-      ]
-    },
-    {
-      title: 'AV & Smart Workspaces',
-      items: [
-        { name: 'Custom Audio Visual (AV) Setup', desc: 'Immersive media environments for the office.' },
-        { name: 'Managed AV Services', desc: 'Proactive support for all visual assets.' },
-        { name: 'Unified Collaboration', desc: 'Connecting teams across any device or location.' },
-        { name: 'Hybrid Workplace Solutions', desc: 'The bridge between home and office.' },
-        { name: 'Smart Workspaces', desc: 'IoT-enabled office spaces for the future.' },
-      ]
-    },
-    {
-      title: 'Security & Managed IT',
-      items: [
-        { name: 'Security & Data Protection', desc: 'Shielding your IP from modern threats.' },
-        { name: 'Comprehensive Managed Services', desc: '24/7 IT oversight for total peace of mind.' },
-        { name: 'Professional IT Services', desc: 'Advisory and technical implementation expertise.' },
-        { name: 'Asset Lifecycle Management', desc: 'From procurement to secure decommissioning.' },
-        { name: 'Online Marketing Services', desc: 'Empowering your brand through data-driven growth.' },
-      ]
-    }
-  ];
 
   return (
     <nav
@@ -224,9 +171,9 @@ const Navbar = () => {
                               </div>
                               <h5 className="text-[26px] font-black text-white leading-tight mb-4 tracking-tighter">{hoveredService.name}</h5>
                               <p className="text-blue-100/70 text-[15px] font-medium leading-relaxed mb-auto">{hoveredService.desc}</p>
-                              <button className="flex items-center gap-2.5 text-white font-black text-sm uppercase tracking-widest group/btn mt-10">
+                              <Link to={`/services/${hoveredService.slug}`} onClick={() => setActiveMenu(null)} className="flex items-center gap-2.5 text-white font-black text-sm uppercase tracking-widest group/btn mt-10">
                                 Explore Solution <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform" />
-                              </button>
+                              </Link>
                            </motion.div>
                          ) : (
                            <div className="flex flex-col h-full">
@@ -260,9 +207,9 @@ const Navbar = () => {
                           >
                             <div className="flex items-center gap-2.5">
                                <div className="w-1 h-1 rounded-full bg-[#ff6b00] opacity-0 group-hover/item:opacity-100 transition-opacity"></div>
-                               <span className="text-[13px] font-semibold text-gray-500 group-hover/item:text-[#ff6b00] group-hover/item:font-bold transition-all tracking-tight">
+                               <Link to={`/services/${item.slug}`} onClick={() => setActiveMenu(null)} className="text-[13px] font-semibold text-gray-500 group-hover/item:text-[#ff6b00] group-hover/item:font-bold transition-all tracking-tight w-full block text-left">
                                  {item.name}
-                               </span>
+                               </Link>
                             </div>
                           </li>
                         ))}
