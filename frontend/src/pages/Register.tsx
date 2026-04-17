@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
-import { User, Lock, Mail, Activity, Sparkles } from 'lucide-react';
+import { User, Lock, Mail, Activity, Sparkles, Building, Briefcase } from 'lucide-react';
 import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import axios from 'axios';
 
@@ -10,6 +10,8 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [company, setCompany] = useState('');
+  const [jobTitle, setJobTitle] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -30,7 +32,7 @@ const Register = () => {
     setError('');
     setLoading(true);
     try {
-      await register(name, email, password);
+      await register(name, email, password, company, jobTitle);
       navigate('/login');
     } catch (err) {
       if (axios.isAxiosError(err)) {
@@ -93,6 +95,35 @@ const Register = () => {
                   required
                 />
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label className="text-[11px] font-black uppercase tracking-widest text-gray-400 ml-1">Company</label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                    className="w-full bg-gray-50 border border-gray-100 px-12 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#ff6b00]/20 focus:border-[#ff6b00] transition-all font-semibold"
+                    placeholder="Company Inc."
+                  />
+                  <Building className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-[11px] font-black uppercase tracking-widest text-gray-400 ml-1">Job Title</label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={jobTitle}
+                    onChange={(e) => setJobTitle(e.target.value)}
+                    className="w-full bg-gray-50 border border-gray-100 px-12 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#ff6b00]/20 focus:border-[#ff6b00] transition-all font-semibold"
+                    placeholder="Identity Architect"
+                  />
+                  <Briefcase size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                </div>
               </div>
             </div>
 

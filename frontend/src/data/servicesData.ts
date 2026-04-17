@@ -36,21 +36,12 @@ export const megaMenuData: MegaMenuColumn[] = [
         imageUrl: '/images/ai-hero.png'
       },
       { 
-        name: 'Custom CRM Solutions', 
-        desc: 'Manage your client lifecycle with precision.',
-        slug: 'custom-crm-solutions',
-        longDesc: 'A Customer Relationship Management system built from the ground up to match your exact sales process, marketing funnels, and customer support requirements.',
-        features: ['Contact & Lead Management', 'Sales Pipeline Tracking', 'Automated Email Campaigns', 'Custom Reporting Dashboards'],
-        benefits: ['Improved Customer Retention', 'Higher Conversion Rates', 'Streamlined Sales Workflows'],
-        imageUrl: '/images/ai-hero.png'
-      },
-      { 
-        name: 'Custom ERP Solutions', 
-        desc: 'Integrated enterprise planning at scale.',
-        slug: 'custom-erp-solutions',
-        longDesc: 'Comprehensive Enterprise Resource Planning software tailored to integrate all facets of an operation—including planning, development, manufacturing processes, human resources, and financial management.',
-        features: ['Financial Management', 'Supply Chain Tracking', 'HR & Payroll Integration', 'Real-time Analytics'],
-        benefits: ['Centralized Data Source', 'Enhanced Collaboration cross-departments', 'Regulatory Compliance'],
+        name: 'Custom CRM and ERP Solutions', 
+        desc: 'Integrated enterprise planning and client lifecycle management.',
+        slug: 'custom-crm-erp-solutions',
+        longDesc: 'Our unified CRM and ERP systems are built from the ground up to integrate all facets of your operation—including sales pipelines, marketing funnels, supply chain tracking, human resources, and financial management into a single source of truth.',
+        features: ['Lead & Sales Pipeline Tracking', 'Financial & HR Management', 'Supply Chain & Inventory Integration', 'Automated Marketing & Reporting'],
+        benefits: ['Centralized Enterprise Data', 'improved Customer Retention', 'Streamlined Multi-departmental Workflows'],
         imageUrl: '/images/ai-hero.png'
       },
       { 
@@ -60,6 +51,15 @@ export const megaMenuData: MegaMenuColumn[] = [
         longDesc: 'Modernize how you track employee attendance, billable hours, and project time allocations with highly intuitive, mobile-friendly time tracking and performance management systems.',
         features: ['Biometric & Geo-fenced Punch In', 'Leave Management', 'Billable Hours Tracking', 'Performance Analytics'],
         benefits: ['Accurate Payroll Processing', 'Increased Productivity', 'Transparent Work Cultures'],
+        imageUrl: '/images/ai-hero.png'
+      },
+      { 
+        name: 'Custom websites design', 
+        desc: 'Stunning, high-performance digital experiences.',
+        slug: 'custom-websites-design',
+        longDesc: 'We create bespoke web experiences that combine elite design aesthetics with technical excellence. From conversion-optimized landing pages to complex multi-layered platforms, we build to impress.',
+        features: ['UI/UX Design Strategy', 'Performance (Core Web Vitals) Optimization', 'Responsive & Adaptive Layouts', 'SEO-First Architecture'],
+        benefits: ['Premium Brand Image', 'Superior User Engagement', 'High Conversion Rates'],
         imageUrl: '/images/ai-hero.png'
       },
     ]
@@ -119,6 +119,15 @@ export const megaMenuData: MegaMenuColumn[] = [
         longDesc: 'A fully managed logistics and deployment service where we configure, test, and ship fully assembled server racks to any data centre location globally, ready to plug in and go.',
         features: ['Pre-deployment Configuration', 'Global Logistics Management', 'Cable Management & Labeling', 'Plug-and-Play Delivery'],
         benefits: ['Rapid Deployment Timelines', 'Standardized Configurations', 'Reduced On-site Staffing Needs'],
+        imageUrl: '/images/dc-hero.png'
+      },
+      { 
+        name: 'Cloud Hosting & Application Deployment', 
+        desc: 'Scalable, performant, and secure cloud ecosystems.',
+        slug: 'cloud-hosting-deployment',
+        longDesc: 'We design and manage high-performance cloud environments tailored for modern applications. From serverless architectures to containerized deployments (Docker/Kubernetes), we ensure your applications are always available and blazing fast.',
+        features: ['Cloud Architecture Design', 'Containerization & Orchestration', 'CI/CD Pipeline Automation', 'Serverless Implementations'],
+        benefits: ['Instant Scalability', 'High Availability & Failover', 'Reduced Infrastructure Overhead'],
         imageUrl: '/images/dc-hero.png'
       },
     ]

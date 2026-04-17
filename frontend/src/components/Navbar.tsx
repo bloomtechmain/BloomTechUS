@@ -111,9 +111,9 @@ const Navbar = () => {
                     <button className="w-full text-left px-6 py-3 text-[12px] font-bold text-[#0c1a36] hover:bg-gray-50 flex items-center gap-3 transition-colors">
                        <User size={16} className="text-gray-400" /> Account Settings
                     </button>
-                    <button className="w-full text-left px-6 py-3 text-[12px] font-bold text-[#0c1a36] hover:bg-gray-50 flex items-center gap-3 transition-colors">
+                    <Link to="/dashboard" onClick={() => setShowUserMenu(false)} className="w-full text-left px-6 py-3 text-[12px] font-bold text-[#0c1a36] hover:bg-gray-50 flex items-center gap-3 transition-colors">
                        <ShieldCheck size={16} className="text-gray-400" /> Identity Hub
-                    </button>
+                    </Link>
                     <div className="mx-6 my-2 border-t border-gray-50"></div>
                     <button
                       onClick={handleLogout}

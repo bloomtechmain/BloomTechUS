@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Globe, Users, Network, Activity } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 // Hero background images
 import heroBg1 from '../assets/hero_bg_1.jpg';
@@ -8,6 +10,7 @@ import heroBg2 from '../assets/hero_bg_2.jpg';
 import heroBg3 from '../assets/hero_bg_3.jpg';
 
 const Home = () => {
+  const { user } = useAuth();
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [heroBg1, heroBg2, heroBg3];
 
@@ -83,9 +86,9 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <button className="w-full sm:w-auto px-12 py-5 bg-[#ff6b00] text-white rounded-2xl font-black text-lg hover:bg-[#e65c00] hover:shadow-[0_0_40px_rgba(255,107,0,0.6)] transition-all flex items-center justify-center gap-3 group active:scale-95">
+            <Link to={user ? "/dashboard" : "/login"} className="w-full sm:w-auto px-12 py-5 bg-[#ff6b00] text-white rounded-2xl font-black text-lg hover:bg-[#e65c00] hover:shadow-[0_0_40px_rgba(255,107,0,0.6)] transition-all flex items-center justify-center gap-3 group active:scale-95">
               Launch Identity Hub <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
             <button className="w-full sm:w-auto px-12 py-5 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 rounded-2xl font-black text-lg hover:bg-white hover:text-[#0c1a36] transition-all shadow-xl">
               Our Methodology
             </button>

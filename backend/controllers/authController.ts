@@ -60,7 +60,7 @@ export const googleLogin = async (req: Request, res: Response): Promise<void> =>
 };
 
 export const register = async (req: Request, res: Response): Promise<void> => {
-  const { name, email, password } = req.body as { name: string; email: string; password: string };
+  const { name, email, password, company, job_title } = req.body as { name: string; email: string; password: string; company?: string; job_title?: string };
 
   try {
     // Check if user exists
@@ -76,8 +76,8 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 
     // Insert user
     const newUser = await db.query(
-      'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id, name, email',
-      [name, email, hashedPassword]
+      'INSERT INTO users (name, email, password, company, job_title) VALUES ($1, $2, $3, $4, $5) RETURNING id, name, email, company, job_title',
+      [name, email, hashedPassword, company, job_title]
     );
 
     res.status(201).json({
