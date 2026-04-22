@@ -4,10 +4,20 @@ import { ArrowRight, Cpu, Server, Briefcase, Globe, ShieldCheck, Brain, CheckCir
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 
-// Hero background videos - MP4 for high quality
+// Hero background videos - Desktop (1080p)
 import heroBg1 from '../assets/hero_bg_1.mp4';
 import heroBg2 from '../assets/hero_bg_2.mp4';
 import heroBg3 from '../assets/hero_bg_3.mp4';
+
+// WebM versions for better compression (modern browsers)
+import heroBg1Webm from '../assets/hero_bg_1.webm';
+import heroBg2Webm from '../assets/hero_bg_2.webm';
+import heroBg3Webm from '../assets/hero_bg_3.webm';
+
+// Mobile optimized versions (720p)
+import heroBg1Mobile from '../assets/hero_bg_1_mobile.mp4';
+import heroBg2Mobile from '../assets/hero_bg_2_mobile.mp4';
+import heroBg3Mobile from '../assets/hero_bg_3_mobile.mp4';
 
 // Poster images for instant loading
 import heroBg1Poster from '../assets/hero_bg_1.webp';
@@ -16,15 +26,31 @@ import heroBg3Poster from '../assets/hero_bg_3.webp';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = [heroBg1, heroBg2, heroBg3];
-  const posters = [heroBg1Poster, heroBg2Poster, heroBg3Poster];
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
+  // Video sources with format and size variants
+  const videoSlides = [
+    { webm: heroBg1Webm, mp4: heroBg1, mobile: heroBg1Mobile, poster: heroBg1Poster },
+    { webm: heroBg2Webm, mp4: heroBg2, mobile: heroBg2Mobile, poster: heroBg2Poster },
+    { webm: heroBg3Webm, mp4: heroBg3, mobile: heroBg3Mobile, poster: heroBg3Poster },
+  ];
+
+  // Detect screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Auto-advance slides
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => (prev + 1) % videoSlides.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, [videoSlides.length]);
 
   const corePillars = [
     {
@@ -125,16 +151,27 @@ const Home = () => {
               className="absolute inset-0 w-full h-full"
             >
               <video
-                key={slides[currentSlide]}
-                src={slides[currentSlide]}
-                poster={posters[currentSlide]}
+                key={`${currentSlide}-${isMobile}`}
+                poster={videoSlides[currentSlide].poster}
                 className="w-full h-full object-cover"
                 autoPlay
                 loop
                 muted
                 playsInline
                 preload={currentSlide === 0 ? "auto" : "metadata"}
-              />
+              >
+                {/* Use mobile version on small screens for faster loading */}
+                {isMobile ? (
+                  <source src={videoSlides[currentSlide].mobile} type="video/mp4" />
+                ) : (
+                  <>
+                    {/* WebM for modern browsers (better compression) */}
+                    <source src={videoSlides[currentSlide].webm} type="video/webm" />
+                    {/* MP4 fallback for Safari and older browsers */}
+                    <source src={videoSlides[currentSlide].mp4} type="video/mp4" />
+                  </>
+                )}
+              </video>
             </motion.div>
           </AnimatePresence>
         </div>

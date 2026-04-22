@@ -11,6 +11,7 @@ const Navbar = memo(() => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [hoveredService, setHoveredService] = useState<ServiceItem | null>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -42,8 +43,8 @@ const Navbar = memo(() => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled || activeMenu
-          ? 'bg-white/70 backdrop-blur-2xl border-b border-gray-200/50 py-2.5 shadow-lg shadow-black/5'
-          : 'bg-white/5 backdrop-blur-md py-5 border-b border-transparent'
+          ? 'bg-white/95 backdrop-blur-2xl border-b border-gray-200/50 py-2.5 shadow-lg shadow-black/5'
+          : 'bg-white py-5 border-b border-gray-100 shadow-md'
       }`}
     >
       <div className="max-w-[1550px] mx-auto px-6 xl:px-12 flex justify-between items-center h-[64px]">
@@ -52,21 +53,21 @@ const Navbar = memo(() => {
           <div className="w-9 h-9 rounded-[8px] flex items-center justify-center shadow-md transform group-hover:scale-110 transition-all duration-500 overflow-hidden">
              <img src="/bloomtech-logo.png" alt="BloomTech Logo" className="w-full h-full object-cover" />
           </div>
-          <span className={`text-[22px] font-black tracking-tighter transition-all group-hover:tracking-normal ${scrolled || activeMenu ? 'text-[#0c1a36]' : 'text-white'}`}>
+          <span className="text-[22px] font-black tracking-tighter transition-all group-hover:tracking-normal text-[#0c1a36]">
             BloomTech<span className="text-[#ff6b00]">USA</span>
           </span>
         </Link>
 
         {/* Desktop Navigation Links */}
         <div className="hidden lg:flex items-center gap-9">
-          <Link to="/" className={`font-bold transition-colors text-[13px] uppercase tracking-wide ${scrolled || activeMenu ? 'text-[#0c1a36] hover:text-[#ff6b00]' : 'text-white/90 hover:text-white'}`}>Home</Link>
+          <Link to="/" className="font-bold transition-colors text-[13px] uppercase tracking-wide text-[#0c1a36] hover:text-[#ff6b00]">Home</Link>
 
           <div
             className="group relative h-[64px] flex items-center"
             onMouseEnter={() => setActiveMenu('services')}
             onMouseLeave={() => {setActiveMenu(null); setHoveredService(null);}}
           >
-            <button className={`flex items-center gap-1 font-bold transition-all text-[13px] uppercase tracking-wide ${activeMenu === 'services' || scrolled ? 'text-[#ff6b00]' : 'text-white/90 hover:text-white'}`}>
+            <button className={`flex items-center gap-1 font-bold transition-all text-[13px] uppercase tracking-wide ${activeMenu === 'services' ? 'text-[#ff6b00]' : 'text-[#0c1a36] hover:text-[#ff6b00]'}`}>
               Services & Solutions <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${activeMenu === 'services' ? 'rotate-180' : ''}`} />
             </button>
             <div className={`absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#ff6b00] to-[#cc4400] transition-all duration-300 transform rounded-t-full ${activeMenu === 'services' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></div>
@@ -74,14 +75,14 @@ const Navbar = memo(() => {
 
           <Link 
             to="/company"
-            className={`font-bold transition-colors text-[13px] uppercase tracking-wide ${scrolled || activeMenu ? 'text-[#0c1a36] hover:text-[#ff6b00]' : 'text-white/90 hover:text-white'}`}
+            className="font-bold transition-colors text-[13px] uppercase tracking-wide text-[#0c1a36] hover:text-[#ff6b00]"
           >
             About Us
           </Link>
 
           <Link 
             to="/contact"
-            className={`font-bold transition-colors text-[13px] uppercase tracking-wide ${scrolled || activeMenu ? 'text-[#0c1a36] hover:text-[#ff6b00]' : 'text-white/90 hover:text-white'}`}
+            className="font-bold transition-colors text-[13px] uppercase tracking-wide text-[#0c1a36] hover:text-[#ff6b00]"
           >
             Contact Us
           </Link>
@@ -91,10 +92,10 @@ const Navbar = memo(() => {
         <div className="hidden lg:flex items-center gap-4 shrink-0">
           {!user ? (
             <>
-              <Link to="/login" className={`font-bold transition-all text-[13px] uppercase tracking-widest px-3 ${scrolled || activeMenu ? 'text-[#0c1a36] hover:text-[#ff6b00]' : 'text-white hover:text-[#ff6b00]'}`}>
+              <Link to="/login" className="font-bold transition-all text-[13px] uppercase tracking-widest px-3 text-[#0c1a36] hover:text-[#ff6b00]">
                 Login
               </Link>
-              <Link to="/register" className={`border-[2.5px] rounded-xl font-black text-[13px] uppercase tracking-widest transition-all active:scale-95 px-8 py-2.5 ${scrolled || activeMenu ? 'border-[#0c1a36] text-[#0c1a36] hover:bg-[#0c1a36] hover:text-white' : 'border-white text-white hover:bg-white hover:text-[#0c1a36]'}`}>
+              <Link to="/register" className="border-[2.5px] rounded-xl font-black text-[13px] uppercase tracking-widest transition-all active:scale-95 px-8 py-2.5 border-[#0c1a36] text-[#0c1a36] hover:bg-[#0c1a36] hover:text-white">
                 Register
               </Link>
             </>
@@ -102,9 +103,9 @@ const Navbar = memo(() => {
             <div className="relative">
               <button
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className={`w-11 h-11 rounded-full flex items-center justify-center transition-all border-2 ${scrolled || activeMenu ? 'bg-gray-50 border-gray-100' : 'bg-white/10 border-white/20'}`}
+                className="w-11 h-11 rounded-full flex items-center justify-center transition-all border-2 bg-gray-50 border-gray-100"
               >
-                <User size={20} className={scrolled || activeMenu ? 'text-[#0c1a36]' : 'text-white'} />
+                <User size={20} className="text-[#0c1a36]" />
               </button>
 
               <AnimatePresence>
@@ -141,7 +142,7 @@ const Navbar = memo(() => {
         </div>
 
         {/* Mobile Hamburger */}
-        <button onClick={() => setIsOpen(!isOpen)} className={`lg:hidden p-2 focus:outline-none ${scrolled || activeMenu ? 'text-[#0c1a36]' : 'text-white'}`}>
+        <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden p-2 focus:outline-none text-[#0c1a36]">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -232,9 +233,76 @@ const Navbar = memo(() => {
                <button onClick={() => setIsOpen(false)} className="p-3 bg-gray-50 rounded-full border border-gray-100"><X size={24} /></button>
             </div>
             <div className="flex flex-col gap-8">
-              {['Home', 'Services', 'Solutions', 'About Us', 'Careers'].map(link => (
-                <a key={link} className="text-4xl font-black text-[#0c1a36] hover:text-blue-600 transition-colors">{link}</a>
-              ))}
+              <Link to="/" onClick={() => setIsOpen(false)} className="text-4xl font-black text-[#0c1a36] hover:text-blue-600 transition-colors">Home</Link>
+              
+              {/* Services with Expandable Submenu */}
+              <div className="flex flex-col">
+                <button 
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)} 
+                  className="text-4xl font-black text-[#0c1a36] hover:text-blue-600 transition-colors text-left flex items-center justify-between"
+                >
+                  Services
+                  <ChevronDown className={`w-8 h-8 transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                <AnimatePresence>
+                  {mobileServicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="flex flex-col gap-3 mt-6 ml-6 max-h-[400px] overflow-y-auto">
+                        {megaMenuData.map((column, colIdx) => (
+                          <div key={colIdx} className="flex flex-col gap-2">
+                            <h4 className="text-xs font-black text-[#ff6b00] uppercase tracking-widest mb-1">
+                              {column.title}
+                            </h4>
+                            {column.items.map((service, idx) => (
+                              <Link
+                                key={idx}
+                                to={`/services/${service.slug}`}
+                                onClick={() => {
+                                  setIsOpen(false);
+                                  setMobileServicesOpen(false);
+                                }}
+                                className="text-lg font-bold text-gray-700 hover:text-[#ff6b00] transition-colors pl-4 border-l-2 border-gray-200 hover:border-[#ff6b00]"
+                              >
+                                {service.name}
+                              </Link>
+                            ))}
+                            {column.secondarySection && (
+                              <>
+                                <h4 className="text-xs font-black text-[#ff6b00] uppercase tracking-widest mb-1 mt-3">
+                                  {column.secondarySection.title}
+                                </h4>
+                                {column.secondarySection.items.map((service, idx) => (
+                                  <Link
+                                    key={idx}
+                                    to={`/services/${service.slug}`}
+                                    onClick={() => {
+                                      setIsOpen(false);
+                                      setMobileServicesOpen(false);
+                                    }}
+                                    className="text-lg font-bold text-gray-700 hover:text-[#ff6b00] transition-colors pl-4 border-l-2 border-gray-200 hover:border-[#ff6b00]"
+                                  >
+                                    {service.name}
+                                  </Link>
+                                ))}
+                              </>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <Link to="/company" onClick={() => setIsOpen(false)} className="text-4xl font-black text-[#0c1a36] hover:text-blue-600 transition-colors">About Us</Link>
+              <Link to="/contact" onClick={() => setIsOpen(false)} className="text-4xl font-black text-[#0c1a36] hover:text-blue-600 transition-colors">Contact Us</Link>
             </div>
             {!user ? (
                <div className="mt-auto grid grid-cols-1 gap-4">
