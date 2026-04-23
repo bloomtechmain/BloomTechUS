@@ -3,19 +3,24 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command, mode, isSsrBuild }) => ({
   plugins: [
     react(),
     tailwindcss(),
   ],
+  ssr: {
+    noExternal: ['react-helmet-async', 'framer-motion'],
+  },
   build: {
     // Enable minification
     minify: 'esbuild', // Use esbuild for faster builds
     // Optimize chunk size
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
-      output: {
-        // Manual chunk splitting for better caching
+      output: isSsrBuild ? {
+        // SSR build - no manual chunks
+      } : {
+        // Client build only - manual chunk splitting for better caching
         manualChunks: {
           // React core
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
@@ -50,4 +55,4 @@ export default defineConfig({
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'framer-motion'],
   },
-})
+}))
