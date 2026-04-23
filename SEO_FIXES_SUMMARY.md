@@ -12,13 +12,15 @@
 - Now only the React Helmet SEO component manages meta descriptions dynamically per page
 - Each page gets its unique, optimized description from `seoConfig.ts`
 
-#### 2. Canonical Link Configuration - VERIFIED
-**Status:** Already properly configured
+#### 2. Canonical Link Points to Different Page - FIXED
+**Problem:** Site is hosted on `www.bloomtechusa.com` but all canonical URLs pointed to `https://bloomtechusa.com` (non-www), causing canonical mismatch errors.
 
-**Configuration:**
-- All canonical URLs point to `https://bloomtechusa.com` (non-www)
-- `_redirects` file enforces 301 redirects from www to non-www
-- Consistent across all pages and service pages
+**Solution:** 
+- Updated `baseUrl` in `seoConfig.ts` from `https://bloomtechusa.com` to `https://www.bloomtechusa.com`
+- All canonical URLs now correctly point to `https://www.bloomtechusa.com/*`
+- Updated `_redirects` to redirect non-www to www (301 permanent redirects)
+- Updated SEO component fallback URLs to use www version
+- Home page canonical now includes trailing slash: `https://www.bloomtechusa.com/`
 
 ### ✅ Warnings Fixed
 
@@ -63,11 +65,22 @@ No duplicate H1 issues found. Each page has a semantically correct single H1.
 
 2. **frontend/src/utils/seoConfig.ts**
    - Updated home page title to match shortened version
+   - Changed baseUrl from `https://bloomtechusa.com` to `https://www.bloomtechusa.com`
+   - All canonical URLs now use www subdomain
    - Maintains consistency across static and dynamic meta tags
 
 3. **frontend/src/pages/Home.tsx**
    - Improved internal link anchor text from generic "Learn More" to descriptive "Explore {Service Name}"
    - Better for SEO, accessibility, and user experience
+
+4. **frontend/public/_redirects**
+   - Reversed redirect direction: non-www → www (was www → non-www)
+   - Ensures all traffic lands on `https://www.bloomtechusa.com`
+   - 301 permanent redirects for SEO juice preservation
+
+5. **frontend/src/components/SEO.tsx**
+   - Updated fallback URLs from `https://bloomtechusa.com` to `https://www.bloomtechusa.com`
+   - Affects og:url and twitter:url meta tags
 
 ## SEO Best Practices Implemented
 
@@ -82,11 +95,13 @@ No duplicate H1 issues found. Each page has a semantically correct single H1.
 
 After these changes, the site should show:
 - ✅ No duplicate meta descriptions
-- ✅ No canonical URL errors
+- ✅ **No canonical URL errors** - All URLs now correctly point to `www.bloomtechusa.com`
 - ✅ Proper title tag length (visible in full in search results)
 - ✅ Improved internal linking structure
 - ✅ Better accessibility scores
 - ✅ Cleaner HTML structure
+- ✅ Consistent domain usage (www subdomain across entire site)
+- ✅ Proper 301 redirects for SEO authority consolidation
 
 ## Next Steps (Recommended)
 
@@ -98,8 +113,18 @@ After these changes, the site should show:
 
 ## Technical Notes
 
-- All canonical URLs use `https://bloomtechusa.com` (non-www)
+- **Primary Domain:** `https://www.bloomtechusa.com` (www subdomain)
+- All canonical URLs use `https://www.bloomtechusa.com/*`
+- Home page canonical includes trailing slash: `https://www.bloomtechusa.com/`
 - Redirects configured in `_redirects` file for Cloudflare Pages
 - SEO component uses React Helmet for dynamic meta tag management
 - Each service page has unique canonical URL and meta tags
 - Schema.org markup included for Organization and LocalBusiness
+- 301 permanent redirects ensure non-www traffic redirects to www
+
+## Git Commits
+
+**Commit 1:** `3a9d18b` - "Fix SEO issues: remove duplicate meta descriptions, shorten title, improve link anchor text"
+**Commit 2:** `6278cbf` - "Fix canonical URL: update all URLs to use www.bloomtechusa.com as primary domain"
+
+Both commits pushed to: https://github.com/bloomtechmain/BloomTechUS.git
