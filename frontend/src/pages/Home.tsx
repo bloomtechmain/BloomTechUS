@@ -288,7 +288,7 @@ const Home = () => {
                           {pillar.description}
                         </p>
                         <div className="flex items-center gap-2 text-[#ff6b00] font-bold text-sm uppercase tracking-widest">
-                          Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          Explore {pillar.title} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
 
