@@ -42,7 +42,7 @@ const SEO: React.FC<SEOProps> = ({ config, breadcrumbs, noindex = false }) => {
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={canonical || 'https://bloomtechusa.com'} />
+      <meta property="og:url" content={canonical || 'https://www.bloomtechusa.com'} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       {ogImage && <meta property="og:image" content={ogImage} />}
@@ -51,7 +51,7 @@ const SEO: React.FC<SEOProps> = ({ config, breadcrumbs, noindex = false }) => {
 
       {/* Twitter */}
       <meta property="twitter:card" content={twitterCard} />
-      <meta property="twitter:url" content={canonical || 'https://bloomtechusa.com'} />
+      <meta property="twitter:url" content={canonical || 'https://www.bloomtechusa.com'} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
       {ogImage && <meta property="twitter:image" content={ogImage} />}

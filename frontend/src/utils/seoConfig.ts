@@ -12,7 +12,7 @@ export interface SEOConfig {
   schema?: any;
 }
 
-const baseUrl = 'https://bloomtechusa.com';
+const baseUrl = 'https://www.bloomtechusa.com';
 const defaultOGImage = `${baseUrl}/bloomtech-logo.png`;
 
 // Social Media URLs
@@ -101,7 +101,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
     title: 'BloomTechUSA - Enterprise IT, AI & Cloud Solutions',
     description: 'BloomTechUSA delivers enterprise IT solutions, custom AI development, cloud infrastructure, and high-performance server design. CISA-certified experts providing bespoke technology solutions for businesses.',
     keywords: 'enterprise IT solutions, AI development, cloud infrastructure, custom server design, machine learning, IT consulting, cybersecurity, Austin TX',
-    canonical: baseUrl,
+    canonical: `${baseUrl}/`,
     ogImage: defaultOGImage,
     ogType: 'website',
     schema: organizationSchema
