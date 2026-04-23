@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Linkedin, Phone, MapPin, Network, Layout } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Linkedin, Phone, MapPin, Network, Layout, MessageCircle } from 'lucide-react';
+import { socialMedia } from '../utils/seoConfig';
 
 const Footer = () => {
   return (
@@ -61,36 +62,49 @@ const Footer = () => {
             <h5 className="font-black text-xs uppercase tracking-widest text-[#5b6e8a] mb-8">Find Us On</h5>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <a 
-                href="https://facebook.com" 
+                href={socialMedia.facebook}
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="Visit our Facebook page"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center opacity-60 hover:opacity-100 hover:border-[#ff6b00] hover:bg-[#ff6b00]/10 transition-all"
               >
                 <Facebook size={18} />
               </a>
               <a 
-                href="https://instagram.com" 
+                href={socialMedia.instagram}
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="Visit our Instagram profile"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center opacity-60 hover:opacity-100 hover:border-[#ff6b00] hover:bg-[#ff6b00]/10 transition-all"
               >
                 <Instagram size={18} />
               </a>
               <a 
-                href="https://x.com" 
+                href={socialMedia.twitter}
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="Visit our X (Twitter) profile"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center opacity-60 hover:opacity-100 hover:border-[#ff6b00] hover:bg-[#ff6b00]/10 transition-all"
               >
                 <Twitter size={18} />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href={socialMedia.linkedin}
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="Visit our LinkedIn page"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center opacity-60 hover:opacity-100 hover:border-[#ff6b00] hover:bg-[#ff6b00]/10 transition-all"
               >
                 <Linkedin size={18} />
+              </a>
+              <a 
+                href={`https://wa.me/${socialMedia.whatsapp}`}
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Contact us on WhatsApp"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center opacity-60 hover:opacity-100 hover:border-[#ff6b00] hover:bg-[#ff6b00]/10 transition-all"
+              >
+                <MessageCircle size={18} />
               </a>
             </div>
           </div>
@@ -99,8 +113,8 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-start gap-2 text-sm opacity-60">
                 <Phone size={16} className="mt-0.5 shrink-0 text-[#ff6b00]" />
-                <a href="tel:+17373298158" className="font-bold hover:text-[#ff6b00] transition-colors">
-                  (737) 329-8158
+                <a href={`tel:${socialMedia.phone}`} className="font-bold hover:text-[#ff6b00] transition-colors">
+                  {socialMedia.phone}
                 </a>
               </div>
               <div className="flex items-start gap-2 text-sm opacity-60">

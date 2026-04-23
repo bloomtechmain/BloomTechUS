@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import { AuthProvider } from './context/AuthContext';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -25,26 +26,28 @@ const PageLoader = () => (
 
 function App() {
   return (
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID as string}>
-      <AuthProvider>
-        <Router>
-          <div className="selection:bg-[#ff6b00] selection:text-white font-sans overflow-x-hidden">
-            <Navbar />
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/company" element={<Company />} />
-                <Route path="/contact" element={<ContactUs />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/services/:serviceId" element={<ServiceDetails />} />
-              </Routes>
-            </Suspense>
-          </div>
-        </Router>
-      </AuthProvider>
-    </GoogleOAuthProvider>
+    <HelmetProvider>
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID as string}>
+        <AuthProvider>
+          <Router>
+            <div className="selection:bg-[#ff6b00] selection:text-white font-sans overflow-x-hidden">
+              <Navbar />
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/company" element={<Company />} />
+                  <Route path="/contact" element={<ContactUs />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/services/:serviceId" element={<ServiceDetails />} />
+                </Routes>
+              </Suspense>
+            </div>
+          </Router>
+        </AuthProvider>
+      </GoogleOAuthProvider>
+    </HelmetProvider>
   );
 }
 

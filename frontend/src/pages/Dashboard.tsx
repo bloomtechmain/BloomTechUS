@@ -13,6 +13,8 @@ import {
   ArrowUpRight,
   Sparkles
 } from 'lucide-react';
+import SEO from '../components/SEO';
+import { seoConfigs } from '../utils/seoConfig';
 
 const Dashboard = () => {
   const { user, loading } = useAuth();
@@ -46,7 +48,9 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-6 bg-gray-50">
+    <>
+      <SEO config={seoConfigs.dashboard} noindex={true} />
+      <div className="min-h-screen pt-32 pb-20 px-6 bg-gray-50">
       <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
@@ -156,6 +160,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

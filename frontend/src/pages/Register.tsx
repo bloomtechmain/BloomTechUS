@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { User, Lock, Mail, Activity, Sparkles, Building, Briefcase } from 'lucide-react';
 import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import axios from 'axios';
+import SEO from '../components/SEO';
+import { seoConfigs } from '../utils/seoConfig';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -46,7 +48,9 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-6 bg-gray-50 flex items-center justify-center">
+    <>
+      <SEO config={seoConfigs.register} noindex={true} />
+      <div className="min-h-screen pt-32 pb-20 px-6 bg-gray-50 flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -176,6 +180,7 @@ const Register = () => {
         </div>
       </motion.div>
     </div>
+    </>
   );
 };
 

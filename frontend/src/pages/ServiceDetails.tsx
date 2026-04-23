@@ -6,6 +6,8 @@ import { getServiceBySlug, ServiceItem } from '../data/servicesData';
 import { getServiceConfig } from '../config/serviceConfig';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
+import { getSEOConfig } from '../utils/seoConfig';
 import {
   BackgroundGlows,
   ServiceBreadcrumb,
@@ -63,6 +65,15 @@ const ServiceDetails = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0c1a36] via-[#1a305c] to-[#ff6b00]/30 font-sans selection:bg-[#ff6b00] selection:text-white relative">
+      <SEO 
+        config={getSEOConfig('service', service.slug)}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://bloomtechusa.com' },
+          { name: 'Services', url: 'https://bloomtechusa.com/#services' },
+          { name: service.name, url: `https://bloomtechusa.com/services/${service.slug}` }
+        ]}
+      />
+      
       <Navbar />
       
       {/* Background decorations */}

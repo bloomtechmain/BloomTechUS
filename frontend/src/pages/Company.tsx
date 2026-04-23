@@ -3,6 +3,8 @@ import { Building2, Target, Eye, Users, Lightbulb, Code, Wrench, MapPin, Globe, 
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
+import { seoConfigs } from '../utils/seoConfig';
 
 const Company = () => {
   const services = [
@@ -124,6 +126,8 @@ const Company = () => {
 
   return (
     <div className="bg-white">
+      <SEO config={seoConfigs.company} />
+      
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0c1a36] via-[#1a305c] to-[#0c1a36] pt-24">
         {/* Background Effects */}

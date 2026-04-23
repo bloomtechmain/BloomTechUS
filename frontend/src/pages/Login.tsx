@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { Lock, Mail, Activity } from 'lucide-react';
 import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import axios from 'axios';
+import SEO from '../components/SEO';
+import { seoConfigs } from '../utils/seoConfig';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -43,7 +45,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-6 bg-gray-50 flex items-center justify-center">
+    <>
+      <SEO config={seoConfigs.login} noindex={true} />
+      <div className="min-h-screen pt-32 pb-20 px-6 bg-gray-50 flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -129,6 +133,7 @@ const Login = () => {
         </div>
       </motion.div>
     </div>
+    </>
   );
 };
 

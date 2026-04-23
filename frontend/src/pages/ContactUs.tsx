@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, Clock, MapPin, Send, CheckCircle, Linkedin, Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Phone, Mail, Clock, MapPin, Send, CheckCircle, Linkedin, Twitter, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
+import { seoConfigs, socialMedia } from '../utils/seoConfig';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -76,6 +78,8 @@ const ContactUs = () => {
 
   return (
     <div className="bg-white">
+      <SEO config={seoConfigs.contact} />
+      
       {/* Hero Section */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0c1a36] via-[#1a305c] to-[#0c1a36] pt-24">
         {/* Background Effects */}

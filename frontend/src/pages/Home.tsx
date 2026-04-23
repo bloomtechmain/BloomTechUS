@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Cpu, Server, Briefcase, Globe, ShieldCheck, Brain, CheckCircle2, Zap, Award, Users, Target, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
+import { seoConfigs } from '../utils/seoConfig';
 
 // Hero background videos - Desktop (1080p)
 import heroBg1 from '../assets/hero_bg_1.mp4';
@@ -27,6 +29,8 @@ import heroBg3Poster from '../assets/hero_bg_3.webp';
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Video sources with format and size variants
   const videoSlides = [
@@ -42,6 +46,11 @@ const Home = () => {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Load video on component mount for better performance
+  useEffect(() => {
+    setIsVideoLoaded(true);
   }, []);
 
   // Auto-advance slides
@@ -136,6 +145,8 @@ const Home = () => {
 
   return (
     <div className="bg-white">
+      <SEO config={seoConfigs.home} />
+      
       {/* Hero Section - Video Slideshow */}
       <section className="relative h-screen min-h-[900px] flex items-center justify-center overflow-hidden">
 
@@ -150,28 +161,36 @@ const Home = () => {
               transition={{ duration: 1.5, ease: "easeInOut" }}
               className="absolute inset-0 w-full h-full"
             >
-              <video
-                key={`${currentSlide}-${isMobile}`}
-                poster={videoSlides[currentSlide].poster}
-                className="w-full h-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload={currentSlide === 0 ? "auto" : "metadata"}
-              >
-                {/* Use mobile version on small screens for faster loading */}
-                {isMobile ? (
-                  <source src={videoSlides[currentSlide].mobile} type="video/mp4" />
-                ) : (
-                  <>
-                    {/* WebM for modern browsers (better compression) */}
-                    <source src={videoSlides[currentSlide].webm} type="video/webm" />
-                    {/* MP4 fallback for Safari and older browsers */}
-                    <source src={videoSlides[currentSlide].mp4} type="video/mp4" />
-                  </>
-                )}
-              </video>
+              {isVideoLoaded ? (
+                <video
+                  ref={videoRef}
+                  key={`${currentSlide}-${isMobile}`}
+                  poster={videoSlides[currentSlide].poster}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload={currentSlide === 0 ? "auto" : "metadata"}
+                >
+                  {/* Use mobile version on small screens for faster loading */}
+                  {isMobile ? (
+                    <source src={videoSlides[currentSlide].mobile} type="video/mp4" />
+                  ) : (
+                    <>
+                      {/* WebM for modern browsers (better compression) */}
+                      <source src={videoSlides[currentSlide].webm} type="video/webm" />
+                      {/* MP4 fallback for Safari and older browsers */}
+                      <source src={videoSlides[currentSlide].mp4} type="video/mp4" />
+                    </>
+                  )}
+                </video>
+              ) : (
+                <div 
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url(${videoSlides[currentSlide].poster})` }}
+                />
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
