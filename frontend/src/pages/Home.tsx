@@ -28,7 +28,7 @@ import heroBg3Poster from '../assets/hero_bg_3.webp';
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(false); // Default to desktop during SSR
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -39,8 +39,11 @@ const Home = () => {
     { webm: heroBg3Webm, mp4: heroBg3, mobile: heroBg3Mobile, poster: heroBg3Poster },
   ];
 
-  // Detect screen size changes
+  // Detect screen size changes (client-side only)
   useEffect(() => {
+    // Set initial mobile state
+    setIsMobile(window.innerWidth < 768);
+    
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
