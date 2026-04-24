@@ -99,7 +99,7 @@ export const localBusinessSchema = {
 export const seoConfigs: Record<string, SEOConfig> = {
   home: {
     title: 'BloomTechUSA - Enterprise IT, AI & Cloud Solutions',
-    description: 'BloomTechUSA delivers enterprise IT solutions, custom AI development, cloud infrastructure, and high-performance server design. CISA-certified experts providing bespoke technology solutions for businesses.',
+    description: 'BloomTechUSA delivers enterprise IT solutions, custom AI development, cloud infrastructure, and server design. CISA-certified technology experts.',
     keywords: 'enterprise IT solutions, AI development, cloud infrastructure, custom server design, machine learning, IT consulting, cybersecurity, Austin TX',
     canonical: `${baseUrl}/`,
     ogImage: defaultOGImage,
