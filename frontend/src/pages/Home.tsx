@@ -67,8 +67,8 @@ const Home = () => {
   const corePillars = [
     {
       icon: Brain,
-      title: 'Custom AI & Machine Learning',
-      description: 'Automate the mundane and command your data with bespoke AI tools.',
+      title: 'AI Machine Learning Solutions',
+      description: 'Automate operations with custom AI machine learning and intelligent agents.',
       features: [
         'Intelligent Agents: Custom AI agents designed to handle repetitive cognitive tasks as a "Force Multiplier"',
         'On-Premise AI: Secure, local hosting on high-performance server hardware for strict data privacy',
@@ -79,8 +79,8 @@ const Home = () => {
     },
     {
       icon: Server,
-      title: 'Enterprise Infrastructure & Servers',
-      description: 'Stop renting your performance and start owning your compute.',
+      title: 'Enterprise Infrastructure & Custom Server Design',
+      description: 'Custom server solutions and enterprise infrastructure services for total control.',
       features: [
         'Custom Server Design: Purpose-built, high-density server solutions optimized for virtualization and AI',
         'Rack & Roll Services: Turnkey deployment solutions for high-density server rooms',
@@ -215,12 +215,12 @@ const Home = () => {
             </div>
 
             <h1 className="text-6xl md:text-8xl lg:text-[115px] font-black mb-8 leading-[0.85] tracking-tighter text-white">
-              Custom IT Solutions. <br />
-              <span className="text-[#ff6b00]">Data-Driven Design.</span>
+              AI Machine Learning & <br />
+              <span className="text-[#ff6b00]">Enterprise Infrastructure.</span>
             </h1>
 
             <p className="max-w-2xl text-gray-200 text-lg md:text-2xl mb-14 leading-relaxed font-medium">
-              BloomTechUSA delivers custom business solutions that transform raw data into actionable intelligence. We design, build, and deploy enterprise IT services—from secure infrastructure to custom AI agents—engineered for your unique business needs.
+              BloomTechUSA delivers AI machine learning solutions and enterprise infrastructure services that transform data into intelligence. We design custom server infrastructure and deploy machine learning services—from custom AI development to infrastructure servers—engineered for your business.
             </p>
           </motion.div>
 
@@ -252,10 +252,10 @@ const Home = () => {
           >
             <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">What We Deliver</span>
             <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-              Custom Business Solutions & Data Services
+              AI Machine Learning & Enterprise Infrastructure Services
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-              Explore our comprehensive suite of custom enterprise services, all built with security-first design and data-driven precision.
+              Explore our comprehensive machine learning solutions and enterprise infrastructure services, including custom server design and AI machine infrastructure deployment.
             </p>
           </motion.div>
 
@@ -328,11 +328,11 @@ const Home = () => {
           >
             <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">Why BloomTech</span>
             <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Custom Security Solutions: <br />
-              <span className="text-[#ff6b00]">Data Protection & Design Excellence</span>
+              Machine Learning & Enterprise Infrastructure: <br />
+              <span className="text-[#ff6b00]">Custom Server Solutions Excellence</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-medium">
-              Our custom business solutions prioritize data security and innovative design, ensuring your enterprise services are built for accountability and technical precision.
+              Our AI machine learning solutions and enterprise infrastructure services deliver custom server design with security-first architecture, ensuring your infrastructure servers and machine learning workloads perform at peak efficiency.
             </p>
           </motion.div>
 

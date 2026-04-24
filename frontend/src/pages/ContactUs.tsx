@@ -104,12 +104,12 @@ const ContactUs = () => {
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.9] tracking-tighter text-white">
-              Get Custom IT Solutions <br />
-              <span className="text-[#ff6b00]">for Your Business</span>
+              AI Machine Learning & <br />
+              <span className="text-[#ff6b00]">Enterprise Infrastructure Consulting</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-medium max-w-4xl mx-auto">
-              We're ready to deliver custom business solutions tailored to your needs. Whether you need secure data services, custom design, or enterprise IT solutions, our team of certified experts specializes in transforming businesses through technology.
+              We're ready to deliver AI machine learning solutions and enterprise infrastructure services tailored to your needs. Whether you need custom server design, machine learning consulting, or infrastructure services, our team of certified experts specializes in transforming businesses through technology.
             </p>
           </motion.div>
         </div>
@@ -172,10 +172,10 @@ const ContactUs = () => {
                 Let's Connect
               </span>
               <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-                Request Custom Solutions & Services
+                Request AI Machine Learning & Infrastructure Services
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed font-medium mb-8">
-                Looking for custom data services, secure business solutions, or innovative design? Contact us to explore how our enterprise services can transform your business. Our solution architects respond within 24 hours.
+                Looking for AI machine learning solutions, custom server design, or enterprise infrastructure services? Contact us to explore how our machine learning expertise and infrastructure servers can transform your business. Our solution architects respond within 24 hours.
               </p>
 
               {/* Office Location Highlight */}

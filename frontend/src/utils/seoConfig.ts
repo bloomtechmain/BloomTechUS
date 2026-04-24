@@ -98,26 +98,26 @@ export const localBusinessSchema = {
 // SEO Configurations for each page
 export const seoConfigs: Record<string, SEOConfig> = {
   home: {
-    title: 'BloomTechUSA - Enterprise IT, AI & Cloud Solutions',
-    description: 'BloomTechUSA delivers enterprise IT solutions, custom AI development, cloud infrastructure, and server design. CISA-certified technology experts.',
-    keywords: 'enterprise IT solutions, AI development, cloud infrastructure, custom server design, machine learning, IT consulting, cybersecurity, Austin TX',
+    title: 'BloomTechUSA - AI Machine Learning & Enterprise Infrastructure Solutions',
+    description: 'BloomTechUSA delivers custom AI machine learning solutions, enterprise infrastructure services, and custom server design. Expert machine learning and infrastructure services for business growth.',
+    keywords: 'AI machine learning, machine learning, custom AI, enterprise infrastructure, custom server, infrastructure services, custom server design, AI solutions, Austin TX',
     canonical: `${baseUrl}/`,
     ogImage: defaultOGImage,
     ogType: 'website',
     schema: localBusinessSchema
   },
   company: {
-    title: 'About BloomTechUSA - CISA-Certified IT & AI Experts',
-    description: 'Learn about BloomTechUSA\'s mission to deliver enterprise-grade IT solutions, custom AI development, and cloud infrastructure. CISA-certified professionals with expertise in cybersecurity and compliance.',
-    keywords: 'about bloomtech, IT company Austin, CISA certified, enterprise technology, company profile',
+    title: 'About BloomTechUSA - AI Machine Learning & Enterprise Infrastructure Experts',
+    description: 'Learn about BloomTechUSA\'s mission to deliver AI machine learning solutions, enterprise infrastructure services, and custom server design. CISA-certified machine learning and infrastructure experts.',
+    keywords: 'AI machine learning, enterprise infrastructure, custom server, machine learning services, infrastructure solutions, AI experts Austin, company profile',
     canonical: `${baseUrl}/company`,
     ogImage: defaultOGImage,
     ogType: 'website'
   },
   contact: {
-    title: 'Contact BloomTechUSA - Schedule Your IT Consultation',
-    description: 'Get in touch with BloomTechUSA for enterprise IT solutions, AI development, and cloud infrastructure. Located in Austin, TX. Call (737) 329-8158 or schedule a consultation today.',
-    keywords: 'contact bloomtech, IT consultation, Austin IT company, enterprise technology support',
+    title: 'Contact BloomTechUSA - AI Machine Learning & Enterprise Infrastructure Consultation',
+    description: 'Get in touch with BloomTechUSA for AI machine learning solutions, enterprise infrastructure services, and custom server design. Located in Austin, TX. Call (737) 329-8158 for machine learning and infrastructure consulting.',
+    keywords: 'contact bloomtech, AI machine learning, enterprise infrastructure, custom server, machine learning consultation, infrastructure services, Austin IT company',
     canonical: `${baseUrl}/contact`,
     ogImage: defaultOGImage,
     ogType: 'website',
@@ -146,9 +146,9 @@ export const seoConfigs: Record<string, SEOConfig> = {
 // Service-specific SEO configurations
 export const serviceSEO: Record<string, SEOConfig> = {
   'ai-machine-learning': {
-    title: 'Custom AI & Machine Learning Solutions - BloomTechUSA',
-    description: 'Enterprise AI development and machine learning solutions. Custom AI agents, on-premise AI hosting, document intelligence, and automation for business operations. Transform data into actionable intelligence.',
-    keywords: 'custom AI development, machine learning, AI agents, on-premise AI, document intelligence, AI automation',
+    title: 'AI Machine Learning Solutions - Custom AI Development - BloomTechUSA',
+    description: 'Enterprise AI machine learning solutions and custom AI development. Machine learning services include custom AI agents, on-premise AI hosting, document intelligence, and AI machine learning automation for business operations.',
+    keywords: 'AI machine learning, machine learning, custom AI, AI machine, custom AI development, machine learning solutions, AI agents, on-premise AI, AI automation',
     canonical: `${baseUrl}/services/ai-machine-learning`,
     ogImage: `${baseUrl}/images/Custom_AI_Development.jpg`,
     schema: {
@@ -175,16 +175,16 @@ export const serviceSEO: Record<string, SEOConfig> = {
     ogImage: `${baseUrl}/images/AI_Hardware.jpg`
   },
   'it-network-infrastructure': {
-    title: 'Enterprise IT Network & Infrastructure Solutions - BloomTechUSA',
-    description: 'Enterprise-grade network infrastructure design and deployment. L3 switching, SD-WAN, high-availability networks, and future-proof IT infrastructure solutions.',
-    keywords: 'enterprise networking, IT infrastructure, L3 switching, SD-WAN, network design, high-availability',
+    title: 'Enterprise Infrastructure & Custom Server Solutions - BloomTechUSA',
+    description: 'Enterprise infrastructure services and custom server design. Infrastructure servers with L3 switching, SD-WAN, high-availability networks, and custom server deployment for enterprise infrastructure needs.',
+    keywords: 'enterprise infrastructure, custom server, infrastructure services, infrastructure servers, enterprise networking, IT infrastructure, custom server design, network infrastructure',
     canonical: `${baseUrl}/services/it-network-infrastructure`,
     ogImage: `${baseUrl}/images/Enterprise_Network.jpg`
   },
   'custom-server-design-deployment': {
-    title: 'Custom Server Design & Deployment Services - BloomTechUSA',
-    description: 'Purpose-built server solutions optimized for virtualization and AI workloads. High-density server design, AMD EPYC platforms, and enterprise deployment services.',
-    keywords: 'custom servers, server design, AMD EPYC, virtualization, high-density servers, server deployment',
+    title: 'Custom Server Design & Enterprise Infrastructure Deployment - BloomTechUSA',
+    description: 'Custom server solutions and enterprise infrastructure deployment. Purpose-built infrastructure servers optimized for virtualization and AI machine learning workloads. High-density custom server design and enterprise infrastructure services.',
+    keywords: 'custom server, infrastructure servers, enterprise infrastructure, custom server design, server infrastructure, server deployment, AMD EPYC, virtualization, infrastructure services',
     canonical: `${baseUrl}/services/custom-server-design-deployment`,
     ogImage: `${baseUrl}/images/IT_network_and_Inferstructure.jpg`
   },
