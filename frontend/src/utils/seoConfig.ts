@@ -104,7 +104,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
     canonical: `${baseUrl}/`,
     ogImage: defaultOGImage,
     ogType: 'website',
-    schema: organizationSchema
+    schema: localBusinessSchema
   },
   company: {
     title: 'About BloomTechUSA - CISA-Certified IT & AI Experts',
