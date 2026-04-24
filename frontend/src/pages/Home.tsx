@@ -215,12 +215,12 @@ const Home = () => {
             </div>
 
             <h1 className="text-6xl md:text-8xl lg:text-[115px] font-black mb-8 leading-[0.85] tracking-tighter text-white">
-              Precision Compute. <br />
-              <span className="text-[#ff6b00]">Bespoke Intelligence.</span>
+              Custom IT Solutions. <br />
+              <span className="text-[#ff6b00]">Data-Driven Design.</span>
             </h1>
 
             <p className="max-w-2xl text-gray-200 text-lg md:text-2xl mb-14 leading-relaxed font-medium">
-              BloomTechUSA bridges the gap between raw data and actionable intelligence. We design, build, and deploy high-performance technology solutions—from AMD EPYC virtualization clusters to Custom AI Agents—engineered specifically for your business DNA.
+              BloomTechUSA delivers custom business solutions that transform raw data into actionable intelligence. We design, build, and deploy enterprise IT services—from secure infrastructure to custom AI agents—engineered for your unique business needs.
             </p>
           </motion.div>
 
@@ -252,10 +252,10 @@ const Home = () => {
           >
             <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">What We Deliver</span>
             <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-              Our Core Business Pillars
+              Custom Business Solutions & Data Services
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-              Explore our comprehensive suite of enterprise-grade services, all built with an auditor's discipline and a developer's precision.
+              Explore our comprehensive suite of custom enterprise services, all built with security-first design and data-driven precision.
             </p>
           </motion.div>
 
@@ -328,11 +328,11 @@ const Home = () => {
           >
             <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">Why BloomTech</span>
             <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              The BloomTech Advantage: <br />
-              <span className="text-[#ff6b00]">Certified Integrity</span>
+              Custom Security Solutions: <br />
+              <span className="text-[#ff6b00]">Data Protection & Design Excellence</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-medium">
-              In an industry where security is often an afterthought, we prioritize accountability and technical precision.
+              Our custom business solutions prioritize data security and innovative design, ensuring your enterprise services are built for accountability and technical precision.
             </p>
           </motion.div>
 
@@ -375,7 +375,7 @@ const Home = () => {
           >
             <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">Our Approach</span>
             <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-              Engineered for Your Success
+              Custom Services Designed for Business Success
             </h2>
           </motion.div>
 
@@ -419,10 +419,10 @@ const Home = () => {
             className="text-center"
           >
             <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Ready to Transform Your Infrastructure?
+              Ready for Custom Data & Security Solutions?
             </h2>
             <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-              Connect with our certified experts to discuss your technology needs and discover how BloomTechUSA can engineer your success.
+              Connect with our certified experts to explore custom business services designed to transform your data, enhance security, and deliver measurable results.
             </p>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">

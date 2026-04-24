@@ -152,12 +152,12 @@ const Company = () => {
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.9] tracking-tighter text-white">
-              Bridging Innovation <br />
-              <span className="text-[#ff6b00]">With Execution</span>
+              Custom Business Solutions <br />
+              <span className="text-[#ff6b00]">& Enterprise Services</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed font-medium max-w-4xl mx-auto">
-              A premier technology solutions provider dedicated to spearheading digital transformation for modern enterprises through innovative engineering and strategic IT consulting.
+              A premier provider of custom IT solutions and data services, dedicated to delivering secure, enterprise-grade business solutions through innovative design and strategic technology consulting.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -213,10 +213,10 @@ const Company = () => {
                 <h2 className="text-sm font-black uppercase tracking-widest text-gray-400">Our Mission</h2>
               </div>
               <h3 className="text-4xl md:text-5xl font-black text-[#0c1a36] mb-6 leading-tight">
-                Empowering Excellence Through Innovation
+                Custom Solutions for Data-Driven Business Growth
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed font-medium">
-                To empower clients to exceed their business objectives through the deployment of innovative, best-in-class technology solutions. BloomTech is committed to ensuring a seamless, positive experience for all stakeholders—from C-suite executives to end-users—by delivering measurable value and operational excellence.
+                To empower clients with custom business solutions that transform data into actionable insights. BloomTech delivers enterprise services with security-first design, ensuring seamless integration from C-suite executives to end-users through measurable value and operational excellence.
               </p>
             </motion.div>
 
@@ -258,10 +258,10 @@ const Company = () => {
           >
             <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">Our Philosophy</span>
             <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-              Customer-Centric Engagement Model
+              Custom Services with Data Security Focus
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-              Unlike traditional vendors, BloomTech utilizes a hand-picked cohort of certified consultants who possess a unique blend of deep technical mastery and high-level business acumen. This dual-lens approach ensures that every technical implementation is grounded in a specific business outcome.
+              Our custom business solutions combine technical expertise with security-first design. BloomTech's certified consultants deliver enterprise services that integrate data protection at every level, ensuring every technical implementation supports your business objectives.
             </p>
           </motion.div>
 
