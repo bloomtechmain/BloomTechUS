@@ -54,3 +54,24 @@ body {
 .will-change-opacity {
   will-change: opacity;
 }
+
+/* SEO-friendly utility classes to replace inline styles */
+
+/* Hidden elements for tracking pixels and analytics */
+.tracking-pixel {
+  display: none !important;
+  width: 1px;
+  height: 1px;
+}
+
+/* Borderless iframes for maps and embeds */
+.borderless-iframe {
+  border: 0;
+}
+
+/* Dynamic background images using CSS variables */
+.dynamic-bg {
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+}

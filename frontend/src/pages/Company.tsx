@@ -541,12 +541,11 @@ const Company = () => {
                       src={selectedHub.mapUrl}
                       width="100%"
                       height="100%"
-                      style={{ border: 0 }}
+                      className="w-full h-full borderless-iframe"
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                       title={`Map of ${selectedHub.name}`}
-                      className="w-full h-full"
                     />
                   </motion.div>
                 </div>

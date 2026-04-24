@@ -190,8 +190,8 @@ const Home = () => {
                 </video>
               ) : (
                 <div 
-                  className="w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: `url(${videoSlides[currentSlide].poster})` }}
+                  className="w-full h-full dynamic-bg"
+                  style={{ ['--bg-image' as any]: `url(${videoSlides[currentSlide].poster})` } as React.CSSProperties}
                 />
               )}
             </motion.div>
