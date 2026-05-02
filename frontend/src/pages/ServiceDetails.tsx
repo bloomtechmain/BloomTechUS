@@ -22,7 +22,10 @@ import {
   AIMachineLearningContent,
   CustomCRMContent,
   ProfessionalITConsultingContent,
-  SecurityDataProtectionContent
+  SecurityDataProtectionContent,
+  CustomWebsitesDesignContent,
+  OnlineMarketingContent,
+  CustomMobileWebAppsContent
 } from '../components/service-details';
 
 // Lazy load the modal
@@ -175,9 +178,17 @@ function renderServiceContent(service: ServiceItem, onOpenModal: () => void) {
     case 'security-data-protection':
       return <SecurityDataProtectionContent onOpenModal={onOpenModal} />;
     
+    case 'custom-websites-design':
+      return <CustomWebsitesDesignContent onOpenModal={onOpenModal} />;
+    
+    case 'online-marketing-services':
+      return <OnlineMarketingContent onOpenModal={onOpenModal} />;
+    
+    case 'custom-mobile-web-applications':
+      return <CustomMobileWebAppsContent onOpenModal={onOpenModal} />;
+    
     // TODO: Extract remaining custom service sections:
     // case 'cloud-hosting-deployment':
-    // case 'custom-websites-design':
     // case 'custom-nas-storage':
     // case 'rack-and-roll-services':
     // case 'custom-ai-hardware':

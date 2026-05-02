@@ -54,6 +54,31 @@ export const megaMenuData: MegaMenuColumn[] = [
         imageUrl: '/images/CRM_&_ERP.jpg'
       },
       { 
+        name: 'Custom Mobile & Web Applications', 
+        desc: 'High-performance, business-centric applications engineered for total operational control.',
+        slug: 'custom-mobile-web-applications',
+        longDesc: 'At BloomTech Corporation, we bridge the gap between sophisticated technological breakthroughs and the practical, day-to-day requirements of your business. We build high-performance, business-centric applications engineered to reflect your brand\'s prestige and provide total operational control.',
+        features: [
+          'Tailored Workflows: Systems that mimic your team\'s natural processes',
+          'Conversion-First Design: Every pixel engineered for business purpose',
+          'Proprietary Logic: You own the logic layer and data',
+          'Performance-Driven Engineering: Sub-second load times',
+          'Enterprise Ecosystems (CRM & ERP)',
+          'High-Performance Commerce & Portals',
+          'Intelligent Automation & Proximity',
+          'Custom CI/CD Pipelines'
+        ],
+        benefits: [
+          'Eliminate "Excel-and-Email" chaos',
+          'No fluctuating per-user licensing fees',
+          'Complete IP ownership',
+          'Zero-downtime updates',
+          'Enterprise-grade infrastructure support',
+          'Seamless third-party integrations'
+        ],
+        imageUrl: '/images/CRM_&_ERP.jpg'
+      },
+      { 
         name: 'Security & Data Protection', 
         desc: 'Shielding your IP from modern threats.',
         slug: 'security-data-protection',
@@ -181,20 +206,53 @@ export const megaMenuData: MegaMenuColumn[] = [
       items: [
         { 
           name: 'Custom Website Design', 
-          desc: 'Stunning, high-performance digital experiences.',
+          desc: 'Bespoke digital experiences engineered to convert.',
           slug: 'custom-websites-design',
-          longDesc: 'We create bespoke web experiences that combine elite design aesthetics with technical excellence. From conversion-optimized landing pages to complex multi-layered platforms, we build to impress.',
-          features: ['UI/UX Design Strategy', 'Performance (Core Web Vitals) Optimization', 'Responsive & Adaptive Layouts', 'SEO-First Architecture'],
-          benefits: ['Premium Brand Image', 'Superior User Engagement', 'High Conversion Rates'],
+          longDesc: 'At BloomTech Corporation, we don\'t just build websites; we engineer high-performance business tools. From lightning-fast architecture to immersive UI/UX, we create digital storefronts and corporate portals that reflect the prestige of your brand. We position every project as a strategic balance of Art, Science, and Strategy.',
+          features: [
+            'High-Fidelity UI/UX Design using Canva Enterprise and Freepik Premium assets',
+            'Performance-Driven Engineering optimized for Core Web Vitals',
+            'SEO & Content Strategy with schema markup and AI-driven copywriting',
+            'E-Commerce Powerhouses: Custom Shopify and WooCommerce integrations',
+            'Corporate Identity Hubs: Professional multi-page architectures',
+            'Custom Web Applications: Bespoke portals and member areas',
+            'Landing Page Optimization: High-converting Lead Gen pages',
+            'Enterprise Infrastructure: DNS, SSL, and Server-Side Caching management'
+          ],
+          benefits: [
+            'Premium Brand Projection with User Intent-focused design',
+            'Sub-Second Load Times and flawless mobile responsiveness',
+            'Discoverable by Search Engines with built-in SEO foundation',
+            'Enterprise-Grade Hosting on high-performance cloud infrastructure',
+            'Professional Tech Stack: React.js, Next.js, Shopify Plus, WordPress (Headless)',
+            'AI-Driven Content Optimization using Claude and GPT-4'
+          ],
           imageUrl: '/images/graphic-design.jpg'
         },
         { 
           name: 'Online Marketing Services', 
-          desc: 'Empowering your brand through data-driven growth.',
+          desc: 'Data-driven visibility and performance-led growth.',
           slug: 'online-marketing-services',
-          longDesc: 'Data-driven digital marketing campaigns encompassing SEO, SEM, and social media management to maximize your online visibility and lead generation.',
-          features: ['Search Engine Optimization (SEO)', 'Pay-Per-Click Campaigns (SEM)', 'Social Media Management', 'Conversion Rate Optimization'],
-          benefits: ['Increased Qualified Leads', 'Higher Brand Visibility', 'Measurable ROI on Marketing Spend'],
+          longDesc: 'At BloomTech Corporation, we move beyond "likes" and "impressions" to deliver measurable ROI. By combining high-level technical SEO with aggressive digital marketing strategies, we ensure your business doesn\'t just rank—it dominates.',
+          features: [
+            'Technical SEO & Core Web Vitals: Sub-second load times, schema markup, enterprise hosting',
+            'Strategic Content Marketing: AI-driven thought leadership and high-conversion content',
+            'Precision Paid Acquisition (PPC): Targeted Google Ads and Meta campaigns with A/B testing',
+            'Specialized E-Commerce Growth: Full-funnel optimization for Shopify storefronts',
+            '4-Phase Growth Lifecycle: Audit, Infrastructure Hardening, Deployment, Optimization',
+            'Advanced Analytics: GA4, GTM, Microsoft Clarity heatmaps',
+            'Professional SEO Tools: Ahrefs, SEMRush, Screaming Frog',
+            'AI-Powered Content: Claude-3.5-Sonnet for high-fidelity copywriting'
+          ],
+          benefits: [
+            'Measurable ROI with performance-led strategies',
+            'Sub-Second Load Times improving search rankings',
+            'Thought Leadership through high-authority content',
+            'Lowest Cost Per Acquisition (CPA) via continuous A/B testing',
+            'Abandoned Cart Recovery and retargeting automation',
+            'Multi-Channel Integration across SEO, PPC, content, and social',
+            'Weekly Agile Optimization for maximum campaign efficiency'
+          ],
           imageUrl: '/images/digital-marketing.jpg'
         },
       ]

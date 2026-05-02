@@ -1,4 +1,4 @@
-import { LucideIcon, Zap, Shield, Cpu, Cloud, Monitor, Bot, Sparkles, Package, ShieldAlert, Database, Truck, Search, Activity, Rocket, BrainCircuit, Layers, PenTool } from 'lucide-react';
+import { LucideIcon, Zap, Shield, Cpu, Cloud, Monitor, Bot, Sparkles, Package, ShieldAlert, Database, Truck, Search, Activity, Rocket, BrainCircuit, Layers, PenTool, Code } from 'lucide-react';
 
 /**
  * Service Configuration
@@ -233,6 +233,21 @@ export const serviceConfigs: Record<string, ServiceConfig> = {
     },
     secondaryCTA: {
       text: 'Explore AI Hardware Solutions'
+    }
+  },
+  'custom-mobile-web-applications': {
+    tagline: {
+      icon: Code,
+      text: 'Business-Centric Applications'
+    },
+    heroTitle: 'Custom Mobile & Web Applications. Built for Your Business Logic.',
+    heroDescription: 'We bridge the gap between sophisticated technological breakthroughs and the practical, day-to-day requirements of your business. Build high-performance applications engineered to reflect your brand\'s prestige and provide total operational control.',
+    primaryCTA: {
+      text: 'Start Your Custom Build',
+      icon: Rocket
+    },
+    secondaryCTA: {
+      text: 'View Development Process'
     }
   }
 };
