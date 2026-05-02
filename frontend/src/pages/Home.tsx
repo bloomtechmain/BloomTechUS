@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Cpu, Server, Briefcase, Globe, ShieldCheck, Brain, CheckCircle2, Zap, Award, Users, Target, Phone, MapPin } from 'lucide-react';
+import { ArrowRight, Cpu, Server, Briefcase, Globe, ShieldCheck, Brain, CheckCircle2, Zap, Award, Users, Target, Phone, MapPin, Clock, BadgeCheck, Headphones, Sparkles, FileCode, Cloud, Lock, Building2, Database, Megaphone, HardDrive, Monitor, FolderKanban, Lightbulb } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
@@ -64,85 +64,209 @@ const Home = () => {
     return () => clearInterval(timer);
   }, [videoSlides.length]);
 
+  const statsData = [
+    {
+      icon: Sparkles,
+      number: '20+',
+      label: 'Service Pillars',
+      color: 'from-[#ff6b00] to-orange-600'
+    },
+    {
+      icon: BadgeCheck,
+      label: 'CISA',
+      sublabel: 'Certified Expertise',
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      icon: Clock,
+      label: '24/7',
+      sublabel: 'Monitoring & Support',
+      color: 'from-purple-500 to-pink-500'
+    },
+    {
+      icon: Server,
+      label: 'On-Prem',
+      sublabel: 'AI Deployment Available',
+      color: 'from-green-500 to-emerald-500'
+    }
+  ];
+
+  const servicesGrid = [
+    {
+      number: '01',
+      title: 'Custom Web & Mobile Development',
+      description: 'Bespoke CRMs, ERPs, e-commerce powerhouses, and secure client portals built on clean, scalable architecture with zero bloat.',
+      tags: ['React / Next.js', 'Django / FastAPI', 'Node.js'],
+      icon: FileCode,
+      color: 'from-[#ff6b00] to-orange-600',
+      link: '/services/custom-mobile-web-applications'
+    },
+    {
+      number: '02',
+      title: 'Custom AI & Machine Learning',
+      description: 'Agentic AI workflows, domain-specific RAG systems, and on-premise LLM deployments. Intelligence built for your data, not the public cloud.',
+      tags: ['Anthropic Claude', 'LangChain / CrewAI', 'GPT-4o / Llama 3'],
+      icon: Brain,
+      color: 'from-purple-500 to-pink-500',
+      link: '/services/ai-machine-learning'
+    },
+    {
+      number: '03',
+      title: 'IT Network & Infrastructure Design',
+      description: 'CompTIA Network+ certified architecture — SD-WAN, VLAN segmentation, next-gen firewalls, and enterprise Wi-Fi with zero dead zones.',
+      tags: ['Cisco / Ubiquiti', 'pfSense / Fortinet', 'Zero Trust'],
+      icon: Globe,
+      color: 'from-blue-500 to-cyan-500',
+      link: '/services/it-network-infrastructure'
+    },
+    {
+      number: '04',
+      title: 'Custom Server Design & Deployment',
+      description: 'Purpose-built AMD EPYC compute clusters, GPU AI nodes, and enterprise NAS/SAN storage — engineered with 72-hour burn-in testing.',
+      tags: ['AMD EPYC', 'Proxmox VE', 'Supermicro'],
+      icon: Server,
+      color: 'from-orange-500 to-red-500',
+      link: '/services/custom-server-design-deployment'
+    },
+    {
+      number: '05',
+      title: 'Cloud Hosting & Application Deployment',
+      description: 'Managed cloud infrastructure, CI/CD pipelines, Docker/Kubernetes containerization, and DDoS-hardened WAF deployments across AWS, Azure, and GCP.',
+      tags: ['AWS / Azure / GCP', 'Kubernetes', 'CI/CD Pipelines'],
+      icon: Cloud,
+      color: 'from-cyan-500 to-blue-500',
+      link: '/services/cloud-hosting-deployment'
+    },
+    {
+      number: '06',
+      title: 'Security & Data Protection',
+      description: 'CISA-certified defense-in-depth — Zero Trust IAM, EDR/behavioral AI endpoint protection, immutable backups, and SOC2/HIPAA compliance alignment.',
+      tags: ['CrowdStrike / SentinelOne', 'Okta / Entra ID', 'SIEM / Wazuh'],
+      icon: Lock,
+      color: 'from-red-500 to-pink-500',
+      link: '/services/security-data-protection'
+    },
+    {
+      number: '07',
+      title: 'Custom CRM & ERP',
+      description: 'Lean, high-velocity CRM and ERP systems integrating inventory, HR, order processing, and supply chain logistics into one seamless dashboard.',
+      tags: ['Python / Django', 'PostgreSQL', 'QuickBooks / Stripe'],
+      icon: Building2,
+      color: 'from-indigo-500 to-purple-500',
+      link: '/services/custom-crm-erp-solutions'
+    },
+    {
+      number: '08',
+      title: 'Online Marketing & SEO',
+      description: 'Technical SEO, Core Web Vitals optimization, precision PPC, and AI-powered content strategy — engineered to dominate, not just rank.',
+      tags: ['Ahrefs / SEMRush', 'GA4 / GTM', 'Google Ads / Meta'],
+      icon: Megaphone,
+      color: 'from-pink-500 to-rose-500',
+      link: '/services/online-marketing-services'
+    },
+    {
+      number: '09',
+      title: 'Custom NAS Solutions',
+      description: 'Enterprise NAS with 10G–100G throughput, ZFS/TrueNAS integrity, immutable snapshots, and encryption at rest — zero monthly subscription.',
+      tags: ['AMD EPYC', 'OpenZFS / TrueNAS', 'Mellanox / Intel'],
+      icon: Database,
+      color: 'from-teal-500 to-green-500',
+      link: '/services/custom-nas-storage'
+    },
+    {
+      number: '10',
+      title: 'Managed AV & Collaboration',
+      description: 'Boardrooms to enterprise auditoriums — AV-over-IP, Crestron/AMX control, beamforming arrays, and broadcast-grade live event production.',
+      tags: ['MS Teams Rooms', 'Crestron / Extron', 'Biamp / Q-SYS'],
+      icon: Monitor,
+      color: 'from-violet-500 to-purple-500',
+      link: '/services/av-smart-workspaces'
+    },
+    {
+      number: '11',
+      title: 'IT Asset Lifecycle Management',
+      description: 'Strategic procurement, zero-touch provisioning, active maintenance, CISA-standard compliance auditing, and NIST-compliant secure destruction.',
+      tags: ['Snipe-IT', 'Microsoft Intune', 'ISACA / COBIT'],
+      icon: FolderKanban,
+      color: 'from-amber-500 to-orange-500',
+      link: '/services/asset-lifecycle-management'
+    },
+    {
+      number: '12',
+      title: 'Professional IT Consulting',
+      description: 'Digital transformation, vCISO/vCTO fractional services, cloud readiness assessments, and IT governance aligned to COBIT, NIST, and ITIL frameworks.',
+      tags: ['CISA / ISACA', 'SOC2 / HIPAA', 'ISO 27001'],
+      icon: Lightbulb,
+      color: 'from-yellow-500 to-amber-500',
+      link: '/services/professional-it-consulting'
+    }
+  ];
+
   const corePillars = [
     {
       icon: Brain,
-      title: 'AI Machine Learning Solutions',
-      description: 'Automate operations with custom AI machine learning and intelligent agents.',
+      title: 'AI & Intelligent Automation',
+      subtitle: 'Agentic workflows · RAG · On-premise LLMs · Data pipelines',
+      description: 'We build production-grade AI that doesn\'t just chat — it executes. Agentic workflows, private LLM deployments, and autonomous multi-system orchestration.',
       features: [
-        'Intelligent Agents: Custom AI agents designed to handle repetitive cognitive tasks as a "Force Multiplier"',
-        'On-Premise AI: Secure, local hosting on high-performance server hardware for strict data privacy',
-        'Document Intelligence: Systems that "read" and categorize unstructured data into your database or CRM'
+        'Custom RAG on your private data',
+        'On-premise AI — zero cloud dependency',
+        'Multi-agent orchestration via LangChain/CrewAI',
+        'Document intelligence & automated pipelines',
+        'CISA-certified security & full audit logging'
       ],
-      link: '/services/ai-machine-learning',
       color: 'from-[#ff6b00] to-orange-600'
     },
     {
       icon: Server,
-      title: 'Enterprise Infrastructure & Custom Server Design',
-      description: 'Custom server solutions and enterprise infrastructure services for total control.',
+      title: 'Infrastructure & Hardware',
+      subtitle: 'Custom servers · NAS/SAN · Rack & Roll · Network design',
+      description: 'Purpose-built AMD EPYC servers, enterprise NAS storage with ZFS integrity, precision rack & roll deployments, and SD-WAN network architecture.',
       features: [
-        'Custom Server Design: Purpose-built, high-density server solutions optimized for virtualization and AI',
-        'Rack & Roll Services: Turnkey deployment solutions for high-density server rooms',
-        'Custom NAS Solutions: Enterprise-grade storage systems with ZFS integration for data integrity',
-        'Network Engineering: Future-proof, high-availability topologies with L3 switching and SD-WAN'
+        '72-hour burn-in testing on all builds',
+        '10GbE to 100GbE NAS throughput',
+        'Proxmox / VMware virtualization clusters',
+        'Structured cabling to Cat6a/Fiber standards',
+        'Hot/cold aisle airflow optimization'
       ],
-      link: '/services/it-network-infrastructure',
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: Briefcase,
-      title: 'Strategic Business Applications',
-      description: 'Unified systems designed for total operational control and unlimited growth.',
-      features: [
-        'Custom CRM & ERP: Bespoke platforms to unify data, automate workflows, and provide single source of truth',
-        'Cloud Hosting & Deployment: High-performance managed hosting with automated CI/CD pipelines',
-        'Asset Lifecycle Management: Strategic control of IT investments from procurement to certified destruction'
-      ],
-      link: '/services/custom-crm-erp-solutions',
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      icon: Globe,
-      title: 'Digital Experience & Growth',
-      description: 'Engineering high-performance digital storefronts and corporate portals.',
-      features: [
-        'Bespoke Web Design: Conversion-first architecture built on clean, bloat-free optimized code',
-        'SEO & Online Marketing: Data-driven visibility strategies combining technical SEO with AI-powered content',
-        'Managed AV: Immersive audiovisual environments for executive boardrooms and enterprise collaboration'
-      ],
-      link: '/services/custom-websites-design',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
       icon: ShieldCheck,
-      title: 'Professional Advisory & Security',
-      description: 'Elite strategy and absolute resilience for organizations that demand integrity.',
+      title: 'Security & Compliance',
+      subtitle: 'CISA-certified · Zero Trust · SOC2 · Incident response',
+      description: 'CISA-certified defense-in-depth that makes your infrastructure audit-ready from day one. Zero Trust architecture, immutable backups, and full compliance alignment.',
       features: [
-        'Strategic Advisory: High-level consultancy including IT governance, risk management, and fractional CTO/CISO',
-        'Security & Data Protection: Multi-layered, Zero Trust defense architectures with perimeter hardening and EDR',
-        'International Operations: Strategic support for global logistics, entity management, and ownership transfers'
+        'SOC2, HIPAA, PCI-DSS, ISO 27001 alignment',
+        'Zero Trust IAM + phishing-resistant MFA',
+        'Behavioral AI endpoint detection (EDR)',
+        'Immutable, ransomware-proof backup design',
+        'Quarterly security reviews & policy updates'
       ],
-      link: '/services/professional-it-consulting',
       color: 'from-red-500 to-orange-500'
     }
   ];
 
-  const advantages = [
+  const whyBloomTech = [
     {
-      icon: Award,
-      title: 'CISA-Certified Expertise',
-      description: 'Our advisory is grounded in globally recognized standards from ISACA, ensuring your infrastructure is auditable and compliant.'
+      number: '01',
+      title: 'CISA-Certified at the Foundation',
+      description: 'Every solution we build carries the discipline of an auditor — traceable, compliant, and defensible under regulatory scrutiny. Security isn\'t a feature we add; it\'s baked into the architecture from day one.'
     },
     {
-      icon: Target,
-      title: 'Evidence-Based Advice',
-      description: 'We provide unbiased, third-party evaluations of your technology, focusing on KPIs that matter—reducing downtime and lowering total cost of ownership (TCO).'
+      number: '02',
+      title: 'Business-First Engineering',
+      description: 'We map your workflows before we write code. Our 4-stage Business-First process ensures the final product mirrors your team\'s natural processes — eliminating the "Excel-and-Email chaos" of off-the-shelf tools.'
     },
     {
-      icon: ShieldCheck,
-      title: 'Defense-in-Depth',
-      description: 'We align your business with global frameworks like SOC2, HIPAA, PCI-DSS, and NIST to ensure maximum defensibility.'
+      number: '03',
+      title: 'You Own Everything',
+      description: 'Proprietary logic layer, your data, your IP. No fluctuating per-user licensing fees, no vendor lock-in. Custom builds mean the system grows with your ambition, not against it.'
+    },
+    {
+      number: '04',
+      title: 'Full-Stack, End-to-End',
+      description: 'From bare-metal rack design to AI-native applications to performance marketing — we cover every layer. One team, total accountability, zero integration gaps between your hardware and your software.'
     }
   ];
 
@@ -215,12 +339,12 @@ const Home = () => {
             </div>
 
             <h1 className="text-6xl md:text-8xl lg:text-[115px] font-black mb-8 leading-[0.85] tracking-tighter text-white">
-              AI Machine Learning & <br />
-              <span className="text-[#ff6b00]">Enterprise Infrastructure.</span>
+              Build the Future. <br />
+              <span className="bg-gradient-to-r from-[#ff6b00] via-orange-500 to-yellow-500 bg-clip-text text-transparent animate-pulse">Define It.</span>
             </h1>
 
-            <p className="max-w-2xl text-gray-200 text-lg md:text-2xl mb-14 leading-relaxed font-medium">
-              BloomTechUSA delivers AI machine learning solutions and enterprise infrastructure services that transform data into intelligence. We design custom server infrastructure and deploy machine learning services—from custom AI development to infrastructure servers—engineered for your business.
+            <p className="max-w-3xl text-gray-200 text-lg md:text-2xl mb-14 leading-relaxed font-medium">
+              BloomTech lives at the intersection of vision and execution. We deliver the high-performance infrastructure and AI-driven solutions your business needs to lead. From enterprise systems to secure cloud scaling, we don't just prepare you for the future — we build the technical foundation that ensures you define and dominate it today.
             </p>
           </motion.div>
 
@@ -230,17 +354,56 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <Link to="/services/ai-machine-learning" className="w-full sm:w-auto px-12 py-5 bg-[#ff6b00] text-white rounded-2xl font-black text-lg hover:bg-[#e65c00] hover:shadow-[0_0_40px_rgba(255,107,0,0.6)] transition-all flex items-center justify-center gap-3 group active:scale-95">
-              Explore Our Services <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            <Link to="/contact" className="w-full sm:w-auto px-12 py-5 bg-gradient-to-r from-[#ff6b00] to-orange-600 text-white rounded-2xl font-black text-lg hover:shadow-[0_0_40px_rgba(255,107,0,0.6)] transition-all flex items-center justify-center gap-3 group active:scale-95">
+              START A PROJECT <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link to="/contact" className="w-full sm:w-auto px-12 py-5 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 rounded-2xl font-black text-lg hover:bg-white hover:text-[#0c1a36] transition-all shadow-xl">
-              Schedule Consultation
+            <Link to="/services/ai-machine-learning" className="w-full sm:w-auto px-12 py-5 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 rounded-2xl font-black text-lg hover:bg-white hover:text-[#0c1a36] transition-all shadow-xl">
+              EXPLORE SERVICES
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Core Business Pillars */}
+      {/* Stats Bar */}
+      <section className="py-16 px-6 bg-white border-b-2 border-gray-100">
+        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {statsData.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="group relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 border-2 border-gray-100 hover:border-[#ff6b00]/30 hover:shadow-xl transition-all overflow-hidden"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity`}></div>
+                  <div className="relative flex flex-col items-center text-center">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
+                      <Icon className="w-7 h-7 text-white" />
+                    </div>
+                    {stat.number ? (
+                      <>
+                        <div className="text-4xl font-black text-[#0c1a36] mb-1">{stat.number}</div>
+                        <div className="text-sm font-bold text-gray-600 uppercase tracking-wider">{stat.label}</div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="text-3xl font-black text-[#0c1a36] mb-1">{stat.label}</div>
+                        <div className="text-sm font-bold text-gray-600 uppercase tracking-wider">{stat.sublabel}</div>
+                      </>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Grid - 12 Services */}
       <section className="py-32 px-6 bg-gray-50">
         <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
           <motion.div
@@ -250,59 +413,54 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">What We Deliver</span>
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">— WHAT WE BUILD</span>
             <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-              AI Machine Learning & Enterprise Infrastructure Services
+              End-to-End Technology Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-              Explore our comprehensive machine learning solutions and enterprise infrastructure services, including custom server design and AI machine infrastructure deployment.
+              From bare-metal server design to AI-native applications — every layer of your technology stack, engineered for scale.
             </p>
           </motion.div>
 
-          <div className="space-y-8">
-            {corePillars.map((pillar, i) => {
-              const Icon = pillar.icon;
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {servicesGrid.map((service, i) => {
+              const Icon = service.icon;
               return (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  transition={{ duration: 0.6, delay: i * 0.05 }}
                   className="group"
                 >
                   <Link
-                    to={pillar.link}
-                    className="block bg-white rounded-[32px] p-8 lg:p-12 border-2 border-gray-100 hover:border-[#ff6b00]/30 hover:shadow-2xl transition-all"
+                    to={service.link}
+                    className="block bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-[#ff6b00]/30 hover:shadow-2xl hover:-translate-y-2 transition-all h-full"
                   >
-                    <div className="flex flex-col lg:flex-row gap-8 items-start">
-                      {/* Icon & Title Column */}
-                      <div className="lg:w-1/3">
-                        <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${pillar.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
-                          <Icon className="w-10 h-10 text-white" />
-                        </div>
-                        <h3 className="text-3xl font-black text-[#0c1a36] mb-4 group-hover:text-[#ff6b00] transition-colors">
-                          {pillar.title}
-                        </h3>
-                        <p className="text-lg text-gray-600 font-medium leading-relaxed mb-6">
-                          {pillar.description}
-                        </p>
-                        <div className="flex items-center gap-2 text-[#ff6b00] font-bold text-sm uppercase tracking-widest">
-                          Explore {pillar.title} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </div>
+                    <div className="flex items-start justify-between mb-6">
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg`}>
+                        <Icon className="w-8 h-8 text-white" />
                       </div>
-
-                      {/* Features Column */}
-                      <div className="lg:w-2/3">
-                        <div className="space-y-4">
-                          {pillar.features.map((feature, idx) => (
-                            <div key={idx} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4 group-hover:bg-[#ff6b00]/5 transition-colors">
-                              <CheckCircle2 className="w-5 h-5 text-[#ff6b00] mt-0.5 shrink-0" />
-                              <span className="text-gray-700 font-medium leading-relaxed">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
+                      <div className={`text-5xl font-black bg-gradient-to-br ${service.color} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity`}>
+                        {service.number}
                       </div>
+                    </div>
+                    <h3 className="text-2xl font-black text-[#0c1a36] mb-3 group-hover:text-[#ff6b00] transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 font-medium leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {service.tags.map((tag, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1.5 text-xs font-bold bg-gray-100 text-gray-700 rounded-full group-hover:bg-[#ff6b00]/10 group-hover:text-[#ff6b00] transition-colors"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </Link>
                 </motion.div>
@@ -312,7 +470,65 @@ const Home = () => {
         </div>
       </section>
 
-      {/* The BloomTech Advantage */}
+      {/* Three Core Pillars */}
+      <section className="py-32 px-6 bg-white">
+        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">— CORE SOLUTIONS</span>
+            <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
+              Three pillars. <span className="bg-gradient-to-r from-[#ff6b00] to-orange-500 bg-clip-text text-transparent">Total coverage.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {corePillars.map((pillar, i) => {
+              const Icon = pillar.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.15 }}
+                  className="group relative bg-gradient-to-br from-gray-50 to-white rounded-[32px] p-10 border-2 border-gray-100 hover:border-[#ff6b00]/30 hover:shadow-2xl transition-all overflow-hidden"
+                >
+                  <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${pillar.color} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity`}></div>
+                  <div className="relative">
+                    <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${pillar.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
+                      <Icon className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="text-3xl font-black text-[#0c1a36] mb-3">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-sm font-bold text-[#ff6b00] uppercase tracking-wider mb-4">
+                      {pillar.subtitle}
+                    </p>
+                    <p className="text-gray-600 font-medium leading-relaxed mb-6">
+                      {pillar.description}
+                    </p>
+                    <div className="space-y-3">
+                      {pillar.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#ff6b00] mt-2 shrink-0"></div>
+                          <span className="text-sm text-gray-700 font-medium leading-relaxed">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Why BloomTech */}
       <section className="py-32 px-6 bg-[#0c1a36] relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
         <div className="absolute top-20 right-20 w-96 h-96 bg-[#ff6b00]/10 rounded-full blur-[120px]"></div>
@@ -326,90 +542,40 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">Why BloomTech</span>
+            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">— WHY BLOOMTECH</span>
             <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Machine Learning & Enterprise Infrastructure: <br />
-              <span className="text-[#ff6b00]">Custom Server Solutions Excellence</span>
+              The standard is <span className="bg-gradient-to-r from-[#ff6b00] via-orange-500 to-yellow-500 bg-clip-text text-transparent">different here.</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-medium">
-              Our AI machine learning solutions and enterprise infrastructure services deliver custom server design with security-first architecture, ensuring your infrastructure servers and machine learning workloads perform at peak efficiency.
-            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {advantages.map((advantage, i) => {
-              const Icon = advantage.icon;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.15 }}
-                  className="group relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff6b00]/20 blur-3xl group-hover:opacity-40 transition-opacity"></div>
-                  <div className="relative">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#ff6b00] to-orange-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                      <Icon className="w-8 h-8 text-white" />
+          <div className="grid md:grid-cols-2 gap-8">
+            {whyBloomTech.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="group relative bg-white/5 backdrop-blur-sm rounded-3xl p-10 border border-white/10 hover:bg-white/10 transition-all overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-48 h-48 bg-[#ff6b00]/20 blur-3xl group-hover:opacity-40 transition-opacity"></div>
+                <div className="relative">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="text-6xl font-black bg-gradient-to-br from-[#ff6b00] to-orange-600 bg-clip-text text-transparent opacity-30">
+                      {item.number}
                     </div>
-                    <h4 className="text-2xl font-black text-white mb-4">{advantage.title}</h4>
-                    <p className="text-gray-300 leading-relaxed font-medium">{advantage.description}</p>
                   </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose BloomTech - Key Differentiators */}
-      <section className="py-32 px-6 bg-white">
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">Our Approach</span>
-            <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-              Custom Services Designed for Business Success
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: Cpu, title: 'Performance First', desc: 'Purpose-built solutions optimized for your specific workload requirements' },
-              { icon: ShieldCheck, title: 'Security by Design', desc: 'Multi-layered defense architectures aligned with SOC2, HIPAA, and NIST standards' },
-              { icon: Users, title: 'Expert Team', desc: 'CISA-certified professionals with deep technical mastery and business acumen' },
-              { icon: Zap, title: 'Measurable ROI', desc: 'Evidence-based approach focused on reducing downtime and lowering TCO' }
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="bg-gray-50 rounded-2xl p-8 hover:shadow-xl transition-all border border-gray-100 hover:border-[#ff6b00]/30 group"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-[#ff6b00]/10 flex items-center justify-center mb-6 group-hover:bg-[#ff6b00] transition-colors">
-                    <Icon className="w-7 h-7 text-[#ff6b00] group-hover:text-white transition-colors" />
-                  </div>
-                  <h4 className="text-xl font-black text-[#0c1a36] mb-3">{item.title}</h4>
-                  <p className="text-gray-600 font-medium leading-relaxed">{item.desc}</p>
-                </motion.div>
-              );
-            })}
+                  <h4 className="text-2xl font-black text-white mb-4">{item.title}</h4>
+                  <p className="text-gray-300 leading-relaxed font-medium">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Contact CTA Section */}
-      <section className="py-24 px-6 bg-gradient-to-br from-[#0c1a36] via-[#1a305c] to-[#ff6b00]">
+      <section className="py-24 px-6 bg-white">
         <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -418,35 +584,35 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Ready for Custom Data & Security Solutions?
+            <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
+              Don't prepare for the future. <span className="bg-gradient-to-r from-[#ff6b00] to-orange-500 bg-clip-text text-transparent">Define it.</span>
             </h2>
-            <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-              Connect with our certified experts to explore custom business services designed to transform your data, enhance security, and deliver measurable results.
+            <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+              The future isn't just "using AI" or "moving to the cloud" — it's embedding intelligence into the fabric of your business. Let's build the technical foundation that puts you ahead, permanently.
             </p>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 flex items-center gap-4">
+              <div className="bg-gray-50 border-2 border-gray-100 rounded-2xl p-6 flex items-center gap-4 hover:border-[#ff6b00]/30 hover:shadow-lg transition-all">
                 <div className="w-12 h-12 rounded-xl bg-[#ff6b00] flex items-center justify-center shrink-0">
                   <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-left">
-                  <p className="text-white/60 text-sm font-bold uppercase tracking-widest mb-1">Phone</p>
-                  <a href="tel:+17373298158" className="text-white text-lg font-black hover:text-[#ff6b00] transition-colors">
+                  <p className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-1">CALL</p>
+                  <a href="tel:+17373298158" className="text-[#0c1a36] text-lg font-black hover:text-[#ff6b00] transition-colors">
                     (737) 329-8158
                   </a>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 flex items-center gap-4">
+              <div className="bg-gray-50 border-2 border-gray-100 rounded-2xl p-6 flex items-center gap-4 hover:border-[#ff6b00]/30 hover:shadow-lg transition-all">
                 <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center shrink-0">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div className="text-left">
-                  <p className="text-white/60 text-sm font-bold uppercase tracking-widest mb-1">Location</p>
-                  <p className="text-white text-lg font-black">
-                    11801 Domain Blvd, Austin, TX
-                  </p>
+                  <p className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-1">EMAIL</p>
+                  <a href="mailto:info@bloomtechus.com" className="text-[#0c1a36] text-lg font-black hover:text-[#ff6b00] transition-colors">
+                    info@bloomtechus.com
+                  </a>
                 </div>
               </div>
             </div>
@@ -454,15 +620,9 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link 
                 to="/contact" 
-                className="px-12 py-5 bg-white text-[#0c1a36] rounded-2xl font-black text-base hover:bg-gray-100 hover:shadow-2xl transition-all flex items-center gap-3"
+                className="px-12 py-5 bg-gradient-to-r from-[#ff6b00] to-orange-600 text-white rounded-2xl font-black text-base hover:shadow-[0_0_40px_rgba(255,107,0,0.6)] transition-all flex items-center gap-3 group active:scale-95"
               >
-                Get in Touch <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link 
-                to="/company" 
-                className="px-12 py-5 bg-transparent text-white border-2 border-white/30 rounded-2xl font-black text-base hover:bg-white/10 transition-all"
-              >
-                About BloomTech
+                START A PROJECT <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </motion.div>
