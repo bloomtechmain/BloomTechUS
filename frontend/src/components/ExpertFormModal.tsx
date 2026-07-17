@@ -4,6 +4,8 @@ import { X, User, Mail, Building2, Briefcase, MessageSquare, Send, CheckCircle2,
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 interface ExpertFormModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -46,7 +48,7 @@ const ExpertFormModal: React.FC<ExpertFormModalProps> = ({ isOpen, onClose, serv
     setError(null);
 
     try {
-      await axios.post('http://localhost:5000/api/expert/submit', {
+      await axios.post(`${API_URL}/api/expert/submit`, {
         ...formData,
         serviceSlug,
       });
