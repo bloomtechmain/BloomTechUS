@@ -15,10 +15,12 @@ app.use(express.json());
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
 import expertRoutes from './routes/expertRoutes';
+import contactRoutes from './routes/contactRoutes';
 
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/expert', expertRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Basic Route
 app.get('/', (_req, res) => {

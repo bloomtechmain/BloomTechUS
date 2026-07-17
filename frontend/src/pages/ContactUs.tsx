@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 import { Phone, Mail, Clock, MapPin, Send, CheckCircle, Linkedin, Twitter, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { seoConfigs, socialMedia } from '../utils/seoConfig';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -13,8 +16,10 @@ const ContactUs = () => {
     interests: [] as string[],
     message: ''
   });
-  
+
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const interestOptions = [
     'Business Applications (Salesforce/SAP/Oracle)',
@@ -33,23 +38,34 @@ const ContactUs = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        interests: [],
-        message: ''
-      });
-    }, 3000);
+    setLoading(true);
+    setError(null);
+
+    try {
+      await axios.post(`${API_URL}/api/contact/submit`, formData);
+      setIsSubmitted(true);
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          interests: [],
+          message: ''
+        });
+      }, 3000);
+    } catch (err) {
+      const message = axios.isAxiosError(err) && err.response?.data?.error
+        ? err.response.data.error
+        : 'Something went wrong. Please try again.';
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -312,13 +328,24 @@ const ContactUs = () => {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-red-500 text-sm font-bold">{error}</p>
+                  )}
+
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full px-8 py-5 bg-[#ff6b00] text-white rounded-2xl font-black text-lg hover:bg-[#e65c00] hover:shadow-[0_0_40px_rgba(255,107,0,0.6)] transition-all flex items-center justify-center gap-3 group"
+                    disabled={loading}
+                    className="w-full px-8 py-5 bg-[#ff6b00] text-white rounded-2xl font-black text-lg hover:bg-[#e65c00] hover:shadow-[0_0_40px_rgba(255,107,0,0.6)] disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3 group"
                   >
-                    Send Message
-                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    {loading ? (
+                      <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
                   </button>
                 </form>
               )}
