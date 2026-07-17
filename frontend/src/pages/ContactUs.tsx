@@ -22,11 +22,11 @@ const ContactUs = () => {
   const [error, setError] = useState<string | null>(null);
 
   const interestOptions = [
-    'Business Applications (Salesforce/SAP/Oracle)',
-    'System Integration (MuleSoft/Boomi)',
-    'Cloud Strategy (AWS/Azure/GCP)',
-    'Data & AI Solutions',
-    'Professional Staffing / Augmentation'
+    'Professional IT Consulting & Custom Software',
+    'IT Infrastructure & Data Centres',
+    'AI & Machine Learning Development',
+    'AV & Smart Workspaces',
+    'Online Presence (Websites & Marketing)'
   ];
 
   const handleInterestToggle = (interest: string) => {
@@ -120,12 +120,12 @@ const ContactUs = () => {
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.9] tracking-tighter text-white">
-              AI Machine Learning & <br />
-              <span className="text-[#ff6b00]">Enterprise Infrastructure Consulting</span>
+              Professional IT Consulting <br />
+              <span className="text-[#ff6b00]">& Enterprise Technology Solutions</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-medium max-w-4xl mx-auto">
-              We're ready to deliver AI machine learning solutions and enterprise infrastructure services tailored to your needs. Whether you need custom server design, machine learning consulting, or infrastructure services, our team of certified experts specializes in transforming businesses through technology.
+              From strategic IT consulting and custom software to enterprise infrastructure, AI-driven automation, cybersecurity, and digital presence, we're ready to deliver technology solutions tailored to your needs. Whether you need a custom application, a secure network, or a full digital transformation strategy, our team of certified experts specializes in transforming businesses through technology.
             </p>
           </motion.div>
         </div>
@@ -188,10 +188,10 @@ const ContactUs = () => {
                 Let's Connect
               </span>
               <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-                Request AI Machine Learning & Infrastructure Services
+                Request Professional IT Consulting & Technology Services
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed font-medium mb-8">
-                Looking for AI machine learning solutions, custom server design, or enterprise infrastructure services? Contact us to explore how our machine learning expertise and infrastructure servers can transform your business. Our solution architects respond within 24 hours.
+                Looking for professional IT consulting, custom software, enterprise infrastructure, AI solutions, or a stronger digital presence? Contact us to explore how our certified consultants and engineers can transform your business. Our solution architects respond within 24 hours.
               </p>
 
               {/* Office Location Highlight */}

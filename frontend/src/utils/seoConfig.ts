@@ -115,9 +115,9 @@ export const seoConfigs: Record<string, SEOConfig> = {
     ogType: 'website'
   },
   contact: {
-    title: 'Contact BloomTechUSA - AI Machine Learning & Enterprise Infrastructure Consultation',
-    description: 'Get in touch with BloomTechUSA for AI machine learning solutions, enterprise infrastructure services, and custom server design. Located in Austin, TX. Call (737) 329-8158 for machine learning and infrastructure consulting.',
-    keywords: 'contact bloomtech, AI machine learning, enterprise infrastructure, custom server, machine learning consultation, infrastructure services, Austin IT company',
+    title: 'Contact BloomTechUSA - Professional IT Consulting & Technology Solutions',
+    description: 'Get in touch with BloomTechUSA for professional IT consulting, custom software, enterprise infrastructure, AI & machine learning, security, and digital presence services. Located in Austin, TX. Call (737) 329-8158.',
+    keywords: 'contact bloomtech, IT consulting, professional IT consulting, enterprise infrastructure, custom software, AI machine learning, cybersecurity, Austin IT company',
     canonical: `${baseUrl}/contact`,
     ogImage: defaultOGImage,
     ogType: 'website',
