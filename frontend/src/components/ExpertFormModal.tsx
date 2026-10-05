@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, Building2, Briefcase, MessageSquare, Send, CheckCircle2, Phone } from 'lucide-react';
-import axios from 'axios';
-import { useAuth } from '../context/AuthContext';
+import emailjs from '@emailjs/browser';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 interface ExpertFormModalProps {
   isOpen: boolean;
@@ -14,7 +15,6 @@ interface ExpertFormModalProps {
 }
 
 const ExpertFormModal: React.FC<ExpertFormModalProps> = ({ isOpen, onClose, serviceName, serviceSlug }) => {
-  const { user } = useAuth();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,16 +27,6 @@ const ExpertFormModal: React.FC<ExpertFormModalProps> = ({ isOpen, onClose, serv
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (user) {
-      setFormData(prev => ({
-        ...prev,
-        name: user.name,
-        email: user.email,
-      }));
-    }
-  }, [user, isOpen]);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -48,18 +38,32 @@ const ExpertFormModal: React.FC<ExpertFormModalProps> = ({ isOpen, onClose, serv
     setError(null);
 
     try {
-      await axios.post(`${API_URL}/api/expert/submit`, {
-        ...formData,
-        serviceSlug,
-      });
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          interests: `Talk to an Expert: ${serviceName} (${serviceSlug})`,
+          message: [
+            formData.jobTitle ? `Job Title: ${formData.jobTitle}` : null,
+            formData.phone ? `Phone: ${formData.phone}` : null,
+            '',
+            formData.message,
+          ].filter(line => line !== null).join('\n'),
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
       setSuccess(true);
       setTimeout(() => {
         onClose();
         setSuccess(false);
         setFormData(prev => ({ ...prev, message: '' }));
       }, 3000);
-    } catch (err: any) {
-      setError(err.response?.data?.error || 'Something went wrong. Please try again.');
+    } catch (err) {
+      console.error('Error sending expert inquiry email:', err);
+      setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }

@@ -122,24 +122,6 @@ export const seoConfigs: Record<string, SEOConfig> = {
     ogImage: defaultOGImage,
     ogType: 'website',
     schema: localBusinessSchema
-  },
-  login: {
-    title: 'Client Login - BloomTechUSA Portal Access',
-    description: 'Access your BloomTechUSA client portal for project management, service requests, and account information.',
-    canonical: `${baseUrl}/login`,
-    ogImage: defaultOGImage
-  },
-  register: {
-    title: 'Register - Create Your BloomTechUSA Account',
-    description: 'Create your BloomTechUSA account to access our client portal, request services, and manage your IT projects.',
-    canonical: `${baseUrl}/register`,
-    ogImage: defaultOGImage
-  },
-  dashboard: {
-    title: 'Dashboard - BloomTechUSA Client Portal',
-    description: 'Manage your BloomTechUSA services, view projects, and access expert support through your client dashboard.',
-    canonical: `${baseUrl}/dashboard`,
-    ogImage: defaultOGImage
   }
 };
 

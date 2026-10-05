@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
+import emailjs from '@emailjs/browser';
 import { Phone, Mail, Clock, MapPin, Send, CheckCircle, Linkedin, Twitter, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { seoConfigs, socialMedia } from '../utils/seoConfig';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +46,18 @@ const ContactUs = () => {
     setError(null);
 
     try {
-      await axios.post(`${API_URL}/api/contact/submit`, formData);
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          interests: formData.interests.length ? formData.interests.join(', ') : 'None specified',
+          message: formData.message,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
       setIsSubmitted(true);
 
       // Reset form after 3 seconds
@@ -59,10 +72,8 @@ const ContactUs = () => {
         });
       }, 3000);
     } catch (err) {
-      const message = axios.isAxiosError(err) && err.response?.data?.error
-        ? err.response.data.error
-        : 'Something went wrong. Please try again.';
-      setError(message);
+      console.error('Error sending contact form email:', err);
+      setError('Something went wrong. Please try again.');
     } finally {
       setLoading(false);
     }

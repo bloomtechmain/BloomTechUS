@@ -31,8 +31,9 @@ Go to: **Settings** → **Environment variables** → **Production**
 | Variable | Value |
 |----------|-------|
 | `NODE_VERSION` | `18` |
-| `VITE_API_URL` | `https://your-railway-backend.up.railway.app` |
-| `VITE_GOOGLE_CLIENT_ID` | `664605079979-g31lo74cfiue4tlict3do3cpi24ikcv.apps.googleusercontent.com` |
+| `VITE_EMAILJS_SERVICE_ID` | your EmailJS service ID |
+| `VITE_EMAILJS_TEMPLATE_ID` | your EmailJS template ID |
+| `VITE_EMAILJS_PUBLIC_KEY` | your EmailJS public key |
 
 ---
 
