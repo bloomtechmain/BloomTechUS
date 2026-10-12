@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import AppRoutes from './AppRoutes';
 
-export function render(url: string, context?: any) {
+export function render(url: string) {
   const helmetContext = {};
   
   const html = renderToString(

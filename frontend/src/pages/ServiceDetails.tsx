@@ -9,16 +9,18 @@ import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { getSEOConfig } from '../utils/seoConfig';
 import {
-  BackgroundGlows,
   ServiceBreadcrumb,
   ServiceTagline,
   ServiceCTA,
   ServiceHeroImage,
   DefaultServiceContent,
   NetworkInfrastructureContent,
-  AICustomDevContent,
-  ManagedAVServicesContent,
-  AssetLifecycleContent,
+  EnterpriseNetworkingContent,
+  CustomServerDesignContent,
+  CustomNASContent,
+  RackAndRollContent,
+  CloudHostingContent,
+  SmartWorkspacesContent,
   AIMachineLearningContent,
   CustomCRMContent,
   ProfessionalITConsultingContent,
@@ -32,7 +34,6 @@ import {
 const ExpertFormModal = lazy(() => import('../components/ExpertFormModal'));
 
 // Note: Additional custom service sections can be extracted following the NetworkInfrastructureContent pattern
-// - AICustomDevContent.tsx
 // - ManagedAVServicesContent.tsx
 // - etc.
 
@@ -53,7 +54,7 @@ const ServiceDetails = () => {
   // Service not found page
   if (!service) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#0c1a36] via-[#1a305c] to-[#ff6b00]/80 flex flex-col items-center justify-center pt-24 px-6">
+      <div className="min-h-screen bg-[#101D36] flex flex-col items-center justify-center pt-24 px-6">
         <h1 className="text-4xl font-black text-white mb-4">Service Not Found</h1>
         <p className="text-white/70 mb-8">The service you're looking for doesn't exist or has been moved.</p>
         <Link to="/" className="flex items-center gap-2 bg-[#ff6b00] text-white px-6 py-3 rounded-xl font-bold hover:bg-[#e65c00] transition-colors shadow-lg">
@@ -67,8 +68,8 @@ const ServiceDetails = () => {
   const config = getServiceConfig(service.slug);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0c1a36] via-[#1a305c] to-[#ff6b00]/30 font-sans selection:bg-[#ff6b00] selection:text-white relative">
-      <SEO 
+    <div className="min-h-screen bg-white font-sans selection:bg-[#ff6b00] selection:text-white">
+      <SEO
         config={getSEOConfig('service', service.slug)}
         breadcrumbs={[
           { name: 'Home', url: 'https://bloomtechusa.com' },
@@ -76,35 +77,35 @@ const ServiceDetails = () => {
           { name: service.name, url: `https://bloomtechusa.com/services/${service.slug}` }
         ]}
       />
-      
-      <Navbar />
-      
-      {/* Background decorations */}
-      <BackgroundGlows />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
-        <div className="max-w-[1200px] mx-auto px-6 xl:px-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
+      <Navbar />
+
+      {/* Hero Section — contained dark band, not the whole page */}
+      <section className="relative bg-[#101D36] pt-36 pb-20 lg:pt-44 lg:pb-24 overflow-hidden">
+        {/* Single restrained accent glow */}
+        <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-[#ff6b00]/10 blur-[160px] rounded-full pointer-events-none"></div>
+
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
             {/* Left Column: Content */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="flex flex-col items-start relative z-10"
+              className="flex flex-col items-start relative z-10 lg:col-span-7"
             >
               <ServiceBreadcrumb serviceName={service.name} />
-              
+
               {config.tagline && (
                 <ServiceTagline icon={config.tagline.icon} text={config.tagline.text} />
               )}
-              
-              <h1 className="text-5xl lg:text-7xl font-black text-white leading-[1.1] tracking-tighter mb-6 max-w-4xl drop-shadow-2xl">
+
+              <h1 className="text-4xl lg:text-6xl font-extrabold text-white leading-[1.12] tracking-tight mb-6 max-w-2xl">
                 {config.heroTitle || service.name}
               </h1>
-              
-              <p className="text-xl lg:text-2xl text-blue-50/90 font-medium leading-relaxed max-w-3xl mb-12 drop-shadow-md">
+
+              <p className="text-lg lg:text-xl text-white/70 leading-relaxed max-w-xl mb-10">
                 {config.heroDescription || service.desc}
               </p>
 
@@ -122,7 +123,9 @@ const ServiceDetails = () => {
             </motion.div>
 
             {/* Right Column: Image */}
-            <ServiceHeroImage imageUrl={service.imageUrl} serviceName={service.name} />
+            <div className="lg:col-span-5">
+              <ServiceHeroImage imageUrl={service.imageUrl} serviceName={service.name} />
+            </div>
           </div>
         </div>
       </section>
@@ -156,16 +159,25 @@ function renderServiceContent(service: ServiceItem, onOpenModal: () => void) {
   switch (service.slug) {
     case 'it-network-infrastructure':
       return <NetworkInfrastructureContent onOpenModal={onOpenModal} />;
-    
-    case 'ai-custom-development-automation':
-      return <AICustomDevContent onOpenModal={onOpenModal} />;
-    
-    case 'managed-av-services':
-      return <ManagedAVServicesContent onOpenModal={onOpenModal} />;
-    
-    case 'asset-lifecycle-management':
-      return <AssetLifecycleContent onOpenModal={onOpenModal} />;
-    
+
+    case 'enterprise-networking':
+      return <EnterpriseNetworkingContent onOpenModal={onOpenModal} />;
+
+    case 'custom-server-design-deployment':
+      return <CustomServerDesignContent onOpenModal={onOpenModal} />;
+
+    case 'custom-nas-storage':
+      return <CustomNASContent onOpenModal={onOpenModal} />;
+
+    case 'rack-and-roll-services':
+      return <RackAndRollContent onOpenModal={onOpenModal} />;
+
+    case 'cloud-hosting-deployment':
+      return <CloudHostingContent onOpenModal={onOpenModal} />;
+
+    case 'av-smart-workspaces':
+      return <SmartWorkspacesContent onOpenModal={onOpenModal} />;
+
     case 'ai-machine-learning':
       return <AIMachineLearningContent onOpenModal={onOpenModal} />;
     

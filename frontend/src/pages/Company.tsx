@@ -129,47 +129,39 @@ const Company = () => {
       <SEO config={seoConfigs.company} />
       
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0c1a36] via-[#1a305c] to-[#0c1a36] pt-24">
-        {/* Background Effects */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-[#ff6b00]/20 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
-        </div>
+      <section className="relative bg-[#101D36] pt-40 pb-20 overflow-hidden">
+        <div className="absolute top-[-15%] right-[-5%] w-[500px] h-[500px] bg-[#ff6b00]/10 blur-[160px] rounded-full pointer-events-none"></div>
 
-        {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12 relative z-10 py-20">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-5xl mx-auto"
+            transition={{ duration: 0.7 }}
+            className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-2.5 mb-8 text-[12px] font-bold tracking-[0.3em] text-white uppercase bg-[#ff6b00]/20 backdrop-blur-md border border-[#ff6b00]/30 rounded-full">
-              <Building2 className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 mb-7 text-xs font-semibold tracking-widest text-white/80 uppercase border border-white/15 rounded-full">
+              <Building2 className="w-3.5 h-3.5 text-[#ff6b00]" />
               About BloomTechUSA
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.9] tracking-tighter text-white">
-              AI Machine Learning & <br />
-              <span className="text-[#ff6b00]">Enterprise Infrastructure Experts</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-[1.1] tracking-tight text-white">
+              AI machine learning & enterprise infrastructure experts
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed font-medium max-w-4xl mx-auto">
+            <p className="text-lg md:text-xl text-white/70 mb-10 leading-relaxed max-w-2xl">
               A premier provider of AI machine learning solutions and enterprise infrastructure services, dedicated to delivering custom server design and machine learning expertise through innovative technology and strategic consulting.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link 
-                to="/services/ai-machine-learning" 
-                className="px-10 py-5 bg-[#ff6b00] text-white rounded-2xl font-black text-base hover:bg-[#e65c00] hover:shadow-[0_0_40px_rgba(255,107,0,0.6)] transition-all flex items-center gap-3 group"
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Link
+                to="/services/ai-machine-learning"
+                className="px-7 py-3.5 bg-[#ff6b00] text-white rounded-lg font-semibold hover:bg-[#e65c00] transition-colors flex items-center gap-2 group"
               >
-                Explore Our Services <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Explore Our Services <ChevronRight className="w-4.5 h-4.5 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <a 
-                href="#mission" 
-                className="px-10 py-5 bg-white/10 backdrop-blur-md text-white border-2 border-white/20 rounded-2xl font-black text-base hover:bg-white hover:text-[#0c1a36] transition-all"
+              <a
+                href="#mission"
+                className="px-7 py-3.5 bg-transparent text-white border border-white/25 rounded-lg font-semibold hover:border-white/50 transition-colors"
               >
                 Our Mission
               </a>
@@ -178,15 +170,15 @@ const Company = () => {
 
           {/* Stats Bar */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 max-w-5xl mx-auto"
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-xl overflow-hidden border border-white/10 mt-16"
           >
             {stats.map((stat, i) => (
-              <div key={i} className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-                <div className="text-4xl md:text-5xl font-black text-[#ff6b00] mb-2">{stat.value}</div>
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-400">{stat.label}</p>
+              <div key={i} className="bg-[#101D36] text-center p-7">
+                <div className="text-3xl md:text-4xl font-bold text-[#ff6b00] mb-1.5">{stat.value}</div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/50">{stat.label}</p>
               </div>
             ))}
           </motion.div>
@@ -194,51 +186,45 @@ const Company = () => {
       </section>
 
       {/* Mission & Vision Section */}
-      <section id="mission" className="py-32 px-6 bg-white">
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <section id="mission" className="py-24 lg:py-28 px-6 bg-white">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Mission */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
+              transition={{ duration: 0.6 }}
+              className="pt-8 border-t-2 border-[#ff6b00]"
             >
-              <div className="absolute -left-6 top-0 w-1.5 h-24 bg-gradient-to-b from-[#ff6b00] to-transparent rounded-full"></div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-[#ff6b00]/10 flex items-center justify-center">
-                  <Target className="w-7 h-7 text-[#ff6b00]" />
-                </div>
-                <h2 className="text-sm font-black uppercase tracking-widest text-gray-400">Our Mission</h2>
+              <div className="flex items-center gap-3 mb-5">
+                <Target className="w-5 h-5 text-[#ff6b00]" />
+                <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500">Our Mission</h2>
               </div>
-              <h3 className="text-4xl md:text-5xl font-black text-[#0c1a36] mb-6 leading-tight">
-                AI Machine Learning & Custom Server Solutions for Business Growth
+              <h3 className="text-2xl md:text-3xl font-bold text-[#101D36] mb-5 leading-snug">
+                AI machine learning & custom server solutions for business growth
               </h3>
-              <p className="text-lg text-gray-600 leading-relaxed font-medium">
+              <p className="text-gray-600 leading-relaxed">
                 To empower clients with AI machine learning solutions and enterprise infrastructure services that transform data into actionable insights. BloomTech delivers custom server design and machine learning expertise with security-first architecture, ensuring seamless integration from C-suite executives to end-users through measurable value and operational excellence.
               </p>
             </motion.div>
 
             {/* Vision */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="pt-8 border-t-2 border-[#101D36]"
             >
-              <div className="absolute -left-6 top-0 w-1.5 h-24 bg-gradient-to-b from-blue-500 to-transparent rounded-full"></div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center">
-                  <Eye className="w-7 h-7 text-blue-600" />
-                </div>
-                <h2 className="text-sm font-black uppercase tracking-widest text-gray-400">Our Vision</h2>
+              <div className="flex items-center gap-3 mb-5">
+                <Eye className="w-5 h-5 text-[#101D36]" />
+                <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500">Our Vision</h2>
               </div>
-              <h3 className="text-4xl md:text-5xl font-black text-[#0c1a36] mb-6 leading-tight">
-                Leading the Digital Future
+              <h3 className="text-2xl md:text-3xl font-bold text-[#101D36] mb-5 leading-snug">
+                Leading the digital future
               </h3>
-              <p className="text-lg text-gray-600 leading-relaxed font-medium">
+              <p className="text-gray-600 leading-relaxed">
                 To establish BloomTech as the preeminent technology solutions provider within the United States, while aggressively expanding our global footprint to serve as a cornerstone of international digital infrastructure.
               </p>
             </motion.div>
@@ -247,8 +233,8 @@ const Company = () => {
       </section>
 
       {/* The BloomTech Approach */}
-      <section className="py-32 px-6 bg-gray-50">
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
+      <section className="py-24 lg:py-28 px-6 bg-[#F5F6F8]">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -256,60 +242,60 @@ const Company = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">Our Philosophy</span>
-            <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-              Machine Learning & Enterprise Infrastructure Services
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">Our Philosophy</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#101D36] mb-5 leading-tight tracking-tight">
+              Machine learning & enterprise infrastructure services
             </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Our AI machine learning solutions and enterprise infrastructure services combine technical expertise with security-first design. BloomTech's certified consultants deliver custom server solutions and machine learning infrastructure that integrate data protection at every level, ensuring every technical implementation supports your business objectives.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-gray-100"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-white rounded-xl p-8 border border-gray-200"
             >
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#ff6b00] to-orange-600 flex items-center justify-center mb-6">
-                <Zap className="w-8 h-8 text-white" />
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#101D36] to-[#1B2B4D] flex items-center justify-center mb-6 shadow-sm">
+                <Zap className="w-6 h-6 text-[#ff6b00]" />
               </div>
-              <h4 className="text-2xl font-black text-[#0c1a36] mb-4">Technical Mastery</h4>
-              <p className="text-gray-600 leading-relaxed font-medium">
+              <h4 className="text-xl font-bold text-[#101D36] mb-3">Technical Mastery</h4>
+              <p className="text-gray-600 leading-relaxed">
                 Our consultants possess certifications and deep expertise across all major platforms, ensuring world-class technical execution.
               </p>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-gray-100"
+              transition={{ duration: 0.5, delay: 0.17 }}
+              className="bg-white rounded-xl p-8 border border-gray-200"
             >
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-6">
-                <Users className="w-8 h-8 text-white" />
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#101D36] to-[#1B2B4D] flex items-center justify-center mb-6 shadow-sm">
+                <Users className="w-6 h-6 text-[#ff6b00]" />
               </div>
-              <h4 className="text-2xl font-black text-[#0c1a36] mb-4">Business Acumen</h4>
-              <p className="text-gray-600 leading-relaxed font-medium">
+              <h4 className="text-xl font-bold text-[#101D36] mb-3">Business Acumen</h4>
+              <p className="text-gray-600 leading-relaxed">
                 We don't just build technology—we understand your business objectives and align every solution to drive measurable outcomes.
               </p>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-gray-100"
+              transition={{ duration: 0.5, delay: 0.24 }}
+              className="bg-white rounded-xl p-8 border border-gray-200"
             >
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6">
-                <Target className="w-8 h-8 text-white" />
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#101D36] to-[#1B2B4D] flex items-center justify-center mb-6 shadow-sm">
+                <Target className="w-6 h-6 text-[#ff6b00]" />
               </div>
-              <h4 className="text-2xl font-black text-[#0c1a36] mb-4">Outcome-Driven</h4>
-              <p className="text-gray-600 leading-relaxed font-medium">
+              <h4 className="text-xl font-bold text-[#101D36] mb-3">Outcome-Driven</h4>
+              <p className="text-gray-600 leading-relaxed">
                 Every project is designed with clear KPIs and business outcomes in mind, ensuring tangible ROI and competitive advantage.
               </p>
             </motion.div>
@@ -318,49 +304,46 @@ const Company = () => {
       </section>
 
       {/* Service Offerings */}
-      <section className="py-32 px-6 bg-white">
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
+      <section className="py-24 lg:py-28 px-6 bg-white">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
+            transition={{ duration: 0.6 }}
+            className="mb-16"
           >
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">What We Deliver</span>
-            <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-              Comprehensive Service Offerings
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">What We Deliver</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#101D36] mb-5 leading-tight tracking-tight max-w-2xl">
+              Comprehensive service offerings
             </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
+            <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">
               A holistic suite of IT services designed to maximize Return on Investment (ROI) and future-proof organizational workflows.
             </p>
           </motion.div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {services.map((service, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 md:p-10 border-2 border-gray-100 hover:border-[#ff6b00]/30 hover:shadow-xl transition-all"
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                className="bg-white rounded-xl p-7 md:p-9 border border-gray-200"
               >
-                <div className="flex flex-col md:flex-row gap-8 items-start">
-                  <div className="flex items-center gap-6 min-w-fit">
-                    <span className="text-6xl font-black text-[#ff6b00]/20 group-hover:text-[#ff6b00]/40 transition-colors">
-                      {service.number}
-                    </span>
-                    <div className="w-1 h-20 bg-gradient-to-b from-[#ff6b00] to-transparent rounded-full"></div>
+                <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
+                  <div className="flex items-center gap-4 min-w-fit md:w-16">
+                    <span className="text-sm font-bold text-[#ff6b00] tabular-nums">{service.number}</span>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl md:text-3xl font-black text-[#0c1a36] mb-6 group-hover:text-[#ff6b00] transition-colors">
+                    <h3 className="text-xl md:text-2xl font-bold text-[#101D36] mb-5">
                       {service.title}
                     </h3>
-                    <ul className="space-y-4">
+                    <ul className="space-y-3">
                       {service.items.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-gray-600 font-medium">
-                          <ChevronRight className="w-5 h-5 text-[#ff6b00] mt-0.5 shrink-0" />
+                        <li key={idx} className="flex items-start gap-3 text-gray-600">
+                          <ChevronRight className="w-4.5 h-4.5 text-[#ff6b00] mt-0.5 shrink-0" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -374,47 +357,41 @@ const Company = () => {
       </section>
 
       {/* Technical Expertise */}
-      <section className="py-32 px-6 bg-[#0c1a36] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-[#ff6b00]/10 rounded-full blur-[120px]"></div>
-
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12 relative z-10">
+      <section className="py-24 lg:py-28 px-6 bg-[#101D36]">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-20"
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mb-16"
           >
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">Our Team</span>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Elite Technical Expertise
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">Our Team</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-5 leading-tight tracking-tight">
+              Elite technical expertise
             </h2>
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-medium">
               BloomTech distinguishes itself through a rigorous talent acquisition process, maintaining a bench of elite professionals.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5">
             {expertise.map((expert, i) => {
               const Icon = expert.icon;
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.15 }}
-                  className="group relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all overflow-hidden"
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="bg-white/5 border border-white/10 rounded-xl p-8"
                 >
-                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${expert.color} opacity-20 blur-3xl group-hover:opacity-30 transition-opacity`}></div>
-                  <div className="relative">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${expert.color} flex items-center justify-center mb-6`}>
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="text-2xl font-black text-white mb-4">{expert.title}</h4>
-                    <p className="text-gray-300 leading-relaxed font-medium">{expert.description}</p>
+                  <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center mb-6">
+                    <Icon className="w-6 h-6 text-[#ff6b00]" />
                   </div>
+                  <h4 className="text-xl font-bold text-white mb-3">{expert.title}</h4>
+                  <p className="text-white/60 leading-relaxed">{expert.description}</p>
                 </motion.div>
               );
             })}
@@ -423,77 +400,71 @@ const Company = () => {
       </section>
 
       {/* Global Delivery Model */}
-      <section className="py-32 px-6 bg-white">
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
+      <section className="py-24 lg:py-28 px-6 bg-white">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mb-16"
           >
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">Where We Operate</span>
-            <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-              Global Delivery Model
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">Where We Operate</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#101D36] mb-5 leading-tight tracking-tight">
+              Global delivery model
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed font-medium mb-4 max-w-4xl mx-auto">
-              With headquarters located at <span className="font-black text-[#0c1a36]">11801 Domain Blvd 3rd floor, Austin, TX</span>, BloomTechUSA leverages a distributed delivery model with key operational hubs across the globe.
+            <p className="text-gray-600 leading-relaxed mb-3">
+              With headquarters located at <span className="font-semibold text-[#101D36]">11801 Domain Blvd 3rd floor, Austin, TX</span>, BloomTechUSA leverages a distributed delivery model with key operational hubs across the globe.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed font-medium max-w-4xl mx-auto">
+            <p className="text-gray-600 leading-relaxed">
               This geographic diversity allows for localized support and a broad talent pool, ensuring that BloomTech can scale resources rapidly to meet the demands of any project, regardless of size or complexity.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-10 items-start">
             {/* Hub Cards - Left Side */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {globalHubs.map((hub, index) => (
                 <motion.div
                   key={hub.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.4, delay: index * 0.07 }}
                   onClick={() => setSelectedHub(hub)}
-                  className={`group cursor-pointer rounded-2xl p-6 border-2 transition-all ${
+                  className={`cursor-pointer rounded-xl p-6 border transition-colors ${
                     selectedHub.id === hub.id
-                      ? 'bg-gradient-to-br ' + hub.color + ' border-transparent shadow-2xl'
-                      : 'bg-gray-50 border-gray-100 hover:border-[#ff6b00]/30 hover:shadow-lg'
+                      ? 'bg-[#101D36] border-[#101D36]'
+                      : 'bg-white border-gray-200 hover:border-[#ff6b00]/40'
                   }`}
                 >
                   <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                      selectedHub.id === hub.id
-                        ? 'bg-white/20'
-                        : 'bg-white'
-                    }`}>
-                      <MapPin className={`w-5 h-5 ${
-                        selectedHub.id === hub.id ? 'text-white' : 'text-[#ff6b00]'
-                      }`} />
-                    </div>
+                    <MapPin className={`w-4.5 h-4.5 mt-0.5 shrink-0 ${
+                      selectedHub.id === hub.id ? 'text-[#ff6b00]' : 'text-[#ff6b00]'
+                    }`} />
                     <div className="flex-1">
-                      <h4 className={`font-black mb-1 ${
-                        selectedHub.id === hub.id ? 'text-white' : 'text-[#0c1a36]'
+                      <h4 className={`font-bold mb-0.5 ${
+                        selectedHub.id === hub.id ? 'text-white' : 'text-[#101D36]'
                       }`}>
                         {hub.name}
                       </h4>
-                      <p className={`text-xs font-bold mb-2 ${
-                        selectedHub.id === hub.id ? 'text-white/80' : 'text-gray-500'
+                      <p className={`text-xs font-semibold ${
+                        selectedHub.id === hub.id ? 'text-white/60' : 'text-gray-500'
                       }`}>
                         {hub.location}
                       </p>
                     </div>
                   </div>
-                  <p className={`text-sm font-medium ${
-                    selectedHub.id === hub.id ? 'text-white/90' : 'text-gray-600'
+                  <p className={`text-sm ${
+                    selectedHub.id === hub.id ? 'text-white/80' : 'text-gray-600'
                   }`}>
                     {hub.description}
                   </p>
                   <div className={`mt-4 pt-4 border-t ${
-                    selectedHub.id === hub.id ? 'border-white/20' : 'border-gray-200'
+                    selectedHub.id === hub.id ? 'border-white/15' : 'border-gray-100'
                   }`}>
-                    <p className={`text-xs font-medium ${
-                      selectedHub.id === hub.id ? 'text-white/70' : 'text-gray-500'
+                    <p className={`text-xs ${
+                      selectedHub.id === hub.id ? 'text-white/50' : 'text-gray-500'
                     }`}>
                       {hub.address}
                     </p>
@@ -504,32 +475,30 @@ const Company = () => {
 
             {/* Interactive Map - Right Side */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative h-full min-h-[600px]"
+              transition={{ duration: 0.6 }}
+              className="relative h-full min-h-[560px]"
             >
               <div className="sticky top-24">
-                <div className="bg-gradient-to-br from-[#0c1a36] to-[#1a305c] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white">
-                  <div className="p-6 bg-gradient-to-r from-[#ff6b00] to-orange-600">
-                    <div className="flex items-center justify-between">
+                <div className="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                  <div className="p-5 bg-[#101D36] flex items-center justify-between">
                       <div>
-                        <h3 className="text-white font-black text-lg mb-1">{selectedHub.name}</h3>
-                        <p className="text-white/80 text-sm font-medium">{selectedHub.location}</p>
+                        <h3 className="text-white font-bold mb-0.5">{selectedHub.name}</h3>
+                        <p className="text-white/60 text-sm">{selectedHub.location}</p>
                       </div>
                       <a
                         href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedHub.address)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 bg-white text-[#ff6b00] rounded-xl font-black text-xs uppercase tracking-wider hover:bg-gray-100 transition-all flex items-center gap-2"
+                        className="px-4 py-2 bg-[#ff6b00] text-white rounded-lg font-semibold text-xs uppercase tracking-wider hover:bg-[#e65c00] transition-colors flex items-center gap-2"
                       >
                         Open Maps
                         <ChevronRight className="w-4 h-4" />
                       </a>
-                    </div>
                   </div>
-                  
+
                   <motion.div
                     key={selectedHub.id}
                     initial={{ opacity: 0 }}
@@ -550,10 +519,10 @@ const Company = () => {
                   </motion.div>
                 </div>
 
-                <div className="mt-6 bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                <div className="mt-4 bg-[#F5F6F8] rounded-xl p-4 border border-gray-200">
                   <div className="flex items-center gap-3">
-                    <Globe className="w-5 h-5 text-[#ff6b00]" />
-                    <p className="text-sm font-bold text-gray-600">
+                    <Globe className="w-4.5 h-4.5 text-[#ff6b00] shrink-0" />
+                    <p className="text-sm font-medium text-gray-600">
                       Click on any hub to view its location on the map
                     </p>
                   </div>
@@ -565,31 +534,33 @@ const Company = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 bg-gradient-to-br from-[#0c1a36] to-[#ff6b00]">
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
+      <section className="py-20 px-6 bg-[#101D36]">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
+            transition={{ duration: 0.6 }}
+            className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-              Let's discuss how BloomTechUSA can empower your organization with innovative technology solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a 
-                href="#contact" 
-                className="px-12 py-5 bg-white text-[#0c1a36] rounded-2xl font-black text-base hover:bg-gray-100 hover:shadow-2xl transition-all flex items-center gap-3"
+            <div>
+              <h2 className="text-2xl md:text-4xl font-bold text-white mb-3 leading-tight tracking-tight">
+                Ready to transform your business?
+              </h2>
+              <p className="text-white/60 leading-relaxed max-w-xl">
+                Let's discuss how BloomTechUSA can empower your organization with innovative technology solutions.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-start gap-4 shrink-0">
+              <a
+                href="#contact"
+                className="px-7 py-3.5 bg-[#ff6b00] text-white rounded-lg font-semibold hover:bg-[#e65c00] transition-colors flex items-center gap-2"
               >
-                Get in Touch <ChevronRight className="w-5 h-5" />
+                Get in Touch <ChevronRight className="w-4.5 h-4.5" />
               </a>
-              <Link 
-                to="/services/ai-machine-learning" 
-                className="px-12 py-5 bg-transparent text-white border-2 border-white/30 rounded-2xl font-black text-base hover:bg-white/10 transition-all"
+              <Link
+                to="/services/ai-machine-learning"
+                className="px-7 py-3.5 bg-transparent text-white border border-white/25 rounded-lg font-semibold hover:border-white/50 transition-colors"
               >
                 View Our Services
               </Link>

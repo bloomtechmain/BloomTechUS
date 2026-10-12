@@ -2,13 +2,12 @@ import { useState, useEffect, memo } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { megaMenuData, ServiceItem } from '../data/servicesData';
+import { megaMenuData } from '../data/servicesData';
 
 const Navbar = memo(() => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [hoveredService, setHoveredService] = useState<ServiceItem | null>(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   // Debounced scroll handler for better performance
@@ -54,7 +53,7 @@ const Navbar = memo(() => {
           <div
             className="group relative h-[64px] flex items-center"
             onMouseEnter={() => setActiveMenu('services')}
-            onMouseLeave={() => {setActiveMenu(null); setHoveredService(null);}}
+            onMouseLeave={() => {setActiveMenu(null);}}
           >
             <button className={`flex items-center gap-1 font-bold transition-all text-[13px] uppercase tracking-wide ${activeMenu === 'services' ? 'text-[#ff6b00]' : 'text-[#0c1a36] hover:text-[#ff6b00]'}`}>
               Services & Solutions <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${activeMenu === 'services' ? 'rotate-180' : ''}`} />
@@ -79,7 +78,7 @@ const Navbar = memo(() => {
 
         {/* Action Buttons */}
         <div className="hidden lg:flex items-center gap-4 shrink-0">
-          <Link to="/contact" className="border-[2.5px] rounded-xl font-black text-[13px] uppercase tracking-widest transition-all active:scale-95 px-8 py-2.5 border-[#0c1a36] text-[#0c1a36] hover:bg-[#0c1a36] hover:text-white">
+          <Link to="/contact" className="rounded-lg font-semibold text-[13px] uppercase tracking-widest transition-all active:scale-95 px-7 py-3 bg-[#ff6b00] text-white hover:bg-[#e65c00] shadow-sm shadow-orange-500/20">
             Get Started
           </Link>
         </div>
@@ -99,7 +98,7 @@ const Navbar = memo(() => {
             exit={{ opacity: 0, y: 15 }}
             className="absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden"
             onMouseEnter={() => setActiveMenu('services')}
-            onMouseLeave={() => {setActiveMenu(null); setHoveredService(null);}}
+            onMouseLeave={() => {setActiveMenu(null);}}
           >
             <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
 
@@ -116,11 +115,10 @@ const Navbar = memo(() => {
                          <li
                            key={i}
                            className="group/item relative -ml-2 px-2 py-1.5 rounded-xl transition-all hover:bg-blue-50/50 cursor-pointer"
-                           onMouseEnter={() => setHoveredService(item)}
                          >
                            <div className="flex items-center gap-2">
                               <div className="w-1 h-1 rounded-full bg-[#ff6b00] opacity-0 group-hover/item:opacity-100 transition-opacity"></div>
-                              <Link to={`/services/${item.slug}`} onClick={() => setActiveMenu(null)} className="text-[12px] font-semibold text-gray-500 group-hover/item:text-[#ff6b00] group-hover/item:font-bold transition-all tracking-tight w-full block text-left">
+                              <Link to={`/services/${item.slug}`} onClick={() => setActiveMenu(null)} className="text-[13.5px] font-medium text-gray-600 group-hover/item:text-[#ff6b00] group-hover/item:font-semibold transition-all tracking-tight w-full block text-left">
                                 {item.name}
                               </Link>
                            </div>
@@ -140,11 +138,10 @@ const Navbar = memo(() => {
                              <li
                                key={i}
                                className="group/item relative -ml-2 px-2 py-1.5 rounded-xl transition-all hover:bg-blue-50/50 cursor-pointer"
-                               onMouseEnter={() => setHoveredService(item)}
                              >
                                <div className="flex items-center gap-2">
                                   <div className="w-1 h-1 rounded-full bg-[#ff6b00] opacity-0 group-hover/item:opacity-100 transition-opacity"></div>
-                                  <Link to={`/services/${item.slug}`} onClick={() => setActiveMenu(null)} className="text-[12px] font-semibold text-gray-500 group-hover/item:text-[#ff6b00] group-hover/item:font-bold transition-all tracking-tight w-full block text-left">
+                                  <Link to={`/services/${item.slug}`} onClick={() => setActiveMenu(null)} className="text-[13.5px] font-medium text-gray-600 group-hover/item:text-[#ff6b00] group-hover/item:font-semibold transition-all tracking-tight w-full block text-left">
                                     {item.name}
                                   </Link>
                                </div>

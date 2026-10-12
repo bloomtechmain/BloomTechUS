@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { 
   Smartphone, Code, ShoppingCart, Lock, Database, Zap, 
-  CheckCircle2, ArrowRight, ChevronRight, Cpu, Cloud, Globe,
-  Target, Workflow, FileSearch, Palette, Rocket, Boxes
+  CheckCircle2, ArrowRight, ChevronRight, Cloud,
+  Target, Workflow, FileSearch, Palette, Rocket
 } from 'lucide-react';
 
 /**
@@ -28,78 +28,33 @@ export const CustomMobileWebAppsContent = ({ onOpenModal }: CustomMobileWebAppsC
         >
           <div className="flex items-center gap-3 mb-16">
             <div className="h-10 w-2 bg-[#ff6b00] rounded-full"></div>
-            <h2 className="text-3xl lg:text-4xl font-black text-white tracking-tight drop-shadow-sm">
+            <h2 className="text-2xl lg:text-3xl font-bold text-[#101D36] tracking-tight">
               Why Choose Custom Solutions?
-              <span className="block text-xl lg:text-2xl text-white/50 font-medium mt-2 tracking-normal">Breaking free from "off-the-shelf" limitations</span>
+              <span className="block text-lg lg:text-xl text-gray-500 font-medium mt-2 tracking-normal">Breaking free from "off-the-shelf" limitations</span>
             </h2>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[40px] p-8 lg:p-12 mb-12">
-            <p className="text-xl lg:text-2xl text-white/80 leading-relaxed font-medium mb-8">
-              Generic, <span className="text-[#ff6b00] font-bold">"off-the-shelf"</span> platforms often create <span className="text-white font-bold">"Excel-and-Email" chaos</span>, cluttered with features you don't use while lacking the specific integrations needed to scale.
+          <div className="bg-white border border-gray-200 rounded-[40px] p-8 lg:p-12 mb-12">
+            <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed font-medium mb-8">
+              Generic, <span className="text-[#ff6b00] font-bold">"off-the-shelf"</span> platforms often create <span className="text-[#101D36] font-bold">"Excel-and-Email" chaos</span>, cluttered with features you don't use while lacking the specific integrations needed to scale.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Tailored Workflows */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] overflow-hidden group hover:bg-white/10 transition-all hover:-translate-y-2">
-              <div className="p-8 lg:p-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-[#ff6b00]/20 rounded-2xl flex items-center justify-center text-[#ff6b00]">
-                    <Workflow size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold text-white uppercase tracking-wider">Tailored Workflows</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-gray-200 border border-gray-200 rounded-2xl overflow-hidden">
+            {[
+              { icon: Workflow, title: 'Tailored Workflows', desc: <>We design systems that <span className="text-[#101D36] font-bold">mimic your team's natural processes</span>, eliminating friction and accelerating adoption.</> },
+              { icon: Target, title: 'Conversion-First Design', desc: <>Every pixel and interaction is engineered to serve a <span className="text-[#101D36] font-bold">specific business purpose and user intent</span>.</> },
+              { icon: Lock, title: 'Proprietary Logic', desc: <>You own the <span className="text-[#101D36] font-bold">logic layer and data</span>, eliminating fluctuating "per-user" licensing fees.</> },
+              { icon: Zap, title: 'Performance-Driven Engineering', desc: <>Apps are built on <span className="text-[#101D36] font-bold">clean code optimized for sub-second load times</span> and flawless responsiveness.</> }
+            ].map((item) => (
+              <div key={item.title} className="bg-white p-7">
+                <div className="flex items-center gap-3 mb-3">
+                  <item.icon size={18} className="text-[#ff6b00] shrink-0" />
+                  <h3 className="text-base font-bold text-[#101D36]">{item.title}</h3>
                 </div>
-                <p className="text-white/60 text-lg leading-relaxed">
-                  We design systems that <span className="text-white font-bold">mimic your team's natural processes</span>, eliminating friction and accelerating adoption.
-                </p>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
               </div>
-            </div>
-
-            {/* Conversion-First Design */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] overflow-hidden group hover:bg-white/10 transition-all hover:-translate-y-2">
-              <div className="p-8 lg:p-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400">
-                    <Target size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold text-white uppercase tracking-wider">Conversion-First Design</h3>
-                </div>
-                <p className="text-white/60 text-lg leading-relaxed">
-                  Every pixel and interaction is engineered to serve a <span className="text-white font-bold">specific business purpose and user intent</span>.
-                </p>
-              </div>
-            </div>
-
-            {/* Proprietary Logic */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] overflow-hidden group hover:bg-white/10 transition-all hover:-translate-y-2">
-              <div className="p-8 lg:p-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-[#ff6b00]/20 rounded-2xl flex items-center justify-center text-[#ff6b00]">
-                    <Lock size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold text-white uppercase tracking-wider">Proprietary Logic</h3>
-                </div>
-                <p className="text-white/60 text-lg leading-relaxed">
-                  You own the <span className="text-white font-bold">logic layer and data</span>, eliminating fluctuating "per-user" licensing fees.
-                </p>
-              </div>
-            </div>
-
-            {/* Performance-Driven Engineering */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] overflow-hidden group hover:bg-white/10 transition-all hover:-translate-y-2">
-              <div className="p-8 lg:p-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400">
-                    <Zap size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold text-white uppercase tracking-wider">Performance-Driven Engineering</h3>
-                </div>
-                <p className="text-white/60 text-lg leading-relaxed">
-                  Apps are built on <span className="text-white font-bold">clean code optimized for sub-second load times</span> and flawless responsiveness.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </motion.div>
 
@@ -112,99 +67,54 @@ export const CustomMobileWebAppsContent = ({ onOpenModal }: CustomMobileWebAppsC
           className="mt-20 lg:mt-32"
         >
           <div className="flex items-center gap-3 mb-12">
-            <div className="h-10 w-2 bg-blue-500 rounded-full"></div>
-            <h2 className="text-3xl lg:text-4xl font-black text-white tracking-tight drop-shadow-sm">
+            <div className="h-10 w-2 bg-[#101D36] rounded-full"></div>
+            <h2 className="text-2xl lg:text-3xl font-bold text-[#101D36] tracking-tight">
               Specialized Development Pillars
-              <span className="block text-xl lg:text-2xl text-white/50 font-medium mt-2 tracking-normal">Bespoke engines tailored to solve operational bottlenecks</span>
+              <span className="block text-lg lg:text-xl text-gray-500 font-medium mt-2 tracking-normal">Bespoke engines tailored to solve operational bottlenecks</span>
             </h2>
           </div>
           
-          <div className="relative border-l-2 border-white/10 ml-8 lg:ml-12 pl-12 lg:pl-16 flex flex-col gap-16">
-            
-            {/* I. Enterprise Ecosystems (CRM & ERP) */}
-            <div className="relative group">
-              <div className="absolute -left-[75px] lg:-left-[91px] top-0 w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-[#1a305c] to-[#0c1a36] border-2 border-[#ff6b00] shadow-[0_0_20px_rgba(255,107,0,0.3)] flex items-center justify-center font-black text-white text-xl z-10 group-hover:scale-110 transition-transform">
-                I
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            {/* Enterprise Ecosystems (CRM & ERP) */}
+            <div className="bg-white border border-gray-200 rounded-2xl p-8">
+              <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-[#101D36] to-[#1B2B4D] flex items-center justify-center shadow-sm mb-5">
+                <Database size={20} className="text-[#ff6b00]" />
               </div>
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-colors shadow-xl group-hover:-translate-y-1">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-10 h-10 bg-[#ff6b00]/20 rounded-xl flex items-center justify-center text-[#ff6b00]">
-                    <Database size={22} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">Enterprise Ecosystems (CRM & ERP)</h3>
-                </div>
-                <p className="text-white/70 leading-relaxed text-lg mb-6">
-                  Manage resources and customers in one seamless dashboard.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-white/70">
-                    <CheckCircle2 size={20} className="text-[#ff6b00] shrink-0 mt-0.5" />
-                    <span><span className="font-bold text-white">Precision ERP:</span> Integrate inventory, HR, order processing, and supply chain logistics</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-white/70">
-                    <CheckCircle2 size={20} className="text-[#ff6b00] shrink-0 mt-0.5" />
-                    <span><span className="font-bold text-white">Tailored CRM:</span> Track lead capture and automated retention analytics specific to your sales cycle</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-white/70">
-                    <CheckCircle2 size={20} className="text-[#ff6b00] shrink-0 mt-0.5" />
-                    <span><span className="font-bold text-white">Financial Sync:</span> Automate invoicing with real-time P&L visibility</span>
-                  </li>
-                </ul>
-              </div>
+              <h3 className="text-lg font-bold text-[#101D36] mb-2 leading-snug">Enterprise Ecosystems (CRM & ERP)</h3>
+              <p className="text-gray-600 text-sm mb-5">Manage resources and customers in one seamless dashboard.</p>
+              <ul className="space-y-2.5 text-sm">
+                <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 size={15} className="text-[#ff6b00] shrink-0 mt-0.5" /> <span><strong className="text-[#101D36]">Precision ERP:</strong> Inventory, HR, order processing, supply chain</span></li>
+                <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 size={15} className="text-[#ff6b00] shrink-0 mt-0.5" /> <span><strong className="text-[#101D36]">Tailored CRM:</strong> Lead capture and retention analytics</span></li>
+                <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 size={15} className="text-[#ff6b00] shrink-0 mt-0.5" /> <span><strong className="text-[#101D36]">Financial Sync:</strong> Automated invoicing, real-time P&amp;L</span></li>
+              </ul>
             </div>
 
-            {/* II. High-Performance Commerce & Portals */}
-            <div className="relative group">
-              <div className="absolute -left-[75px] lg:-left-[91px] top-0 w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-[#1a305c] to-[#0c1a36] border-2 border-blue-400/50 shadow-[0_0_20px_rgba(59,130,246,0.2)] flex items-center justify-center font-black text-white text-xl z-10 group-hover:scale-110 transition-transform">
-                II
+            {/* High-Performance Commerce & Portals */}
+            <div className="bg-white border border-gray-200 rounded-2xl p-8">
+              <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-[#101D36] to-[#1B2B4D] flex items-center justify-center shadow-sm mb-5">
+                <ShoppingCart size={20} className="text-[#ff6b00]" />
               </div>
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-colors shadow-xl group-hover:-translate-y-1">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400">
-                    <ShoppingCart size={22} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">High-Performance Commerce & Portals</h3>
-                </div>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-white/70">
-                    <CheckCircle2 size={20} className="text-blue-400 shrink-0 mt-0.5" />
-                    <span><span className="font-bold text-white">E-Commerce Powerhouses:</span> Custom storefronts designed for high-volume transactions and seamless checkout flows</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-white/70">
-                    <CheckCircle2 size={20} className="text-blue-400 shrink-0 mt-0.5" />
-                    <span><span className="font-bold text-white">Secure Client Portals:</span> Professional, multi-page architectures featuring Role-Based Access Control (RBAC) and audit-ready logging</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-white/70">
-                    <CheckCircle2 size={20} className="text-blue-400 shrink-0 mt-0.5" />
-                    <span><span className="font-bold text-white">Custom Web Portals:</span> Bespoke internal tools built to solve specific operational bottlenecks</span>
-                  </li>
-                </ul>
-              </div>
+              <h3 className="text-lg font-bold text-[#101D36] mb-2 leading-snug">High-Performance Commerce & Portals</h3>
+              <p className="text-gray-600 text-sm mb-5">Custom storefronts and secure client portals.</p>
+              <ul className="space-y-2.5 text-sm">
+                <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 size={15} className="text-[#ff6b00] shrink-0 mt-0.5" /> <span><strong className="text-[#101D36]">E-Commerce:</strong> High-volume transactions, seamless checkout</span></li>
+                <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 size={15} className="text-[#ff6b00] shrink-0 mt-0.5" /> <span><strong className="text-[#101D36]">Client Portals:</strong> RBAC and audit-ready logging</span></li>
+                <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 size={15} className="text-[#ff6b00] shrink-0 mt-0.5" /> <span><strong className="text-[#101D36]">Web Portals:</strong> Bespoke tools for operational bottlenecks</span></li>
+              </ul>
             </div>
 
-            {/* III. Intelligent Automation & Proximity */}
-            <div className="relative group">
-              <div className="absolute -left-[75px] lg:-left-[91px] top-0 w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-gradient-to-br from-[#1a305c] to-[#0c1a36] border-2 border-[#ff6b00] shadow-[0_0_20px_rgba(255,107,0,0.3)] flex items-center justify-center font-black text-white text-xl z-10 group-hover:scale-110 transition-transform">
-                III
+            {/* Intelligent Automation & Proximity */}
+            <div className="bg-white border border-gray-200 rounded-2xl p-8">
+              <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-[#101D36] to-[#1B2B4D] flex items-center justify-center shadow-sm mb-5">
+                <Smartphone size={20} className="text-[#ff6b00]" />
               </div>
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-colors shadow-xl group-hover:-translate-y-1">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-10 h-10 bg-[#ff6b00]/20 rounded-xl flex items-center justify-center text-[#ff6b00]">
-                    <Smartphone size={22} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">Intelligent Automation & Proximity</h3>
-                </div>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3 text-white/70">
-                    <CheckCircle2 size={20} className="text-[#ff6b00] shrink-0 mt-0.5" />
-                    <span><span className="font-bold text-white">Data & Document Intelligence:</span> Systems that "read" unstructured data (PDFs, emails) and utilize predictive algorithms for inventory and lead forecasting</span>
-                  </li>
-                  <li className="flex items-start gap-3 text-white/70">
-                    <CheckCircle2 size={20} className="text-[#ff6b00] shrink-0 mt-0.5" />
-                    <span><span className="font-bold text-white">Proximity-Based Apps:</span> Specialized mobile applications utilizing QR and NFC technology for secure asset tracking</span>
-                  </li>
-                </ul>
-              </div>
+              <h3 className="text-lg font-bold text-[#101D36] mb-2 leading-snug">Intelligent Automation & Proximity</h3>
+              <p className="text-gray-600 text-sm mb-5">Document intelligence and proximity-based mobile tools.</p>
+              <ul className="space-y-2.5 text-sm">
+                <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 size={15} className="text-[#ff6b00] shrink-0 mt-0.5" /> <span><strong className="text-[#101D36]">Document Intelligence:</strong> Reads unstructured data, predictive forecasting</span></li>
+                <li className="flex items-start gap-2 text-gray-600"><CheckCircle2 size={15} className="text-[#ff6b00] shrink-0 mt-0.5" /> <span><strong className="text-[#101D36]">Proximity Apps:</strong> QR and NFC for secure asset tracking</span></li>
+              </ul>
             </div>
 
           </div>
@@ -220,85 +130,85 @@ export const CustomMobileWebAppsContent = ({ onOpenModal }: CustomMobileWebAppsC
         >
           <div className="flex items-center gap-3 mb-12">
             <div className="h-10 w-2 bg-[#ff6b00] rounded-full"></div>
-            <h2 className="text-3xl lg:text-4xl font-black text-white tracking-tight drop-shadow-sm">
+            <h2 className="text-2xl lg:text-3xl font-bold text-[#101D36] tracking-tight">
               The Infrastructure Advantage
-              <span className="block text-xl lg:text-2xl text-white/50 font-medium mt-2 tracking-normal">Enterprise-grade infrastructure for maximum uptime and security</span>
+              <span className="block text-lg lg:text-xl text-gray-500 font-medium mt-2 tracking-normal">Enterprise-grade infrastructure for maximum uptime and security</span>
             </h2>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[40px] overflow-hidden shadow-2xl relative group">
+          <div className="bg-white border border-gray-200 rounded-[40px] overflow-hidden shadow-2xl relative group">
             {/* Decorative glows */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#ff6b00]/10 to-transparent rounded-bl-full pointer-events-none"></div>
             
             {/* Header */}
-            <div className="hidden lg:grid grid-cols-2 border-b border-white/10 bg-black/20 relative z-10">
-              <div className="p-6 lg:p-8 font-black text-white/50 uppercase tracking-widest text-sm">Category</div>
-              <div className="p-6 lg:p-8 font-black text-white/50 uppercase tracking-widest text-sm">Our Technical Selection</div>
+            <div className="hidden lg:grid grid-cols-2 border-b border-gray-200 bg-[#F5F6F8] relative z-10">
+              <div className="p-6 lg:p-8 font-black text-gray-500 tracking-wide text-sm">Category</div>
+              <div className="p-6 lg:p-8 font-black text-gray-500 tracking-wide text-sm">Our Technical Selection</div>
             </div>
 
             {/* Backend */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-white/5 hover:bg-white/10 transition-colors relative z-10">
-              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-white/5 bg-black/10 lg:bg-transparent">
-                <Code className="text-blue-400" size={24} />
-                <span className="text-xl font-bold text-white tracking-wide">Backend</span>
+            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-gray-100 hover:shadow-sm transition-colors relative z-10">
+              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-gray-100 bg-gray-50 lg:bg-transparent">
+                <Code className="text-[#101D36]" size={24} />
+                <span className="text-xl font-bold text-[#101D36] tracking-wide">Backend</span>
               </div>
               <div className="p-6 lg:px-8 lg:py-8 flex items-center">
-                <p className="text-white/80 text-lg lg:text-xl leading-relaxed font-medium">Python (Django/FastAPI), Node.js, or Go</p>
+                <p className="text-gray-700 text-lg lg:text-xl leading-relaxed font-medium">Python (Django/FastAPI), Node.js, or Go</p>
               </div>
             </div>
 
             {/* Frontend */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-white/5 hover:bg-white/10 transition-colors relative z-10">
-              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-white/5 bg-black/10 lg:bg-transparent">
+            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-gray-100 hover:shadow-sm transition-colors relative z-10">
+              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-gray-100 bg-gray-50 lg:bg-transparent">
                 <Palette className="text-[#ff6b00]" size={24} />
-                <span className="text-xl font-bold text-white tracking-wide">Frontend</span>
+                <span className="text-xl font-bold text-[#101D36] tracking-wide">Frontend</span>
               </div>
               <div className="p-6 lg:px-8 lg:py-8 flex items-center">
-                <p className="text-white/80 text-lg lg:text-xl leading-relaxed font-medium">React.js, Next.js, or Tailwind CSS</p>
+                <p className="text-gray-700 text-lg lg:text-xl leading-relaxed font-medium">React.js, Next.js, or Tailwind CSS</p>
               </div>
             </div>
 
             {/* Database */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-white/5 hover:bg-white/10 transition-colors relative z-10">
-              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-white/5 bg-black/10 lg:bg-transparent">
-                <Database className="text-blue-400" size={24} />
-                <span className="text-xl font-bold text-white tracking-wide">Database</span>
+            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-gray-100 hover:shadow-sm transition-colors relative z-10">
+              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-gray-100 bg-gray-50 lg:bg-transparent">
+                <Database className="text-[#101D36]" size={24} />
+                <span className="text-xl font-bold text-[#101D36] tracking-wide">Database</span>
               </div>
               <div className="p-6 lg:px-8 lg:py-8 flex items-center">
-                <p className="text-white/80 text-lg lg:text-xl leading-relaxed font-medium">PostgreSQL, MySQL, or MongoDB</p>
+                <p className="text-gray-700 text-lg lg:text-xl leading-relaxed font-medium">PostgreSQL, MySQL, or MongoDB</p>
               </div>
             </div>
 
             {/* Infrastructure */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-white/5 hover:bg-white/10 transition-colors relative z-10">
-              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-white/5 bg-black/10 lg:bg-transparent">
+            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-gray-100 hover:shadow-sm transition-colors relative z-10">
+              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-gray-100 bg-gray-50 lg:bg-transparent">
                 <Cloud className="text-[#ff6b00]" size={24} />
-                <span className="text-xl font-bold text-white tracking-wide">Infrastructure</span>
+                <span className="text-xl font-bold text-[#101D36] tracking-wide">Infrastructure</span>
               </div>
               <div className="p-6 lg:px-8 lg:py-8 flex items-center">
-                <p className="text-white/80 text-lg lg:text-xl leading-relaxed font-medium">AWS, Google Cloud, Azure, or On-Premise AMD EPYC clusters</p>
+                <p className="text-gray-700 text-lg lg:text-xl leading-relaxed font-medium">AWS, Google Cloud, Azure, or On-Premise AMD EPYC clusters</p>
               </div>
             </div>
 
             {/* Security */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-white/5 hover:bg-white/10 transition-colors relative z-10">
-              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-white/5 bg-black/10 lg:bg-transparent">
-                <Lock className="text-blue-400" size={24} />
-                <span className="text-xl font-bold text-white tracking-wide">Security</span>
+            <div className="grid grid-cols-1 lg:grid-cols-2 border-b border-gray-100 hover:shadow-sm transition-colors relative z-10">
+              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-gray-100 bg-gray-50 lg:bg-transparent">
+                <Lock className="text-[#101D36]" size={24} />
+                <span className="text-xl font-bold text-[#101D36] tracking-wide">Security</span>
               </div>
               <div className="p-6 lg:px-8 lg:py-8 flex items-center">
-                <p className="text-white/80 text-lg lg:text-xl leading-relaxed font-medium">End-to-End Encryption and Multi-Factor Authentication (MFA)</p>
+                <p className="text-gray-700 text-lg lg:text-xl leading-relaxed font-medium">End-to-End Encryption and Multi-Factor Authentication (MFA)</p>
               </div>
             </div>
 
             {/* Automation */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 hover:bg-white/10 transition-colors relative z-10">
-              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-white/5 bg-black/10 lg:bg-transparent">
+            <div className="grid grid-cols-1 lg:grid-cols-2 hover:shadow-sm transition-colors relative z-10">
+              <div className="p-6 lg:px-8 lg:py-8 flex items-center gap-4 border-b lg:border-b-0 border-gray-100 bg-gray-50 lg:bg-transparent">
                 <Rocket className="text-[#ff6b00]" size={24} />
-                <span className="text-xl font-bold text-white tracking-wide">Automation</span>
+                <span className="text-xl font-bold text-[#101D36] tracking-wide">Automation</span>
               </div>
               <div className="p-6 lg:px-8 lg:py-8 flex items-center">
-                <p className="text-white/80 text-lg lg:text-xl leading-relaxed font-medium">Custom CI/CD pipelines for "zero-downtime" updates</p>
+                <p className="text-gray-700 text-lg lg:text-xl leading-relaxed font-medium">Custom CI/CD pipelines for "zero-downtime" updates</p>
               </div>
             </div>
           </div>
@@ -313,11 +223,11 @@ export const CustomMobileWebAppsContent = ({ onOpenModal }: CustomMobileWebAppsC
           className="mt-20 lg:mt-32 mb-10"
         >
           <div className="text-center mb-24">
-            <h2 className="text-4xl lg:text-6xl font-black text-white tracking-tighter mb-6">
+            <h2 className="text-4xl lg:text-6xl font-black text-[#101D36] tracking-tighter mb-6">
               Our Unified <span className="text-[#ff6b00]">Development Roadmap</span>
             </h2>
-            <p className="text-lg text-white/60 max-w-2xl mx-auto font-medium tracking-tight">
-              A 4-stage <span className="text-white font-bold">"Business-First"</span> process to ensure a smooth transition from concept to launch
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto font-medium tracking-tight">
+              A 4-stage <span className="text-[#101D36] font-bold">"Business-First"</span> process to ensure a smooth transition from concept to launch
             </p>
           </div>
 
@@ -348,15 +258,15 @@ export const CustomMobileWebAppsContent = ({ onOpenModal }: CustomMobileWebAppsC
                 icon: Rocket 
               }
             ].map((item, idx) => (
-              <div key={idx} className="relative group p-10 rounded-[40px] bg-white/5 border border-white/10 hover:bg-white/10 transition-all hover:-translate-y-2">
-                <div className="absolute -top-3 -right-3 w-14 h-14 bg-gradient-to-br from-[#1a305c] to-[#0c1a36] border-2 border-white/10 rounded-2xl flex items-center justify-center text-[#ff6b00] font-black text-2xl z-10 shadow-xl shadow-black/50">
+              <div key={idx} className="relative group p-10 rounded-[40px] bg-gray-50 border border-gray-200 hover:shadow-sm transition-all hover:-translate-y-2">
+                <div className="absolute -top-3 -right-3 w-14 h-14 bg-[#101D36] border-2 border-white rounded-2xl flex items-center justify-center text-[#ff6b00] font-black text-2xl z-10 shadow-sm">
                   {item.step}
                 </div>
-                <div className="mb-10 text-white/30 group-hover:text-[#ff6b00] transition-colors">
+                <div className="mb-10 text-gray-400 group-hover:text-[#ff6b00] transition-colors">
                   <item.icon size={44} strokeWidth={1.5} />
                 </div>
-                <h4 className="text-2xl font-black text-white mb-6 tracking-tight leading-none">{item.title}</h4>
-                <p className="text-white/50 text-[15px] leading-relaxed font-medium">{item.desc}</p>
+                <h4 className="text-2xl font-black text-[#101D36] mb-6 tracking-tight leading-none">{item.title}</h4>
+                <p className="text-gray-500 text-[15px] leading-relaxed font-medium">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -368,22 +278,21 @@ export const CustomMobileWebAppsContent = ({ onOpenModal }: CustomMobileWebAppsC
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-20 lg:mt-32 mb-10 relative overflow-hidden rounded-[40px] shadow-2xl border border-white/10"
+          className="mt-20 lg:mt-32 mb-10 relative overflow-hidden rounded-[40px] shadow-2xl border border-gray-200"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1a305c] to-[#0c1a36] z-0"></div>
-          <div className="absolute top-[50%] left-[50%] w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2 opacity-30 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#ff6b00]/20 to-transparent pointer-events-none z-0 rounded-full blur-[100px]"></div>
+          <div className="absolute inset-0 bg-[#101D36] z-0"></div>
           
           <div className="relative z-10 p-10 lg:p-16 flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-[55%]">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 mb-8">
                 <span className="w-2 h-2 rounded-full bg-[#ff6b00] animate-pulse"></span>
                 <span className="text-white/80 text-xs font-bold uppercase tracking-widest">Custom Development</span>
               </div>
               
-              <h2 className="text-4xl lg:text-5xl font-black text-white tracking-tighter leading-[1.1] mb-6 drop-shadow-lg">
+              <h2 className="text-4xl lg:text-5xl font-black text-white tracking-tighter leading-[1.1] mb-6">
                 Ready to Build Your <span className="text-[#ff6b00]">Custom Application?</span>
               </h2>
-              <p className="text-xl text-white/80 leading-relaxed font-medium mb-10 max-w-xl">
+              <p className="text-xl text-white/70 leading-relaxed font-medium mb-10 max-w-xl">
                 Let's create a high-performance mobile or web application that doesn't just meet your needs—it transforms how your business operates.
               </p>
               
@@ -394,24 +303,23 @@ export const CustomMobileWebAppsContent = ({ onOpenModal }: CustomMobileWebAppsC
               </div>
             </div>
 
-            <div className="lg:w-[45%] w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 lg:p-10 shadow-2xl relative">
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-[#ff6b00]/20 blur-2xl rounded-full pointer-events-none"></div>
+            <div className="lg:w-[45%] w-full bg-white border border-gray-200 rounded-[32px] p-8 lg:p-10 shadow-2xl relative">
               <div className="flex flex-col gap-6 relative z-10">
                 <div className="text-center">
-                  <h3 className="text-2xl font-black text-white mb-2">Start Your Custom Build</h3>
-                  <p className="text-white/60 text-sm">Transform your business operations</p>
+                  <h3 className="text-2xl font-black text-[#101D36] mb-2">Start Your Custom Build</h3>
+                  <p className="text-gray-600 text-sm">Transform your business operations</p>
                 </div>
                 
-                <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-4">
+                <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 space-y-4">
                   <div>
-                    <label className="text-white/60 font-bold text-[10px] mb-2 block uppercase tracking-widest">Your Name</label>
-                    <input type="text" placeholder="John Doe" className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-white/20 focus:outline-none focus:border-[#ff6b00]/50 focus:bg-black/60 transition-all font-medium" />
+                    <label className="text-gray-600 font-bold text-[10px] mb-2 block uppercase tracking-widest">Your Name</label>
+                    <input type="text" placeholder="John Doe" className="w-full bg-[#F5F6F8] border border-gray-200 rounded-xl px-5 py-4 text-[#101D36] placeholder-gray-400 focus:outline-none focus:border-[#ff6b00]/50 focus:bg-gray-100 transition-all font-medium" />
                   </div>
                   
                   <div>
-                    <label className="text-white/60 font-bold text-[10px] mb-2 block uppercase tracking-widest">Application Type</label>
+                    <label className="text-gray-600 font-bold text-[10px] mb-2 block uppercase tracking-widest">Application Type</label>
                     <div className="relative">
-                      <select defaultValue="" className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-[#ff6b00]/50 focus:bg-black/60 transition-all font-medium appearance-none cursor-pointer">
+                      <select defaultValue="" className="w-full bg-[#F5F6F8] border border-gray-200 rounded-xl px-5 py-4 text-[#101D36] focus:outline-none focus:border-[#ff6b00]/50 focus:bg-gray-100 transition-all font-medium appearance-none cursor-pointer">
                         <option value="" disabled className="text-gray-900 bg-white">Select a Type...</option>
                         <option value="crm-erp" className="text-gray-900 bg-white">CRM/ERP System</option>
                         <option value="ecommerce" className="text-gray-900 bg-white">E-Commerce Platform</option>
@@ -419,7 +327,7 @@ export const CustomMobileWebAppsContent = ({ onOpenModal }: CustomMobileWebAppsC
                         <option value="mobile" className="text-gray-900 bg-white">Mobile Application</option>
                         <option value="automation" className="text-gray-900 bg-white">Automation Tool</option>
                       </select>
-                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-white/50">
+                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
                         <ChevronRight size={18} className="rotate-90" />
                       </div>
                     </div>

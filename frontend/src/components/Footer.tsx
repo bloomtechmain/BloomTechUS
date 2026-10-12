@@ -17,11 +17,10 @@ const Footer = () => {
           {/* Services Column 1 */}
           <div>
             <h5 className="font-black text-xs uppercase tracking-widest text-[#5b6e8a] mb-8">Services & Solutions</h5>
-            <ul className="space-y-3 text-[11px] font-bold opacity-60 uppercase">
+            <ul className="space-y-3.5 text-[13px] font-medium opacity-70">
               <li><Link to="/services/professional-it-consulting" className="hover:text-[#ff6b00] transition-colors">Professional IT Consulting</Link></li>
               <li><Link to="/services/custom-crm-erp-solutions" className="hover:text-[#ff6b00] transition-colors">Custom CRM & ERP Solutions</Link></li>
               <li><Link to="/services/security-data-protection" className="hover:text-[#ff6b00] transition-colors">Security & Data Protection</Link></li>
-              <li><Link to="/services/asset-lifecycle-management" className="hover:text-[#ff6b00] transition-colors">Asset Lifecycle Management</Link></li>
               <li><Link to="/services/it-network-infrastructure" className="hover:text-[#ff6b00] transition-colors">IT Network & Infrastructure</Link></li>
               <li><Link to="/services/enterprise-networking" className="hover:text-[#ff6b00] transition-colors">Enterprise Networking</Link></li>
             </ul>
@@ -30,29 +29,28 @@ const Footer = () => {
           {/* Services Column 2 */}
           <div>
             <h5 className="font-black text-xs uppercase tracking-widest text-[#5b6e8a] mb-8 opacity-0 pointer-events-none">Services</h5>
-            <ul className="space-y-3 text-[11px] font-bold opacity-60 uppercase">
+            <ul className="space-y-3.5 text-[13px] font-medium opacity-70">
               <li><Link to="/services/custom-server-design-deployment" className="hover:text-[#ff6b00] transition-colors">Custom Server Design & Deployment</Link></li>
               <li><Link to="/services/custom-nas-storage" className="hover:text-[#ff6b00] transition-colors">Custom NAS Storage</Link></li>
               <li><Link to="/services/rack-and-roll-services" className="hover:text-[#ff6b00] transition-colors">Rack & Roll Services</Link></li>
               <li><Link to="/services/cloud-hosting-deployment" className="hover:text-[#ff6b00] transition-colors">Cloud Hosting & Deployment</Link></li>
-              <li><Link to="/services/av-smart-workspaces" className="hover:text-[#ff6b00] transition-colors">AV & Smart Workspaces</Link></li>
+              <li><Link to="/services/av-smart-workspaces" className="hover:text-[#ff6b00] transition-colors">Smart Workspaces</Link></li>
             </ul>
           </div>
           
           {/* Services Column 3 */}
           <div>
             <h5 className="font-black text-xs uppercase tracking-widest text-[#5b6e8a] mb-8 opacity-0 pointer-events-none">Services</h5>
-            <ul className="space-y-3 text-[11px] font-bold opacity-60 uppercase">
+            <ul className="space-y-3.5 text-[13px] font-medium opacity-70">
               <li><Link to="/services/custom-websites-design" className="hover:text-[#ff6b00] transition-colors">Custom Website Design</Link></li>
               <li><Link to="/services/online-marketing-services" className="hover:text-[#ff6b00] transition-colors">Online Marketing Services</Link></li>
-              <li><Link to="/services/ai-machine-learning" className="hover:text-[#ff6b00] transition-colors">AI & Machine Learning (ML)</Link></li>
-              <li><Link to="/services/ai-custom-development-automation" className="hover:text-[#ff6b00] transition-colors">AI Custom Development for Automation</Link></li>
+              <li><Link to="/services/ai-machine-learning" className="hover:text-[#ff6b00] transition-colors">AI Platform Integration</Link></li>
               <li><Link to="/services/custom-ai-hardware" className="hover:text-[#ff6b00] transition-colors">Custom AI Hardware</Link></li>
             </ul>
           </div>
           <div>
             <h5 className="font-black text-xs uppercase tracking-widest text-[#5b6e8a] mb-8">Company</h5>
-            <ul className="space-y-4 text-sm font-bold opacity-60 uppercase">
+            <ul className="space-y-3.5 text-[13px] font-medium opacity-70">
               <li><Link to="/company" className="hover:text-[#ff6b00] transition-colors">About Us</Link></li>
               <li><Link to="/contact" className="hover:text-[#ff6b00] transition-colors">Contact</Link></li>
               <li><Link to="/company#mission" className="hover:text-[#ff6b00] transition-colors">Our Mission</Link></li>

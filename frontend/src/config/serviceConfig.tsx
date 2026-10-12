@@ -1,4 +1,4 @@
-import { LucideIcon, Zap, Shield, Cpu, Cloud, Monitor, Bot, Sparkles, Package, ShieldAlert, Database, Truck, Search, Activity, Rocket, BrainCircuit, Layers, PenTool, Code } from 'lucide-react';
+import { LucideIcon, Zap, Shield, Cpu, Cloud, Monitor, ShieldAlert, Database, Truck, Search, Activity, Rocket, BrainCircuit, Layers, PenTool, Code, MapPin } from 'lucide-react';
 
 /**
  * Service Configuration
@@ -52,49 +52,34 @@ export const serviceConfigs: Record<string, ServiceConfig> = {
       text: 'Explore Collaboration Solutions'
     }
   },
-  'asset-lifecycle-management': {
+  'av-smart-workspaces': {
     tagline: {
-      icon: Package,
-      text: 'Strategic Control'
+      icon: MapPin,
+      text: 'A-Z Office Setup'
     },
-    heroTitle: 'Maximize Value. Minimize Risk. Master Your IT Lifecycle.',
-    heroDescription: 'From initial procurement to secure certified destruction, we manage every stage of your hardware and software journey. Stop losing track of your investments and start optimizing your ROI.',
+    heroTitle: 'From Site Visit to Final Handover. We Build Your Entire Office.',
+    heroDescription: 'We visit your office, assess your requirements, and handle the complete technology setup — furniture and workstations, networking and Wi-Fi, power and backup, meeting room AV, and security — for new offices and upgrades alike.',
     primaryCTA: {
-      text: 'Request an Asset Audit',
-      icon: Package
+      text: 'Request a Site Visit',
+      icon: MapPin
     },
     secondaryCTA: {
-      text: 'View Compliance Frameworks'
-    }
-  },
-  'ai-custom-development-automation': {
-    tagline: {
-      icon: Sparkles,
-      text: 'Intelligence in Motion'
-    },
-    heroTitle: 'Bespoke AI Solutions. Automate the Mundane. Command Your Data.',
-    heroDescription: 'We bridge the gap between raw data and actionable intelligence. From custom LLM implementations to automated data pipelines, we build AI tools that reclaim your time and turn "noise" into insight.',
-    primaryCTA: {
-      text: 'Book an AI Strategy Session',
-      icon: Bot
-    },
-    secondaryCTA: {
-      text: 'Explore Automation Use Cases'
+      text: 'See Our Process'
     }
   },
   'ai-machine-learning': {
     tagline: {
       icon: BrainCircuit,
-      text: 'Agentic Intelligence. Domain-Specific Precision.'
+      text: 'AI Platform Integration'
     },
-    heroTitle: 'Custom AI & Machine Learning. Built for Your Business Logic.',
-    heroDescription: 'We bridge the gap between raw data and actionable intelligence. From custom LLM implementations to automated data pipelines, we build AI tools that reclaim your time and turn "noise" into insight.',
+    heroTitle: 'Bring Claude Into Your Existing App. Hosted on AWS.',
+    heroDescription: 'We take the application you already have and integrate a leading AI platform — like Anthropic\'s Claude — into it via API, then deploy and host the integration on AWS. No rebuild, no new platform to learn.',
     primaryCTA: {
-      text: 'Book an AI Strategy Session',
+      text: 'Book an AI Integration Call',
       icon: BrainCircuit
     },
     secondaryCTA: {
-      text: 'Explore AI Use Cases'
+      text: 'See How It Works'
     }
   },
   'custom-crm-solutions': {

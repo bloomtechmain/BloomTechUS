@@ -128,26 +128,19 @@ export const seoConfigs: Record<string, SEOConfig> = {
 // Service-specific SEO configurations
 export const serviceSEO: Record<string, SEOConfig> = {
   'ai-machine-learning': {
-    title: 'AI Machine Learning Solutions - Custom AI Development - BloomTechUSA',
-    description: 'Enterprise AI machine learning solutions and custom AI development. Machine learning services include custom AI agents, on-premise AI hosting, document intelligence, and AI machine learning automation for business operations.',
-    keywords: 'AI machine learning, machine learning, custom AI, AI machine, custom AI development, machine learning solutions, AI agents, on-premise AI, AI automation',
+    title: 'AI Platform Integration - Claude & AWS Bedrock - BloomTechUSA',
+    description: 'We integrate AI platforms like Anthropic\'s Claude into your existing application via API, hosted on AWS (including AWS Bedrock). No rebuild required — add AI capability to the app you already run.',
+    keywords: 'AI integration, Claude API integration, AWS Bedrock, Anthropic Claude, AI platform integration, AWS AI hosting, existing application AI',
     canonical: `${baseUrl}/services/ai-machine-learning`,
     ogImage: `${baseUrl}/images/Custom_AI_Development.jpg`,
     schema: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      serviceType: 'AI & Machine Learning Solutions',
+      serviceType: 'AI Platform Integration',
       provider: organizationSchema,
       areaServed: 'US',
-      description: 'Custom AI development, machine learning solutions, and intelligent automation for enterprise businesses.'
+      description: 'Integrating AI platforms like Anthropic Claude into existing applications via API, hosted and scaled on AWS.'
     }
-  },
-  'ai-custom-development-automation': {
-    title: 'AI Custom Development & Automation Services - BloomTechUSA',
-    description: 'Bespoke AI development for business automation. Custom intelligent agents, workflow automation, and AI-powered process optimization to multiply your workforce effectiveness.',
-    keywords: 'AI automation, custom AI development, intelligent agents, business automation, workflow optimization',
-    canonical: `${baseUrl}/services/ai-custom-development-automation`,
-    ogImage: `${baseUrl}/images/Custom_AI_Development.jpg`
   },
   'custom-ai-hardware': {
     title: 'Custom AI Hardware & High-Performance Computing - BloomTechUSA',
@@ -161,6 +154,13 @@ export const serviceSEO: Record<string, SEOConfig> = {
     description: 'Enterprise infrastructure services and custom server design. Infrastructure servers with L3 switching, SD-WAN, high-availability networks, and custom server deployment for enterprise infrastructure needs.',
     keywords: 'enterprise infrastructure, custom server, infrastructure services, infrastructure servers, enterprise networking, IT infrastructure, custom server design, network infrastructure',
     canonical: `${baseUrl}/services/it-network-infrastructure`,
+    ogImage: `${baseUrl}/images/Enterprise_Network.jpg`
+  },
+  'enterprise-networking': {
+    title: 'Enterprise Networking & Multi-Site Connectivity - BloomTechUSA',
+    description: 'SD-WAN, redundant routing, and secure multi-site VPNs for zero-downtime enterprise connectivity. Bandwidth optimization and QoS for business-critical applications.',
+    keywords: 'enterprise networking, SD-WAN, multi-site VPN, redundant connectivity, bandwidth optimization, QoS, network failover',
+    canonical: `${baseUrl}/services/enterprise-networking`,
     ogImage: `${baseUrl}/images/Enterprise_Network.jpg`
   },
   'custom-server-design-deployment': {
@@ -185,9 +185,9 @@ export const serviceSEO: Record<string, SEOConfig> = {
     ogImage: `${baseUrl}/images/rack_and_roll.jpg`
   },
   'cloud-hosting-deployment': {
-    title: 'Cloud Hosting & Application Deployment - BloomTechUSA',
-    description: 'High-performance cloud hosting and automated deployment. CI/CD pipelines, container orchestration, managed cloud infrastructure, and scalable application hosting.',
-    keywords: 'cloud hosting, application deployment, CI/CD, container orchestration, managed hosting, DevOps',
+    title: 'Cloud Hosting & Application Deployment (AWS, Azure, DigitalOcean, Railway) - BloomTechUSA',
+    description: 'High-performance cloud hosting and automated deployment on AWS, Microsoft Azure, DigitalOcean, or Railway. CI/CD pipelines, container orchestration, and managed cloud infrastructure matched to your platform and budget.',
+    keywords: 'cloud hosting, application deployment, AWS hosting, Azure hosting, DigitalOcean, Railway deployment, CI/CD, container orchestration, managed hosting, DevOps',
     canonical: `${baseUrl}/services/cloud-hosting-deployment`,
     ogImage: `${baseUrl}/images/Cloud_application_Deployment.jpg`
   },
@@ -197,13 +197,6 @@ export const serviceSEO: Record<string, SEOConfig> = {
     keywords: 'custom CRM, custom ERP, business automation, workflow automation, enterprise software',
     canonical: `${baseUrl}/services/custom-crm-erp-solutions`,
     ogImage: `${baseUrl}/images/CRM_&_ERP.jpg`
-  },
-  'asset-lifecycle-management': {
-    title: 'IT Asset Lifecycle Management Services - BloomTechUSA',
-    description: 'Strategic IT asset management from procurement to certified destruction. Complete lifecycle control, compliance tracking, and IT investment optimization.',
-    keywords: 'asset lifecycle management, IT asset management, procurement, IT compliance, asset tracking',
-    canonical: `${baseUrl}/services/asset-lifecycle-management`,
-    ogImage: `${baseUrl}/images/Asset_Life_cycle.png`
   },
   'professional-it-consulting': {
     title: 'Professional IT Consulting & Strategic Advisory - BloomTechUSA',
@@ -220,9 +213,9 @@ export const serviceSEO: Record<string, SEOConfig> = {
     ogImage: `${baseUrl}/images/IT_Consolting.jpg`
   },
   'av-smart-workspaces': {
-    title: 'AV & Smart Workspace Solutions - BloomTechUSA',
-    description: 'Immersive audiovisual environments and smart workspace technology. Executive boardrooms, collaboration spaces, and enterprise AV integration.',
-    keywords: 'AV integration, smart workspaces, boardroom technology, collaboration spaces, audiovisual',
+    title: 'Smart Workspace Solutions - BloomTechUSA',
+    description: 'Complete A-Z office setup services. Site visits, workspace planning, furniture, networking, power, AV, and security, installed and configured for new or upgraded offices.',
+    keywords: 'office setup, smart workspaces, office network setup, office AV installation, workspace planning, office technology',
     canonical: `${baseUrl}/services/av-smart-workspaces`,
     ogImage: `${baseUrl}/images/rack_and_roll.jpg`
   },

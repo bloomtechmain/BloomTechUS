@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { Phone, Mail, Clock, MapPin, Send, CheckCircle, Linkedin, Twitter, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle, Linkedin, Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import { seoConfigs, socialMedia } from '../utils/seoConfig';
+import { seoConfigs } from '../utils/seoConfig';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -27,7 +27,7 @@ const ContactUs = () => {
     'Professional IT Consulting & Custom Software',
     'IT Infrastructure & Data Centres',
     'AI & Machine Learning Development',
-    'AV & Smart Workspaces',
+    'Smart Workspaces',
     'Online Presence (Websites & Marketing)'
   ];
 
@@ -108,34 +108,26 @@ const ContactUs = () => {
       <SEO config={seoConfigs.contact} />
       
       {/* Hero Section */}
-      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0c1a36] via-[#1a305c] to-[#0c1a36] pt-24">
-        {/* Background Effects */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-[#ff6b00]/20 rounded-full blur-[120px] animate-pulse"></div>
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
-        </div>
+      <section className="relative bg-[#101D36] pt-32 pb-20 overflow-hidden">
+        <div className="absolute top-[-20%] right-[10%] w-[450px] h-[450px] bg-[#ff6b00]/10 blur-[150px] rounded-full pointer-events-none"></div>
 
-        {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12 relative z-10 py-20">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-5xl mx-auto"
+            transition={{ duration: 0.7 }}
+            className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-2.5 mb-8 text-[12px] font-bold tracking-[0.3em] text-white uppercase bg-[#ff6b00]/20 backdrop-blur-md border border-[#ff6b00]/30 rounded-full">
-              <Mail className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 mb-6 text-xs font-semibold tracking-widest text-white/80 uppercase border border-white/15 rounded-full">
+              <Mail className="w-3.5 h-3.5 text-[#ff6b00]" />
               Get In Touch
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.9] tracking-tighter text-white">
-              Professional IT Consulting <br />
-              <span className="text-[#ff6b00]">& Enterprise Technology Solutions</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-[1.15] tracking-tight text-white">
+              Professional IT consulting <span className="text-[#ff6b00]">&amp; enterprise technology solutions</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed font-medium max-w-4xl mx-auto">
+            <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
               From strategic IT consulting and custom software to enterprise infrastructure, AI-driven automation, cybersecurity, and digital presence, we're ready to deliver technology solutions tailored to your needs. Whether you need a custom application, a secure network, or a full digital transformation strategy, our team of certified experts specializes in transforming businesses through technology.
             </p>
           </motion.div>
@@ -143,24 +135,24 @@ const ContactUs = () => {
       </section>
 
       {/* Contact Information Cards */}
-      <section className="py-20 px-6 bg-white relative -mt-20 z-20">
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
+      <section className="py-16 px-6 bg-white relative -mt-16 z-20">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {contactInfo.map((info, i) => {
               const Icon = info.icon;
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all border-2 border-gray-100 hover:border-[#ff6b00]/30 text-center"
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="bg-white rounded-xl p-7 shadow-lg border border-gray-200"
                 >
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${info.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform mx-auto`}>
-                    <Icon className="w-7 h-7 text-white" />
+                  <div className="w-11 h-11 rounded-lg bg-[#101D36] flex items-center justify-center mb-5">
+                    <Icon className="w-5 h-5 text-[#ff6b00]" />
                   </div>
-                  <h3 className="text-sm font-black uppercase tracking-widest text-gray-400 mb-3">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2.5">
                     {info.title}
                   </h3>
                   {info.link ? (
@@ -168,12 +160,12 @@ const ContactUs = () => {
                       href={info.link}
                       target={info.link.startsWith('http') ? '_blank' : undefined}
                       rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="text-[#0c1a36] font-bold text-lg leading-relaxed hover:text-[#ff6b00] transition-colors whitespace-pre-line block"
+                      className="text-[#101D36] font-semibold leading-relaxed hover:text-[#ff6b00] transition-colors whitespace-pre-line block"
                     >
                       {info.content}
                     </a>
                   ) : (
-                    <p className="text-[#0c1a36] font-bold text-lg leading-relaxed whitespace-pre-line">
+                    <p className="text-[#101D36] font-semibold leading-relaxed whitespace-pre-line">
                       {info.content}
                     </p>
                   )}
@@ -185,43 +177,40 @@ const ContactUs = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-32 px-6 bg-gray-50">
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <section className="py-24 lg:py-28 px-6 bg-[#F5F6F8]">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
+          <div className="grid lg:grid-cols-2 gap-14 items-start">
             {/* Left Column - Information */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
             >
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">
                 Let's Connect
               </span>
-              <h2 className="text-4xl md:text-6xl font-black text-[#0c1a36] mb-6 leading-tight">
-                Request Professional IT Consulting & Technology Services
+              <h2 className="text-3xl md:text-4xl font-bold text-[#101D36] mb-5 leading-tight tracking-tight">
+                Request professional IT consulting & technology services
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed font-medium mb-8">
+              <p className="text-gray-600 leading-relaxed mb-8">
                 Looking for professional IT consulting, custom software, enterprise infrastructure, AI solutions, or a stronger digital presence? Contact us to explore how our certified consultants and engineers can transform your business. Our solution architects respond within 24 hours.
               </p>
 
               {/* Office Location Highlight */}
-              <div className="bg-gradient-to-br from-[#0c1a36] to-[#1a305c] rounded-3xl p-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff6b00]/20 rounded-full blur-3xl"></div>
-                <div className="relative">
-                  <h3 className="text-sm font-black uppercase tracking-widest text-gray-400 mb-4">
-                    Our Austin Hub
-                  </h3>
-                  <p className="text-white font-bold text-xl mb-6 leading-relaxed">
-                    Located in the heart of the Domain, a premier center for technology and innovation.
-                  </p>
-                  <div className="flex items-start gap-3 text-gray-300">
-                    <MapPin className="w-5 h-5 text-[#ff6b00] mt-1 shrink-0" />
-                    <div>
-                      <p className="font-medium">BloomTech Corporation</p>
-                      <p className="font-medium">11801 Domain Blvd</p>
-                      <p className="font-medium">Austin, TX 78758</p>
-                    </div>
+              <div className="bg-[#101D36] rounded-xl p-7">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">
+                  Our Austin Hub
+                </h3>
+                <p className="text-white font-semibold text-lg mb-5 leading-relaxed">
+                  Located in the heart of the Domain, a premier center for technology and innovation.
+                </p>
+                <div className="flex items-start gap-3 text-white/60">
+                  <MapPin className="w-4.5 h-4.5 text-[#ff6b00] mt-0.5 shrink-0" />
+                  <div>
+                    <p>BloomTech Corporation</p>
+                    <p>11801 Domain Blvd</p>
+                    <p>Austin, TX 78758</p>
                   </div>
                 </div>
               </div>
@@ -229,19 +218,19 @@ const ContactUs = () => {
 
             {/* Right Column - Form */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="bg-white rounded-3xl p-10 shadow-2xl border-2 border-gray-100"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="bg-white rounded-xl p-8 md:p-10 shadow-sm border border-gray-200"
             >
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-20">
-                  <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mb-6">
-                    <CheckCircle className="w-10 h-10 text-green-600" />
+                  <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mb-6">
+                    <CheckCircle className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="text-3xl font-black text-[#0c1a36] mb-4">Message Sent!</h3>
-                  <p className="text-gray-600 text-center font-medium">
+                  <h3 className="text-2xl font-bold text-[#101D36] mb-3">Message Sent!</h3>
+                  <p className="text-gray-600 text-center">
                     Thank you for reaching out. We'll get back to you within 24 hours.
                   </p>
                 </div>
@@ -249,7 +238,7 @@ const ContactUs = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name Field */}
                   <div>
-                    <label htmlFor="name" className="block text-sm font-black uppercase tracking-wider text-gray-700 mb-2">
+                    <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                       Name (First & Last)
                     </label>
                     <input
@@ -258,14 +247,14 @@ const ContactUs = () => {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-[#ff6b00] focus:outline-none transition-colors font-medium text-[#0c1a36]"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff6b00] focus:outline-none focus:ring-1 focus:ring-[#ff6b00] transition-colors text-[#101D36]"
                       placeholder="John Doe"
                     />
                   </div>
 
                   {/* Email Field */}
                   <div>
-                    <label htmlFor="email" className="block text-sm font-black uppercase tracking-wider text-gray-700 mb-2">
+                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                       Business Email
                     </label>
                     <input
@@ -274,7 +263,7 @@ const ContactUs = () => {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-[#ff6b00] focus:outline-none transition-colors font-medium text-[#0c1a36]"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff6b00] focus:outline-none focus:ring-1 focus:ring-[#ff6b00] transition-colors text-[#101D36]"
                       placeholder="john.doe@company.com"
                     />
                     <p className="text-xs text-gray-500 mt-2 font-medium">
@@ -284,7 +273,7 @@ const ContactUs = () => {
 
                   {/* Company Field */}
                   <div>
-                    <label htmlFor="company" className="block text-sm font-black uppercase tracking-wider text-gray-700 mb-2">
+                    <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-2">
                       Company Name
                     </label>
                     <input
@@ -293,17 +282,17 @@ const ContactUs = () => {
                       required
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-[#ff6b00] focus:outline-none transition-colors font-medium text-[#0c1a36]"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff6b00] focus:outline-none focus:ring-1 focus:ring-[#ff6b00] transition-colors text-[#101D36]"
                       placeholder="Your Company"
                     />
                   </div>
 
                   {/* Area of Interest */}
                   <div>
-                    <label className="block text-sm font-black uppercase tracking-wider text-gray-700 mb-3">
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Area of Interest
                     </label>
-                    <div className="space-y-3">
+                    <div className="space-y-2.5">
                       {interestOptions.map((interest, i) => (
                         <label
                           key={i}
@@ -313,9 +302,9 @@ const ContactUs = () => {
                             type="checkbox"
                             checked={formData.interests.includes(interest)}
                             onChange={() => handleInterestToggle(interest)}
-                            className="mt-1 w-5 h-5 rounded border-2 border-gray-300 text-[#ff6b00] focus:ring-[#ff6b00] cursor-pointer"
+                            className="mt-0.5 w-4.5 h-4.5 rounded border-gray-300 text-[#ff6b00] focus:ring-[#ff6b00] cursor-pointer"
                           />
-                          <span className="text-gray-700 font-medium group-hover:text-[#ff6b00] transition-colors">
+                          <span className="text-gray-600 group-hover:text-[#101D36] transition-colors text-[15px]">
                             {interest}
                           </span>
                         </label>
@@ -325,7 +314,7 @@ const ContactUs = () => {
 
                   {/* Message Field */}
                   <div>
-                    <label htmlFor="message" className="block text-sm font-black uppercase tracking-wider text-gray-700 mb-2">
+                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                       Message
                     </label>
                     <textarea
@@ -334,7 +323,7 @@ const ContactUs = () => {
                       rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-[#ff6b00] focus:outline-none transition-colors font-medium text-[#0c1a36] resize-none"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff6b00] focus:outline-none focus:ring-1 focus:ring-[#ff6b00] transition-colors text-[#101D36] resize-none"
                       placeholder="Briefly describe your project goals or challenges"
                     />
                   </div>
@@ -347,14 +336,14 @@ const ContactUs = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full px-8 py-5 bg-[#ff6b00] text-white rounded-2xl font-black text-lg hover:bg-[#e65c00] hover:shadow-[0_0_40px_rgba(255,107,0,0.6)] disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3 group"
+                    className="w-full px-8 py-4 bg-[#ff6b00] text-white rounded-lg font-semibold hover:bg-[#e65c00] disabled:opacity-60 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2.5 group"
                   >
                     {loading ? (
-                      <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                     ) : (
                       <>
                         Send Message
-                        <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <Send className="w-4.5 h-4.5 group-hover:translate-x-0.5 transition-transform" />
                       </>
                     )}
                   </button>
@@ -366,67 +355,64 @@ const ContactUs = () => {
       </section>
 
       {/* Social Media Section */}
-      <section className="py-32 px-6 bg-[#0c1a36] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-[#ff6b00]/10 rounded-full blur-[120px]"></div>
-
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12 relative z-10">
+      <section className="py-20 px-6 bg-[#101D36]">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">
               Connect With Us
             </span>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Follow Our Journey
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight tracking-tight">
+              Follow our journey
             </h2>
-            <p className="text-xl text-gray-300 mb-16 max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
               Stay updated with the latest insights, innovations, and success stories from BloomTechUSA.
             </p>
 
             {/* Social Media Icons */}
-            <div className="flex flex-wrap items-center justify-center gap-6">
+            <div className="flex flex-wrap items-center justify-center gap-3">
               <a
                 href="#linkedin"
-                className="group w-20 h-20 rounded-2xl bg-white/5 backdrop-blur-sm border-2 border-white/10 flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-500 hover:to-cyan-500 hover:border-transparent transition-all"
+                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#ff6b00]/50 hover:bg-white/10 transition-colors"
               >
-                <Linkedin className="w-9 h-9 text-white group-hover:scale-110 transition-transform" />
+                <Linkedin className="w-5 h-5 text-white/70 group-hover:text-[#ff6b00] transition-colors" />
               </a>
               <a
                 href="#twitter"
-                className="group w-20 h-20 rounded-2xl bg-white/5 backdrop-blur-sm border-2 border-white/10 flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 hover:border-transparent transition-all"
+                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#ff6b00]/50 hover:bg-white/10 transition-colors"
               >
-                <Twitter className="w-9 h-9 text-white group-hover:scale-110 transition-transform" />
+                <Twitter className="w-5 h-5 text-white/70 group-hover:text-[#ff6b00] transition-colors" />
               </a>
               <a
                 href="#facebook"
-                className="group w-20 h-20 rounded-2xl bg-white/5 backdrop-blur-sm border-2 border-white/10 flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-500 hover:to-blue-700 hover:border-transparent transition-all"
+                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#ff6b00]/50 hover:bg-white/10 transition-colors"
               >
-                <Facebook className="w-9 h-9 text-white group-hover:scale-110 transition-transform" />
+                <Facebook className="w-5 h-5 text-white/70 group-hover:text-[#ff6b00] transition-colors" />
               </a>
               <a
                 href="#instagram"
-                className="group w-20 h-20 rounded-2xl bg-white/5 backdrop-blur-sm border-2 border-white/10 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover:border-transparent transition-all"
+                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#ff6b00]/50 hover:bg-white/10 transition-colors"
               >
-                <Instagram className="w-9 h-9 text-white group-hover:scale-110 transition-transform" />
+                <Instagram className="w-5 h-5 text-white/70 group-hover:text-[#ff6b00] transition-colors" />
               </a>
               <a
                 href="#youtube"
-                className="group w-20 h-20 rounded-2xl bg-white/5 backdrop-blur-sm border-2 border-white/10 flex items-center justify-center hover:bg-gradient-to-br hover:from-red-500 hover:to-red-700 hover:border-transparent transition-all"
+                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#ff6b00]/50 hover:bg-white/10 transition-colors"
               >
-                <Youtube className="w-9 h-9 text-white group-hover:scale-110 transition-transform" />
+                <Youtube className="w-5 h-5 text-white/70 group-hover:text-[#ff6b00] transition-colors" />
               </a>
             </div>
 
             {/* Social Media Placeholder Note */}
-            <div className="mt-16 max-w-2xl mx-auto">
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-                <p className="text-gray-300 font-medium leading-relaxed">
-                  <span className="text-[#ff6b00] font-black">Coming Soon:</span> Join our growing community across all major social platforms. Get exclusive insights, behind-the-scenes content, and be the first to know about our latest innovations and thought leadership.
+            <div className="mt-12 max-w-xl mx-auto">
+              <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+                <p className="text-white/60 leading-relaxed text-sm">
+                  <span className="text-[#ff6b00] font-semibold">Coming Soon:</span> Join our growing community across all major social platforms. Get exclusive insights, behind-the-scenes content, and be the first to know about our latest innovations and thought leadership.
                 </p>
               </div>
             </div>
@@ -436,38 +422,38 @@ const ContactUs = () => {
 
       {/* Map Section */}
       <section className="py-20 px-6 bg-white">
-        <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
+        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="text-center mb-12">
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-[#ff6b00] mb-4 block">
+            <div className="mb-10">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">
                 Visit Us
               </span>
-              <h2 className="text-4xl md:text-5xl font-black text-[#0c1a36] mb-4 leading-tight">
-                Find Us in Austin
+              <h2 className="text-3xl md:text-4xl font-bold text-[#101D36] leading-tight tracking-tight">
+                Find us in Austin
               </h2>
             </div>
 
-            <div className="rounded-[32px] overflow-hidden shadow-2xl border-4 border-gray-100">
-              <div className="p-6 bg-gradient-to-r from-[#ff6b00] to-orange-600 flex items-center justify-between">
+            <div className="rounded-xl overflow-hidden shadow-lg border border-gray-200">
+              <div className="p-5 bg-[#101D36] flex items-center justify-between">
                 <div>
-                  <h3 className="text-white font-black text-lg mb-1">Austin Headquarters</h3>
-                  <p className="text-white/80 text-sm font-medium">11801 Domain Blvd, Austin, TX 78758</p>
+                  <h3 className="text-white font-bold mb-0.5">Austin Headquarters</h3>
+                  <p className="text-white/60 text-sm">11801 Domain Blvd, Austin, TX 78758</p>
                 </div>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=11801+Domain+Blvd+Austin+TX+78758"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-white text-[#ff6b00] rounded-xl font-black text-sm uppercase tracking-wider hover:bg-gray-100 transition-all"
+                  className="px-5 py-2.5 bg-[#ff6b00] text-white rounded-lg font-semibold text-sm hover:bg-[#e65c00] transition-colors"
                 >
                   Open in Maps
                 </a>
               </div>
-              <div className="h-[500px] bg-gray-100">
+              <div className="h-[420px] bg-gray-100">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3441.9419!2d-97.7211!3d30.3947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cb3d4b769d67%3A0x1234567890abcdef!2s11801%20Domain%20Blvd%2C%20Austin%2C%20TX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
                   width="100%"
