@@ -183,23 +183,22 @@ const Company = () => {
       {/* Mission & Vision Section */}
       <section id="mission" className="py-24 lg:py-28 px-6 bg-white">
         <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
             {/* Mission */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="pt-8 border-t-2 border-brand-orange"
             >
-              <div className="flex items-center gap-3 mb-5">
-                <Target className="w-5 h-5 text-brand-orange" />
-                <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500">Our Mission</h2>
+              <div className="w-14 h-14 rounded-full bg-brand-orange flex items-center justify-center mb-7 shadow-lg shadow-orange-500/20">
+                <Target className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-navy mb-5 leading-snug">
+              <h2 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-4">Our Mission</h2>
+              <h3 className="text-2xl md:text-3xl font-bold text-navy mb-6 leading-snug">
                 AI machine learning & custom server solutions for business growth
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed border-l-2 border-brand-orange/30 pl-6">
                 To empower clients with AI machine learning solutions and enterprise infrastructure services that transform data into actionable insights. BloomTech delivers custom server design and machine learning expertise with security-first architecture, ensuring seamless integration from C-suite executives to end-users through measurable value and operational excellence.
               </p>
             </motion.div>
@@ -210,16 +209,15 @@ const Company = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="pt-8 border-t-2 border-navy"
             >
-              <div className="flex items-center gap-3 mb-5">
-                <Eye className="w-5 h-5 text-navy" />
-                <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500">Our Vision</h2>
+              <div className="w-14 h-14 rounded-full bg-teal flex items-center justify-center mb-7 shadow-lg shadow-teal-500/20">
+                <Eye className="w-6 h-6 text-white" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-navy mb-5 leading-snug">
+              <h2 className="text-xs font-bold uppercase tracking-widest text-teal-dark mb-4">Our Vision</h2>
+              <h3 className="text-2xl md:text-3xl font-bold text-navy mb-6 leading-snug">
                 Leading the digital future
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed border-l-2 border-teal/30 pl-6">
                 To establish BloomTech as the preeminent technology solutions provider within the United States, while aggressively expanding our global footprint to serve as a cornerstone of international digital infrastructure.
               </p>
             </motion.div>
