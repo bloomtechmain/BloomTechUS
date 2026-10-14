@@ -218,7 +218,7 @@ const Company = () => {
                 Leading the digital future
               </h3>
               <p className="text-gray-600 leading-relaxed border-l-2 border-teal/30 pl-6">
-                To establish BloomTech as the preeminent technology solutions provider within the United States, while aggressively expanding our global footprint to serve as a cornerstone of international digital infrastructure.
+                To establish BloomTech as the preeminent technology solutions provider within the United States, while aggressively expanding our global footprint to serve as a cornerstone of international digital infrastructure. We envision a future where every business, regardless of size, has access to enterprise-grade AI, infrastructure, and security — built on the same uncompromising standards we hold for our largest clients, and delivered by teams who treat your systems as rigorously as their own.
               </p>
             </motion.div>
           </div>
