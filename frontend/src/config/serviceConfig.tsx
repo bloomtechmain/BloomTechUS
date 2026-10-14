@@ -1,4 +1,4 @@
-import { LucideIcon, Zap, Shield, Cpu, Cloud, Monitor, ShieldAlert, Database, Truck, Search, Activity, Rocket, BrainCircuit, Layers, PenTool, Code, MapPin } from 'lucide-react';
+import { LucideIcon, Zap, Shield, Cpu, Cloud, ShieldAlert, Database, Truck, Search, Activity, Rocket, BrainCircuit, Layers, PenTool, Code, MapPin } from 'lucide-react';
 
 /**
  * Service Configuration
@@ -37,21 +37,6 @@ export const serviceConfigs: Record<string, ServiceConfig> = {
       text: 'View Our Tech Stack'
     }
   },
-  'managed-av-services': {
-    tagline: {
-      icon: Monitor,
-      text: 'Precision Communication'
-    },
-    heroTitle: 'Immersive AV. Seamless Collaboration. Engineering the Experience.',
-    heroDescription: 'Beyond the screen and the speaker, we design high-impact audiovisual environments. From executive boardrooms to enterprise-wide live events, we blend studio-grade audio precision with world-class video infrastructure.',
-    primaryCTA: {
-      text: 'Schedule a Site Survey',
-      icon: Monitor
-    },
-    secondaryCTA: {
-      text: 'Explore Collaboration Solutions'
-    }
-  },
   'av-smart-workspaces': {
     tagline: {
       icon: MapPin,
@@ -82,7 +67,7 @@ export const serviceConfigs: Record<string, ServiceConfig> = {
       text: 'See How It Works'
     }
   },
-  'custom-crm-solutions': {
+  'custom-crm-erp-solutions': {
     tagline: {
       icon: Layers,
       text: 'Total Operational Control'

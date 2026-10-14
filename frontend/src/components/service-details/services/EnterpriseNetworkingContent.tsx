@@ -1,8 +1,5 @@
 import { motion } from 'framer-motion';
-import {
-  Globe, Shuffle, Lock, Gauge, ShieldCheck,
-  Building2, Timer
-} from 'lucide-react';
+import { Globe, Shuffle, Lock, Gauge, ShieldCheck, Building2, Timer } from 'lucide-react';
 import { ServiceBenefitsSidebar } from '../ServiceBenefitsSidebar';
 
 /**
@@ -54,7 +51,7 @@ const whyItMatters = [
 
 export const EnterpriseNetworkingContent = (_props: EnterpriseNetworkingContentProps) => {
   return (
-    <section className="py-20 relative">
+    <section className="py-20 relative bg-grey-light">
       <div className="max-w-[1200px] mx-auto px-6 xl:px-0">
 
         {/* Overview & Client Benefits */}
@@ -63,35 +60,37 @@ export const EnterpriseNetworkingContent = (_props: EnterpriseNetworkingContentP
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-24 mt-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
+          className="mb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
         >
           <div className="lg:col-span-8">
             <div className="flex items-center gap-3 mb-10">
-              <div className="h-10 w-2 bg-[#ff6b00] rounded-full"></div>
-              <h2 className="text-2xl lg:text-3xl font-bold text-[#101D36] tracking-tight">Overview</h2>
+              <div className="h-10 w-2 bg-brand-orange rounded-full"></div>
+              <h2 className="text-2xl lg:text-3xl font-bold text-navy tracking-tight">Overview</h2>
             </div>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Deploy secure, lightning-fast enterprise networking solutions such as SD-WAN, multi-site VPNs, and highly redundant routing designed for maximum uptime and reliability. We connect every office, branch, and remote worker into one resilient, zero-downtime network.
-            </p>
+            <div className="bg-navy-wash border border-gray-200 rounded-[40px] p-8 lg:p-10">
+              <p className="text-lg lg:text-xl text-gray-700 leading-relaxed font-medium">
+                Deploy secure, lightning-fast enterprise networking solutions such as SD-WAN, multi-site VPNs, and highly redundant routing designed for maximum uptime and reliability. We connect every office, branch, and remote worker into one resilient, zero-downtime network.
+              </p>
+            </div>
           </div>
           <div className="lg:col-span-4">
             <ServiceBenefitsSidebar benefits={benefits} />
           </div>
         </motion.div>
 
-        {/* Capabilities — zigzag editorial rows */}
+        {/* Capabilities — bounded cards on the navy gradient, alternating accent color */}
         <div className="mb-24">
           <div className="flex items-center gap-3 mb-16">
-            <div className="h-10 w-2 bg-[#ff6b00] rounded-full"></div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-[#101D36] tracking-tight">
+            <div className="h-10 w-2 bg-brand-orange rounded-full"></div>
+            <h2 className="text-2xl lg:text-3xl font-bold text-navy tracking-tight">
               Enterprise Connectivity, Engineered for Zero Downtime
-              <span className="block text-lg lg:text-xl text-gray-500 font-medium mt-2 tracking-normal">Connecting every office, site, and remote worker without a single dropped packet</span>
+              <span className="block text-lg lg:text-xl text-gray-500 font-medium tracking-normal">Connecting every office, site, and remote worker without a single dropped packet</span>
             </h2>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-split-navy rounded-[40px] p-6 md:p-10">
             {capabilities.map((cap, idx) => {
-              const reversed = idx % 2 === 1;
+              const accent = idx % 2 === 0 ? 'brand-orange' : 'teal';
               return (
                 <motion.div
                   key={cap.num}
@@ -99,24 +98,17 @@ export const EnterpriseNetworkingContent = (_props: EnterpriseNetworkingContentP
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.06 }}
-                  className="relative border-b border-gray-200 pb-10 pt-2 last:border-b-0"
+                  className={`bg-navy-wash border border-gray-200 ${idx % 2 === 0 ? 'card-shape-a' : 'card-shape-b'} p-8 flex flex-col`}
                 >
-                  <div className={`flex flex-col md:flex-row gap-6 md:gap-12 items-start ${reversed ? 'md:flex-row-reverse' : ''}`}>
-                    <div className="shrink-0 w-full md:w-48 flex md:flex-col items-center md:items-start gap-4">
-                      <span className="text-6xl font-black text-[#101D36]/[0.06] leading-none select-none tabular-nums">{cap.num}</span>
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#101D36] to-[#1B2B4D] flex items-center justify-center shadow-sm shrink-0">
-                        <cap.icon size={22} className="text-[#ff6b00]" />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-[#101D36] mb-3">{cap.title}</h3>
-                      <p className="text-gray-600 leading-relaxed text-lg mb-5 max-w-2xl">{cap.desc}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {cap.stack.map((s) => (
-                          <span key={s} className="px-3 py-1.5 text-xs font-semibold bg-[#F5F6F8] text-gray-600 rounded-md border border-gray-200">{s}</span>
-                        ))}
-                      </div>
-                    </div>
+                  <div className={`inline-flex items-center justify-center w-11 h-11 rounded-xl text-white font-black text-sm mb-6 ${accent === 'brand-orange' ? 'bg-brand-orange' : 'bg-teal'}`}>
+                    {cap.num}
+                  </div>
+                  <h3 className="text-xl font-bold text-navy mb-3">{cap.title}</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm mb-5">{cap.desc}</p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {cap.stack.map((s) => (
+                      <span key={s} className={`px-3 py-1.5 text-xs font-semibold rounded-md border ${accent === 'brand-orange' ? 'bg-brand-orange/10 text-brand-orange-dark border-brand-orange/20' : 'bg-teal-wash text-teal-dark border-teal/20'}`}>{s}</span>
+                    ))}
                   </div>
                 </motion.div>
               );
@@ -124,23 +116,24 @@ export const EnterpriseNetworkingContent = (_props: EnterpriseNetworkingContentP
           </div>
         </div>
 
-        {/* Why It Matters — compact strip, not boxy cards */}
+        {/* Why It Matters — real bounded cards with color, not a borderless strip */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-10 bg-[#F5F6F8] border border-gray-200 rounded-2xl divide-y divide-gray-200 md:divide-y-0 md:grid md:grid-cols-3 md:divide-x"
+          className="mb-10 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {whyItMatters.map((item) => (
-            <div key={item.title} className="p-7 flex items-start gap-4">
-              <item.icon size={22} className="text-[#ff6b00] shrink-0 mt-0.5" />
-              <div>
-                <h3 className="text-base font-bold text-[#101D36] mb-1.5">{item.title}</h3>
+          {whyItMatters.map((item, idx) => {
+            const accent = idx % 2 === 0 ? 'bg-brand-orange' : 'bg-teal';
+            return (
+              <div key={item.title} className={`bg-navy-wash border border-gray-200 ${idx % 2 === 0 ? 'card-shape-a' : 'card-shape-b'} p-7`}>
+                <div className={`w-9 h-2.5 rounded-full ${accent} mb-5`}></div>
+                <h3 className="text-base font-bold text-navy mb-1.5">{item.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>

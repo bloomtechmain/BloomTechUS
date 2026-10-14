@@ -2,17 +2,16 @@ import { LucideIcon } from 'lucide-react';
 
 /**
  * ServiceTagline Component
- * Displays the service tagline with icon
+ * Displays the service tagline
  */
 interface ServiceTaglineProps {
-  icon: LucideIcon;
+  icon?: LucideIcon;
   text: string;
 }
 
-export const ServiceTagline = ({ icon: Icon, text }: ServiceTaglineProps) => {
+export const ServiceTagline = ({ text }: ServiceTaglineProps) => {
   return (
-    <div className="text-[#ff6b00] text-sm font-semibold uppercase tracking-widest mb-5 flex items-center gap-2">
-      <Icon size={16} className="text-[#ff6b00]" />
+    <div className="text-brand-orange text-sm font-semibold uppercase tracking-widest mb-5">
       {text}
     </div>
   );

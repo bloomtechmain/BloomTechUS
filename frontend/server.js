@@ -43,7 +43,8 @@ if (!isProduction) {
 // Serve HTML
 app.use('*', async (req, res) => {
   try {
-    const url = req.originalUrl.replace(base, '');
+    let url = req.originalUrl.replace(base, '');
+    if (!url.startsWith('/')) url = '/' + url;
 
     let template;
     let render;

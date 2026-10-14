@@ -1,4 +1,3 @@
-import { CheckCircle2 } from 'lucide-react';
 
 /**
  * ServiceFeatureCard Component
@@ -8,12 +7,11 @@ interface ServiceFeatureCardProps {
   feature: string;
   index?: number;
 }
-
-export const ServiceFeatureCard = ({ feature }: ServiceFeatureCardProps) => {
+export const ServiceFeatureCard = ({ feature, index = 0 }: ServiceFeatureCardProps) => {
   return (
-    <div className="bg-white p-5 rounded-xl border border-gray-200 flex items-start gap-3.5 hover:border-[#ff6b00]/40 hover:shadow-sm transition-all">
-      <CheckCircle2 size={20} className="text-[#ff6b00] shrink-0 mt-0.5" />
-      <span className="font-semibold text-[#101D36] leading-snug">{feature}</span>
+    <div className={`bg-navy-wash p-5 ${index % 2 === 0 ? 'card-shape-a' : 'card-shape-b'} border border-gray-200 flex items-start gap-3.5 hover:border-brand-orange/40 hover:shadow-sm transition-all`}>
+      <span className="w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0 mt-2"></span>
+      <span className="font-semibold text-navy leading-snug">{feature}</span>
     </div>
   );
 };

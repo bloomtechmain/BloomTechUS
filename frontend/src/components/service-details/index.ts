@@ -8,7 +8,6 @@ export { ServiceTagline } from './ServiceTagline';
 export { ServiceCTA } from './ServiceCTA';
 export { ServiceFeatureCard } from './ServiceFeatureCard';
 export { ServiceBenefitsSidebar } from './ServiceBenefitsSidebar';
-export { ServiceHeroImage } from './ServiceHeroImage';
 export { DefaultServiceContent } from './DefaultServiceContent';
 
 // Service-specific content components

@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Server, Globe, ShieldCheck, Brain, Phone, Mail, Clock, BadgeCheck, Sparkles, FileCode, Cloud, Lock, Building2, Database, Megaphone, Monitor, Lightbulb } from 'lucide-react';
+import { ArrowRight, Server, Globe, ShieldCheck, Brain, Clock, BadgeCheck, Sparkles, FileCode, Cloud, Lock, Building2, Database, Megaphone, Monitor, Lightbulb, Search, Layers, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { seoConfigs } from '../utils/seoConfig';
+import { Container, SectionHeading, Button, ProcessSteps } from '../components/ui';
 
 // Hero background videos - Desktop (1080p)
 import heroBg1 from '../assets/hero_bg_1.mp4';
@@ -69,25 +70,21 @@ const Home = () => {
       icon: Sparkles,
       number: '20+',
       label: 'Service Pillars',
-      color: 'from-[#ff6b00] to-orange-600'
     },
     {
       icon: BadgeCheck,
       label: 'CISA',
       sublabel: 'Certified Expertise',
-      color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: Clock,
       label: '24/7',
       sublabel: 'Monitoring & Support',
-      color: 'from-purple-500 to-pink-500'
     },
     {
       icon: Server,
       label: 'On-Prem',
       sublabel: 'AI Deployment Available',
-      color: 'from-green-500 to-emerald-500'
     }
   ];
 
@@ -95,100 +92,89 @@ const Home = () => {
     {
       number: '01',
       title: 'Custom Web & Mobile Development',
-      description: 'Bespoke CRMs, ERPs, e-commerce powerhouses, and secure client portals built on clean, scalable architecture with zero bloat.',
+      description: 'Bespoke CRMs, ERPs, and e-commerce platforms on clean, scalable architecture.',
       tags: ['React / Next.js', 'Django / FastAPI', 'Node.js'],
       icon: FileCode,
-      color: 'from-[#ff6b00] to-orange-600',
       link: '/services/custom-mobile-web-applications'
     },
     {
       number: '02',
       title: 'AI Platform Integration',
-      description: 'We integrate Claude and other AI platforms into your existing application via API, hosted and scaled on AWS. No rebuild required.',
+      description: 'Claude and other AI platforms integrated into your app via API, hosted on AWS.',
       tags: ['Anthropic Claude', 'AWS Bedrock', 'AWS Lambda'],
       icon: Brain,
-      color: 'from-purple-500 to-pink-500',
       link: '/services/ai-machine-learning'
     },
     {
       number: '03',
       title: 'IT Network & Infrastructure Design',
-      description: 'CompTIA Network+ certified architecture — SD-WAN, VLAN segmentation, next-gen firewalls, and enterprise Wi-Fi with zero dead zones.',
+      description: 'SD-WAN, VLAN segmentation, and enterprise Wi-Fi with zero dead zones.',
       tags: ['Cisco / Ubiquiti', 'pfSense / Fortinet', 'Zero Trust'],
       icon: Globe,
-      color: 'from-blue-500 to-cyan-500',
       link: '/services/it-network-infrastructure'
     },
     {
       number: '04',
       title: 'Custom Server Design & Deployment',
-      description: 'Purpose-built AMD EPYC compute clusters, GPU AI nodes, and enterprise NAS/SAN storage — engineered with 72-hour burn-in testing.',
+      description: 'Purpose-built AMD EPYC servers and GPU AI nodes, 72-hour burn-in tested.',
       tags: ['AMD EPYC', 'Proxmox VE', 'Supermicro'],
       icon: Server,
-      color: 'from-orange-500 to-red-500',
       link: '/services/custom-server-design-deployment'
     },
     {
       number: '05',
       title: 'Cloud Hosting & Application Deployment',
-      description: 'Managed cloud infrastructure, CI/CD pipelines, Docker/Kubernetes containerization, and DDoS-hardened WAF deployments across AWS, Azure, and GCP.',
+      description: 'Managed cloud infrastructure, CI/CD pipelines, and container orchestration.',
       tags: ['AWS / Azure / GCP', 'Kubernetes', 'CI/CD Pipelines'],
       icon: Cloud,
-      color: 'from-cyan-500 to-blue-500',
       link: '/services/cloud-hosting-deployment'
     },
     {
       number: '06',
       title: 'Security & Data Protection',
-      description: 'CISA-certified defense-in-depth — Zero Trust IAM, EDR/behavioral AI endpoint protection, immutable backups, and SOC2/HIPAA compliance alignment.',
+      description: 'Zero Trust IAM, EDR endpoint protection, and SOC2/HIPAA compliance.',
       tags: ['CrowdStrike / SentinelOne', 'Okta / Entra ID', 'SIEM / Wazuh'],
       icon: Lock,
-      color: 'from-red-500 to-pink-500',
       link: '/services/security-data-protection'
     },
     {
       number: '07',
       title: 'Custom CRM & ERP',
-      description: 'Lean, high-velocity CRM and ERP systems integrating inventory, HR, order processing, and supply chain logistics into one seamless dashboard.',
+      description: 'Lean CRM and ERP systems unifying inventory, HR, and order processing.',
       tags: ['Python / Django', 'PostgreSQL', 'QuickBooks / Stripe'],
       icon: Building2,
-      color: 'from-indigo-500 to-purple-500',
       link: '/services/custom-crm-erp-solutions'
     },
     {
       number: '08',
       title: 'Online Marketing & SEO',
-      description: 'Technical SEO, Core Web Vitals optimization, precision PPC, and AI-powered content strategy — engineered to dominate, not just rank.',
+      description: 'Technical SEO, precision PPC, and AI-powered content strategy that dominates.',
       tags: ['Ahrefs / SEMRush', 'GA4 / GTM', 'Google Ads / Meta'],
       icon: Megaphone,
-      color: 'from-pink-500 to-rose-500',
       link: '/services/online-marketing-services'
     },
     {
       number: '09',
       title: 'Custom NAS Solutions',
-      description: 'Enterprise NAS with 10G–100G throughput, ZFS/TrueNAS integrity, immutable snapshots, and encryption at rest — zero monthly subscription.',
+      description: 'Enterprise NAS with 10G–100G throughput and zero monthly subscription.',
       tags: ['AMD EPYC', 'OpenZFS / TrueNAS', 'Mellanox / Intel'],
       icon: Database,
-      color: 'from-teal-500 to-green-500',
       link: '/services/custom-nas-storage'
     },
     {
       number: '10',
       title: 'Managed AV & Collaboration',
-      description: 'Boardrooms to enterprise auditoriums — AV-over-IP, Crestron/AMX control, beamforming arrays, and broadcast-grade live event production.',
+      description: 'AV-over-IP, Crestron control, and broadcast-grade event production.',
       tags: ['MS Teams Rooms', 'Crestron / Extron', 'Biamp / Q-SYS'],
       icon: Monitor,
-      color: 'from-violet-500 to-purple-500',
       link: '/services/av-smart-workspaces'
     },
     {
       number: '12',
       title: 'Professional IT Consulting',
-      description: 'Digital transformation, vCISO/vCTO fractional services, cloud readiness assessments, and IT governance aligned to COBIT, NIST, and ITIL frameworks.',
+      description: 'Digital transformation and IT governance aligned to COBIT, NIST, and ITIL.',
       tags: ['CISA / ISACA', 'SOC2 / HIPAA', 'ISO 27001'],
       icon: Lightbulb,
-      color: 'from-yellow-500 to-amber-500',
       link: '/services/professional-it-consulting'
     }
   ];
@@ -206,7 +192,6 @@ const Home = () => {
         'Document intelligence & automated pipelines',
         'CISA-certified security & full audit logging'
       ],
-      color: 'from-[#ff6b00] to-orange-600'
     },
     {
       icon: Server,
@@ -220,7 +205,6 @@ const Home = () => {
         'Structured cabling to Cat6a/Fiber standards',
         'Hot/cold aisle airflow optimization'
       ],
-      color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: ShieldCheck,
@@ -234,7 +218,6 @@ const Home = () => {
         'Immutable, ransomware-proof backup design',
         'Quarterly security reviews & policy updates'
       ],
-      color: 'from-red-500 to-orange-500'
     }
   ];
 
@@ -261,6 +244,29 @@ const Home = () => {
     }
   ];
 
+  const engagementSteps = [
+    {
+      icon: Search,
+      title: 'Discover',
+      description: 'We audit your current systems, workflows, and goals before a single line of code is written or a single rack is touched.'
+    },
+    {
+      icon: Layers,
+      title: 'Architect',
+      description: 'We design the solution — software architecture, network topology, or hardware spec — mapped to how your business actually runs.'
+    },
+    {
+      icon: Rocket,
+      title: 'Build & Deploy',
+      description: 'Our engineers build, test, and deploy — 72-hour burn-in on hardware, staged rollouts on every software release.'
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Support & Iterate',
+      description: 'Ongoing monitoring and support keep things running, with quarterly reviews to iterate as your business grows.'
+    }
+  ];
+
   return (
     <div className="bg-white">
       <SEO config={seoConfigs.home} />
@@ -269,7 +275,7 @@ const Home = () => {
       <section className="relative h-screen min-h-[720px] max-h-[920px] flex items-center overflow-hidden">
 
         {/* Background Video Slideshow Layer */}
-        <div className="absolute inset-0 w-full h-full z-0 bg-[#0B1428]">
+        <div className="absolute inset-0 w-full h-full z-0 bg-navy-dark">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -314,9 +320,9 @@ const Home = () => {
         </div>
 
         {/* Single readability scrim — content side only */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1428] via-[#0B1428]/75 to-[#0B1428]/20 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-dark via-navy-dark/75 to-navy-dark/20 z-10"></div>
 
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12 relative z-20 w-full">
+        <Container className="relative z-20 w-full">
           <motion.div
             className="max-w-2xl"
             initial={{ opacity: 0, y: 16 }}
@@ -324,13 +330,13 @@ const Home = () => {
             transition={{ duration: 0.9, ease: "easeOut" }}
           >
             <div className="inline-flex items-center gap-2.5 px-4 py-2 mb-7 text-xs font-semibold tracking-widest text-white/80 uppercase border border-white/15 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff6b00]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
               Welcome to BloomTech Corporation
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-7 leading-[1.05] tracking-tight text-white">
               Build the future.
-              <span className="block text-[#ff6b00]">Define it.</span>
+              <span className="block text-brand-orange">Define it.</span>
             </h1>
 
             <p className="text-white/70 text-lg md:text-xl mb-10 leading-relaxed">
@@ -343,23 +349,22 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35 }}
             >
-              <Link to="/contact" className="w-full sm:w-auto px-8 py-4 bg-[#ff6b00] text-white rounded-lg font-semibold text-base hover:bg-[#e65c00] transition-colors flex items-center justify-center gap-2.5 group">
-                Start a Project <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-              <Link to="/services/ai-machine-learning" className="w-full sm:w-auto px-8 py-4 bg-transparent text-white border border-white/25 rounded-lg font-semibold text-base hover:border-white/50 transition-colors text-center">
+              <Button to="/contact" icon={ArrowRight} className="w-full sm:w-auto text-base px-8 py-4">
+                Start a Project
+              </Button>
+              <Button to="/services/ai-machine-learning" variant="onDark" className="w-full sm:w-auto text-base px-8 py-4">
                 Explore Services
-              </Link>
+              </Button>
             </motion.div>
           </motion.div>
-        </div>
+        </Container>
       </section>
 
       {/* Stats Bar */}
       <section className="py-14 px-6 bg-white border-b border-gray-200">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
+        <Container>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 rounded-xl overflow-hidden border border-gray-200">
             {statsData.map((stat, i) => {
-              const Icon = stat.icon;
               return (
                 <motion.div
                   key={i}
@@ -367,20 +372,17 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="bg-white p-7 flex items-center gap-4"
+                  className="bg-navy-wash p-7 flex items-center gap-4"
                 >
-                  <div className="w-11 h-11 rounded-lg bg-[#101D36] flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-[#ff6b00]" />
-                  </div>
                   <div>
                     {stat.number ? (
                       <>
-                        <div className="text-2xl font-bold text-[#101D36] leading-none mb-1.5">{stat.number}</div>
+                        <div className="text-2xl font-bold text-navy leading-none mb-1.5">{stat.number}</div>
                         <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{stat.label}</div>
                       </>
                     ) : (
                       <>
-                        <div className="text-xl font-bold text-[#101D36] leading-none mb-1.5">{stat.label}</div>
+                        <div className="text-xl font-bold text-navy leading-none mb-1.5">{stat.label}</div>
                         <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{stat.sublabel}</div>
                       </>
                     )}
@@ -389,31 +391,21 @@ const Home = () => {
               );
             })}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Services Grid - 12 Services */}
-      <section className="py-24 lg:py-28 px-6 bg-[#F5F6F8]">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mb-16"
-          >
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">What We Build</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#101D36] mb-5 leading-tight tracking-tight">
-              End-to-end technology solutions
-            </h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              From bare-metal server design to AI-native applications — every layer of your technology stack, engineered for scale.
-            </p>
-          </motion.div>
+      <section className="py-24 lg:py-28 px-6 bg-grey-light">
+        <Container>
+          <SectionHeading
+            eyebrow="What We Build"
+            title="End-to-end technology solutions"
+            description="From bare-metal server design to AI-native applications — every layer of your technology stack, engineered for scale."
+            className="mb-16"
+          />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="flex flex-wrap justify-center gap-5 bg-split-navy rounded-[40px] p-6 md:p-10">
             {servicesGrid.map((service, i) => {
-              const Icon = service.icon;
               return (
                 <motion.div
                   key={i}
@@ -421,26 +413,24 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: Math.min(i * 0.04, 0.3) }}
+                  className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.333px)]"
                 >
                   <Link
                     to={service.link}
-                    className="group relative block bg-white rounded-xl p-7 border border-gray-200 hover:border-transparent hover:shadow-xl overflow-hidden transition-all h-full"
+                    className={`group relative block bg-navy-wash ${i % 2 === 0 ? 'card-shape-a' : 'card-shape-b'} p-5 border border-gray-200 hover:border-transparent hover:shadow-xl overflow-hidden transition-all h-full`}
                   >
-                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#ff6b00] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
-                    <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-[#101D36] to-[#1B2B4D] flex items-center justify-center mb-5 shadow-sm group-hover:scale-110 transition-transform">
-                      <Icon className="w-5 h-5 text-[#ff6b00]" />
-                    </div>
-                    <h3 className="text-lg font-bold text-[#101D36] mb-2.5 group-hover:text-[#ff6b00] transition-colors leading-snug">
+                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-brand-orange scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
+                    <h3 className="text-base font-bold text-navy mb-1.5 group-hover:text-brand-orange transition-colors leading-snug">
                       {service.title}
                     </h3>
-                    <p className="text-[15px] text-gray-600 leading-relaxed mb-5">
+                    <p className="text-[13px] text-gray-600 leading-relaxed mb-3.5">
                       {service.description}
                     </p>
                     <div className="flex flex-wrap gap-1.5">
                       {service.tags.map((tag, idx) => (
                         <span
                           key={idx}
-                          className="px-2.5 py-1 text-[11px] font-semibold bg-gray-100 text-gray-600 rounded-md"
+                          className="px-2 py-0.5 text-[10px] font-semibold bg-gray-100 text-gray-600 rounded-md"
                         >
                           {tag}
                         </span>
@@ -451,28 +441,25 @@ const Home = () => {
               );
             })}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Three Core Pillars */}
-      <section className="py-24 lg:py-28 px-6 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mb-16"
-          >
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">Core Solutions</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#101D36] leading-tight tracking-tight">
-              Three pillars. Total coverage.
-            </h2>
-          </motion.div>
+      <section className="py-24 lg:py-28 px-6 bg-[linear-gradient(to_bottom,white_50%,var(--color-navy)_50%)]">
+        <Container>
+          <SectionHeading
+            eyebrow="Core Solutions"
+            title="Three pillars. Total coverage."
+            className="mb-16"
+          />
 
           <div className="grid md:grid-cols-3 gap-6">
             {corePillars.map((pillar, i) => {
-              const Icon = pillar.icon;
+              const theme = [
+                { shape: 'card-shape-a', wash: 'bg-brand-orange-wash', text: 'text-brand-orange-dark', bar: 'bg-brand-orange' },
+                { shape: 'card-shape-b', wash: 'bg-teal-wash', text: 'text-teal-dark', bar: 'bg-teal' },
+                { shape: 'card-shape-c', wash: 'bg-violet-wash', text: 'text-violet-dark', bar: 'bg-violet' },
+              ][i % 3];
               return (
                 <motion.div
                   key={i}
@@ -480,24 +467,22 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="group rounded-2xl p-8 border border-gray-200 hover:shadow-lg hover:border-transparent transition-all"
+                  className={`group relative ${theme.shape} p-8 ${theme.wash} border border-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all overflow-hidden`}
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#101D36] to-[#1B2B4D] flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                    <Icon className="w-7 h-7 text-[#ff6b00]" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#101D36] mb-2">
+                  <div className={`absolute top-0 left-0 right-0 h-[3px] ${theme.bar} scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300`}></div>
+                  <h3 className="text-2xl font-bold text-navy mb-2">
                     {pillar.title}
                   </h3>
-                  <p className="text-sm font-semibold text-[#ff6b00] mb-4">
+                  <p className={`text-sm font-semibold ${theme.text} mb-4`}>
                     {pillar.subtitle}
                   </p>
                   <p className="text-gray-600 leading-relaxed mb-6">
                     {pillar.description}
                   </p>
-                  <div className="space-y-2.5 pt-6 border-t border-gray-100">
+                  <div className="space-y-2.5 pt-6 border-t border-gray-300/70">
                     {pillar.features.map((feature, idx) => (
                       <div key={idx} className="flex items-start gap-2.5">
-                        <div className="w-1 h-1 rounded-full bg-[#101D36]/40 mt-2.5 shrink-0"></div>
+                        <div className="w-1 h-1 rounded-full bg-navy/40 mt-2.5 shrink-0"></div>
                         <span className="text-sm text-gray-600 leading-relaxed">{feature}</span>
                       </div>
                     ))}
@@ -506,47 +491,63 @@ const Home = () => {
               );
             })}
           </div>
-        </div>
+        </Container>
+      </section>
+
+      {/* How We Work */}
+      <section className="py-24 lg:py-28 px-6 bg-grey-light">
+        <Container>
+          <SectionHeading
+            eyebrow="How We Work"
+            title="From first audit to ongoing support."
+            description="A consistent, four-stage engagement — whether the deliverable is a line of code or a rack of hardware."
+            className="mb-16"
+          />
+          <ProcessSteps steps={engagementSteps} />
+        </Container>
       </section>
 
       {/* Why BloomTech */}
-      <section className="py-24 lg:py-28 px-6 bg-[#101D36]">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mb-16"
-          >
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">Why BloomTech</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight tracking-tight">
-              The standard is different here.
-            </h2>
-          </motion.div>
+      <section className="py-24 lg:py-28 px-6 bg-white">
+        <Container>
+          <SectionHeading
+            eyebrow="Why BloomTech"
+            title="The standard is different here."
+            className="mb-16"
+          />
 
-          <div className="grid md:grid-cols-2 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
-            {whyBloomTech.map((item, i) => (
+          <div className="bg-split-navy rounded-[40px] p-6 md:p-10">
+          <div className="grid md:grid-cols-2 gap-5">
+            {whyBloomTech.map((item, i) => {
+              const theme = [
+                { wash: 'bg-brand-orange-wash', shape: 'card-shape-a', num: 'text-brand-orange' },
+                { wash: 'bg-teal-wash', shape: 'card-shape-b', num: 'text-teal-dark' },
+                { wash: 'bg-violet-wash', shape: 'card-shape-c', num: 'text-violet-dark' },
+                { wash: 'bg-gold-wash', shape: 'card-shape-d', num: 'text-gold-dark' },
+              ][i % 4];
+              return (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-[#101D36] p-9 lg:p-10"
+                className={`${theme.wash} border border-gray-200 ${theme.shape} p-9 lg:p-10`}
               >
-                <div className="text-sm font-bold text-[#ff6b00] mb-4 tabular-nums">{item.number}</div>
-                <h4 className="text-xl font-bold text-white mb-3">{item.title}</h4>
-                <p className="text-white/60 leading-relaxed">{item.description}</p>
+                <div className={`text-sm font-bold ${theme.num} mb-4 tabular-nums`}>{item.number}</div>
+                <h4 className="text-xl font-bold text-navy mb-3">{item.title}</h4>
+                <p className="text-gray-600 leading-relaxed">{item.description}</p>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
-        </div>
+          </div>
+        </Container>
       </section>
 
       {/* Contact CTA Section */}
-      <section className="py-24 lg:py-28 px-6 bg-[#101D36]">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
+      <section className="py-24 lg:py-28 px-6 bg-navy-gradient">
+        <Container>
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -562,12 +563,9 @@ const Home = () => {
                 The future isn't just "using AI" or "moving to the cloud" — it's embedding intelligence into the fabric of your business. Let's build the technical foundation that puts you ahead, permanently.
               </p>
 
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#ff6b00] text-white rounded-lg font-semibold hover:bg-[#e65c00] transition-colors group"
-              >
-                Start a Project <ArrowRight className="w-4.5 h-4.5 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
+              <Button to="/contact" icon={ArrowRight}>
+                Start a Project
+              </Button>
             </motion.div>
 
             <motion.div
@@ -577,16 +575,16 @@ const Home = () => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="lg:col-span-5 flex flex-col gap-3"
             >
-              <a href="tel:+17373298158" className="flex items-center gap-4 px-6 py-5 bg-white/5 border border-white/10 rounded-xl hover:border-[#ff6b00]/40 transition-colors">
-                <Phone className="w-5 h-5 text-[#ff6b00] shrink-0" />
+              <a href="tel:+17373298158" className="flex items-center gap-4 px-6 py-5 bg-white/5 border border-white/10 rounded-xl hover:border-brand-orange/40 transition-colors">
+                
                 <div>
                   <p className="text-white/40 text-[11px] font-semibold uppercase tracking-wider">Call</p>
                   <span className="text-white font-semibold text-lg">(737) 329-8158</span>
                 </div>
               </a>
 
-              <a href="mailto:info@bloomtechus.com" className="flex items-center gap-4 px-6 py-5 bg-white/5 border border-white/10 rounded-xl hover:border-[#ff6b00]/40 transition-colors">
-                <Mail className="w-5 h-5 text-[#ff6b00] shrink-0" />
+              <a href="mailto:info@bloomtechus.com" className="flex items-center gap-4 px-6 py-5 bg-white/5 border border-white/10 rounded-xl hover:border-brand-orange/40 transition-colors">
+                
                 <div>
                   <p className="text-white/40 text-[11px] font-semibold uppercase tracking-wider">Email</p>
                   <span className="text-white font-semibold text-lg">info@bloomtechus.com</span>
@@ -594,7 +592,7 @@ const Home = () => {
               </a>
             </motion.div>
           </div>
-        </div>
+        </Container>
       </section>
 
       <Footer />

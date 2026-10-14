@@ -9,7 +9,7 @@ import ContactUs from './pages/ContactUs';
 
 function AppRoutes() {
   return (
-    <div className="selection:bg-[#ff6b00] selection:text-white font-sans overflow-x-hidden">
+    <div className="selection:bg-brand-orange selection:text-white font-sans overflow-x-hidden">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

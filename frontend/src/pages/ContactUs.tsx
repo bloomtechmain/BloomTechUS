@@ -5,6 +5,8 @@ import { Phone, Mail, MapPin, Send, CheckCircle, Linkedin, Twitter, Facebook, In
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { seoConfigs } from '../utils/seoConfig';
+import { IconTile } from '../components/ui';
+import datacenterHero from '../assets/hero_bg_3.webp';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -85,21 +87,18 @@ const ContactUs = () => {
       title: 'Phone',
       content: '(737) 329-8158',
       link: 'tel:+17373298158',
-      color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: Mail,
       title: 'Email',
       content: 'info@bloomtechusa.com',
       link: 'mailto:info@bloomtechusa.com',
-      color: 'from-[#ff6b00] to-orange-600'
     },
     {
       icon: MapPin,
       title: 'Office Location',
       content: 'BloomTech Corporation\n11801 Domain Blvd\nAustin, TX 78758',
       link: 'https://www.google.com/maps/search/?api=1&query=11801+Domain+Blvd+Austin+TX+78758',
-      color: 'from-green-500 to-emerald-500'
     }
   ];
 
@@ -108,8 +107,9 @@ const ContactUs = () => {
       <SEO config={seoConfigs.contact} />
       
       {/* Hero Section */}
-      <section className="relative bg-[#101D36] pt-32 pb-20 overflow-hidden">
-        <div className="absolute top-[-20%] right-[10%] w-[450px] h-[450px] bg-[#ff6b00]/10 blur-[150px] rounded-full pointer-events-none"></div>
+      <section className="relative bg-navy-gradient pt-32 pb-20 overflow-hidden">
+        <img src={datacenterHero} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/50"></div>
 
         <div className="max-w-[1400px] mx-auto px-6 xl:px-12 relative z-10">
           <motion.div
@@ -119,65 +119,64 @@ const ContactUs = () => {
             className="max-w-3xl"
           >
             <div className="inline-flex items-center gap-2.5 px-4 py-2 mb-6 text-xs font-semibold tracking-widest text-white/80 uppercase border border-white/15 rounded-full">
-              <Mail className="w-3.5 h-3.5 text-[#ff6b00]" />
+              <Mail className="w-3.5 h-3.5 text-brand-orange" />
               Get In Touch
             </div>
 
             <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-[1.15] tracking-tight text-white">
-              Professional IT consulting <span className="text-[#ff6b00]">&amp; enterprise technology solutions</span>
+              Professional IT consulting <span className="text-brand-orange">&amp; enterprise technology solutions</span>
             </h1>
 
             <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
-              From strategic IT consulting and custom software to enterprise infrastructure, AI-driven automation, cybersecurity, and digital presence, we're ready to deliver technology solutions tailored to your needs. Whether you need a custom application, a secure network, or a full digital transformation strategy, our team of certified experts specializes in transforming businesses through technology.
+              From IT consulting and custom software to infrastructure, AI, and cybersecurity — our certified experts deliver technology solutions tailored to your business.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Information Cards */}
-      <section className="py-16 px-6 bg-white relative -mt-16 z-20">
+      {/* Contact Information Bar — one continuous strip instead of separate padded boxes */}
+      <section className="py-16 px-6 bg-split-navy relative -mt-16 z-20">
         <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-navy-wash rounded-[28px] border border-gray-200 shadow-lg divide-y divide-gray-200 md:divide-y-0 md:flex md:divide-x"
+          >
             {contactInfo.map((info, i) => {
               const Icon = info.icon;
               return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="bg-white rounded-xl p-7 shadow-lg border border-gray-200"
-                >
-                  <div className="w-11 h-11 rounded-lg bg-[#101D36] flex items-center justify-center mb-5">
-                    <Icon className="w-5 h-5 text-[#ff6b00]" />
+                <div key={i} className="flex items-center gap-4 p-7 md:flex-1">
+                  <IconTile icon={Icon} tone={i === 0 ? 'orange' : i === 1 ? 'teal' : 'navy'} />
+                  <div className="min-w-0">
+                    <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-1">
+                      {info.title}
+                    </h3>
+                    {info.link ? (
+                      <a
+                        href={info.link}
+                        target={info.link.startsWith('http') ? '_blank' : undefined}
+                        rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="text-navy font-semibold leading-snug hover:text-brand-orange transition-colors whitespace-pre-line block"
+                      >
+                        {info.content}
+                      </a>
+                    ) : (
+                      <p className="text-navy font-semibold leading-snug whitespace-pre-line">
+                        {info.content}
+                      </p>
+                    )}
                   </div>
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2.5">
-                    {info.title}
-                  </h3>
-                  {info.link ? (
-                    <a
-                      href={info.link}
-                      target={info.link.startsWith('http') ? '_blank' : undefined}
-                      rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="text-[#101D36] font-semibold leading-relaxed hover:text-[#ff6b00] transition-colors whitespace-pre-line block"
-                    >
-                      {info.content}
-                    </a>
-                  ) : (
-                    <p className="text-[#101D36] font-semibold leading-relaxed whitespace-pre-line">
-                      {info.content}
-                    </p>
-                  )}
-                </motion.div>
+                </div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-24 lg:py-28 px-6 bg-[#F5F6F8]">
+      <section className="py-24 lg:py-28 px-6 bg-grey-light">
         <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
           <div className="grid lg:grid-cols-2 gap-14 items-start">
             {/* Left Column - Information */}
@@ -187,10 +186,10 @@ const ContactUs = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange mb-4 block">
                 Let's Connect
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#101D36] mb-5 leading-tight tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5 leading-tight tracking-tight">
                 Request professional IT consulting & technology services
               </h2>
               <p className="text-gray-600 leading-relaxed mb-8">
@@ -198,7 +197,7 @@ const ContactUs = () => {
               </p>
 
               {/* Office Location Highlight */}
-              <div className="bg-[#101D36] rounded-xl p-7">
+              <div className="bg-navy-gradient rounded-xl p-7">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">
                   Our Austin Hub
                 </h3>
@@ -206,7 +205,7 @@ const ContactUs = () => {
                   Located in the heart of the Domain, a premier center for technology and innovation.
                 </p>
                 <div className="flex items-start gap-3 text-white/60">
-                  <MapPin className="w-4.5 h-4.5 text-[#ff6b00] mt-0.5 shrink-0" />
+                  <MapPin className="w-4.5 h-4.5 text-brand-orange mt-0.5 shrink-0" />
                   <div>
                     <p>BloomTech Corporation</p>
                     <p>11801 Domain Blvd</p>
@@ -222,14 +221,14 @@ const ContactUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-white rounded-xl p-8 md:p-10 shadow-sm border border-gray-200"
+              className="bg-navy-wash rounded-xl p-8 md:p-10 shadow-sm border border-gray-200"
             >
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-20">
-                  <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mb-6">
-                    <CheckCircle className="w-8 h-8 text-green-600" />
+                  <div className="w-16 h-16 rounded-full bg-teal flex items-center justify-center mb-6">
+                    <CheckCircle className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#101D36] mb-3">Message Sent!</h3>
+                  <h3 className="text-2xl font-bold text-navy mb-3">Message Sent!</h3>
                   <p className="text-gray-600 text-center">
                     Thank you for reaching out. We'll get back to you within 24 hours.
                   </p>
@@ -247,7 +246,7 @@ const ContactUs = () => {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff6b00] focus:outline-none focus:ring-1 focus:ring-[#ff6b00] transition-colors text-[#101D36]"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-orange focus:outline-none focus:ring-1 focus:ring-brand-orange transition-colors text-navy"
                       placeholder="John Doe"
                     />
                   </div>
@@ -263,7 +262,7 @@ const ContactUs = () => {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff6b00] focus:outline-none focus:ring-1 focus:ring-[#ff6b00] transition-colors text-[#101D36]"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-orange focus:outline-none focus:ring-1 focus:ring-brand-orange transition-colors text-navy"
                       placeholder="john.doe@company.com"
                     />
                     <p className="text-xs text-gray-500 mt-2 font-medium">
@@ -282,7 +281,7 @@ const ContactUs = () => {
                       required
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff6b00] focus:outline-none focus:ring-1 focus:ring-[#ff6b00] transition-colors text-[#101D36]"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-orange focus:outline-none focus:ring-1 focus:ring-brand-orange transition-colors text-navy"
                       placeholder="Your Company"
                     />
                   </div>
@@ -302,9 +301,9 @@ const ContactUs = () => {
                             type="checkbox"
                             checked={formData.interests.includes(interest)}
                             onChange={() => handleInterestToggle(interest)}
-                            className="mt-0.5 w-4.5 h-4.5 rounded border-gray-300 text-[#ff6b00] focus:ring-[#ff6b00] cursor-pointer"
+                            className="mt-0.5 w-4.5 h-4.5 rounded border-gray-300 text-brand-orange focus:ring-brand-orange cursor-pointer"
                           />
-                          <span className="text-gray-600 group-hover:text-[#101D36] transition-colors text-[15px]">
+                          <span className="text-gray-600 group-hover:text-navy transition-colors text-[15px]">
                             {interest}
                           </span>
                         </label>
@@ -323,7 +322,7 @@ const ContactUs = () => {
                       rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#ff6b00] focus:outline-none focus:ring-1 focus:ring-[#ff6b00] transition-colors text-[#101D36] resize-none"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-orange focus:outline-none focus:ring-1 focus:ring-brand-orange transition-colors text-navy resize-none"
                       placeholder="Briefly describe your project goals or challenges"
                     />
                   </div>
@@ -336,7 +335,7 @@ const ContactUs = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full px-8 py-4 bg-[#ff6b00] text-white rounded-lg font-semibold hover:bg-[#e65c00] disabled:opacity-60 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2.5 group"
+                    className="w-full px-8 py-4 bg-brand-orange text-white rounded-lg font-semibold hover:bg-brand-orange-dark disabled:opacity-60 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2.5 group"
                   >
                     {loading ? (
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -355,7 +354,7 @@ const ContactUs = () => {
       </section>
 
       {/* Social Media Section */}
-      <section className="py-20 px-6 bg-[#101D36]">
+      <section className="py-20 px-6 bg-navy-gradient">
         <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -364,7 +363,7 @@ const ContactUs = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange mb-4 block">
               Connect With Us
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight tracking-tight">
@@ -378,33 +377,33 @@ const ContactUs = () => {
             <div className="flex flex-wrap items-center justify-center gap-3">
               <a
                 href="#linkedin"
-                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#ff6b00]/50 hover:bg-white/10 transition-colors"
+                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-orange/50 hover:bg-white/10 transition-colors"
               >
-                <Linkedin className="w-5 h-5 text-white/70 group-hover:text-[#ff6b00] transition-colors" />
+                <Linkedin className="w-5 h-5 text-white/70 group-hover:text-brand-orange transition-colors" />
               </a>
               <a
                 href="#twitter"
-                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#ff6b00]/50 hover:bg-white/10 transition-colors"
+                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-orange/50 hover:bg-white/10 transition-colors"
               >
-                <Twitter className="w-5 h-5 text-white/70 group-hover:text-[#ff6b00] transition-colors" />
+                <Twitter className="w-5 h-5 text-white/70 group-hover:text-brand-orange transition-colors" />
               </a>
               <a
                 href="#facebook"
-                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#ff6b00]/50 hover:bg-white/10 transition-colors"
+                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-orange/50 hover:bg-white/10 transition-colors"
               >
-                <Facebook className="w-5 h-5 text-white/70 group-hover:text-[#ff6b00] transition-colors" />
+                <Facebook className="w-5 h-5 text-white/70 group-hover:text-brand-orange transition-colors" />
               </a>
               <a
                 href="#instagram"
-                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#ff6b00]/50 hover:bg-white/10 transition-colors"
+                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-orange/50 hover:bg-white/10 transition-colors"
               >
-                <Instagram className="w-5 h-5 text-white/70 group-hover:text-[#ff6b00] transition-colors" />
+                <Instagram className="w-5 h-5 text-white/70 group-hover:text-brand-orange transition-colors" />
               </a>
               <a
                 href="#youtube"
-                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#ff6b00]/50 hover:bg-white/10 transition-colors"
+                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-orange/50 hover:bg-white/10 transition-colors"
               >
-                <Youtube className="w-5 h-5 text-white/70 group-hover:text-[#ff6b00] transition-colors" />
+                <Youtube className="w-5 h-5 text-white/70 group-hover:text-brand-orange transition-colors" />
               </a>
             </div>
 
@@ -412,7 +411,7 @@ const ContactUs = () => {
             <div className="mt-12 max-w-xl mx-auto">
               <div className="bg-white/5 border border-white/10 rounded-xl p-6">
                 <p className="text-white/60 leading-relaxed text-sm">
-                  <span className="text-[#ff6b00] font-semibold">Coming Soon:</span> Join our growing community across all major social platforms. Get exclusive insights, behind-the-scenes content, and be the first to know about our latest innovations and thought leadership.
+                  <span className="text-brand-orange font-semibold">Coming Soon:</span> Join our growing community across all major social platforms. Get exclusive insights, behind-the-scenes content, and be the first to know about our latest innovations and thought leadership.
                 </p>
               </div>
             </div>
@@ -430,16 +429,16 @@ const ContactUs = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-10">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#ff6b00] mb-4 block">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange mb-4 block">
                 Visit Us
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#101D36] leading-tight tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy leading-tight tracking-tight">
                 Find us in Austin
               </h2>
             </div>
 
             <div className="rounded-xl overflow-hidden shadow-lg border border-gray-200">
-              <div className="p-5 bg-[#101D36] flex items-center justify-between">
+              <div className="p-5 bg-navy-gradient flex items-center justify-between">
                 <div>
                   <h3 className="text-white font-bold mb-0.5">Austin Headquarters</h3>
                   <p className="text-white/60 text-sm">11801 Domain Blvd, Austin, TX 78758</p>
@@ -448,7 +447,7 @@ const ContactUs = () => {
                   href="https://www.google.com/maps/search/?api=1&query=11801+Domain+Blvd+Austin+TX+78758"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 bg-[#ff6b00] text-white rounded-lg font-semibold text-sm hover:bg-[#e65c00] transition-colors"
+                  className="px-5 py-2.5 bg-brand-orange text-white rounded-lg font-semibold text-sm hover:bg-brand-orange-dark transition-colors"
                 >
                   Open in Maps
                 </a>
