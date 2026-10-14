@@ -238,11 +238,11 @@ const Company = () => {
             className="mb-20 max-w-3xl"
           />
 
-          <div className="grid md:grid-cols-3 gap-10 md:gap-0 md:divide-x md:divide-gray-200">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              { num: '01', title: 'Technical Mastery', accent: 'text-brand-orange', desc: 'Our consultants possess certifications and deep expertise across all major platforms, ensuring world-class technical execution.' },
-              { num: '02', title: 'Business Acumen', accent: 'text-teal-dark', desc: "We don't just build technology—we understand your business objectives and align every solution to drive measurable outcomes." },
-              { num: '03', title: 'Outcome-Driven', accent: 'text-violet-dark', desc: 'Every project is designed with clear KPIs and business outcomes in mind, ensuring tangible ROI and competitive advantage.' },
+              { num: '01', title: 'Technical Mastery', bg: 'bg-brand-orange-wash', badge: 'bg-brand-orange', shape: 'card-shape-a', desc: 'Our consultants possess certifications and deep expertise across all major platforms, ensuring world-class technical execution.' },
+              { num: '02', title: 'Business Acumen', bg: 'bg-teal-wash', badge: 'bg-teal', shape: 'card-shape-b', desc: "We don't just build technology—we understand your business objectives and align every solution to drive measurable outcomes." },
+              { num: '03', title: 'Outcome-Driven', bg: 'bg-violet-wash', badge: 'bg-violet', shape: 'card-shape-c', desc: 'Every project is designed with clear KPIs and business outcomes in mind, ensuring tangible ROI and competitive advantage.' },
             ].map((item, idx) => (
               <motion.div
                 key={item.title}
@@ -250,9 +250,9 @@ const Company = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="md:px-10 first:md:pl-0 last:md:pr-0"
+                className={`${item.bg} border border-gray-200 ${item.shape} p-8`}
               >
-                <span className={`block text-5xl font-black ${item.accent} opacity-20 leading-none mb-5 tabular-nums`}>{item.num}</span>
+                <div className={`w-11 h-11 rounded-full ${item.badge} text-white font-black flex items-center justify-center mb-5`}>{item.num}</div>
                 <h4 className="text-xl font-bold text-navy mb-3">{item.title}</h4>
                 <p className="text-gray-600 leading-relaxed">{item.desc}</p>
               </motion.div>
@@ -280,19 +280,26 @@ const Company = () => {
             </p>
           </motion.div>
 
-          <div className="divide-y divide-gray-200 border-t border-gray-200">
-            {services.map((service, i) => (
+          <div className="flex flex-col gap-4">
+            {services.map((service, i) => {
+              const theme = [
+                { bg: 'bg-brand-orange-wash', badge: 'bg-brand-orange', shape: 'card-shape-a' },
+                { bg: 'bg-teal-wash', badge: 'bg-teal', shape: 'card-shape-b' },
+                { bg: 'bg-violet-wash', badge: 'bg-violet', shape: 'card-shape-c' },
+                { bg: 'bg-gold-wash', badge: 'bg-gold', shape: 'card-shape-d' },
+              ][i % 4];
+              return (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
-                className="py-9 md:py-11"
+                className={`${theme.bg} border border-gray-200 ${theme.shape} p-7 md:p-9`}
               >
                 <div className="flex flex-col md:flex-row gap-5 md:gap-10 items-start">
                   <div className="flex items-center gap-4 min-w-fit md:w-16">
-                    <span className="text-3xl font-black text-brand-orange/20 tabular-nums">{service.number}</span>
+                    <div className={`w-11 h-11 rounded-full ${theme.badge} text-white font-black text-sm flex items-center justify-center tabular-nums`}>{service.number}</div>
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl md:text-2xl font-bold text-navy mb-5">
@@ -309,7 +316,8 @@ const Company = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -333,9 +341,13 @@ const Company = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-10 md:gap-0 md:divide-x md:divide-gray-200">
+          <div className="grid md:grid-cols-3 gap-6">
             {expertise.map((expert, i) => {
-              const accent = ['text-brand-orange', 'text-teal-dark', 'text-violet-dark'][i % 3];
+              const theme = [
+                { bg: 'bg-brand-orange-wash', badge: 'bg-brand-orange', shape: 'card-shape-a' },
+                { bg: 'bg-teal-wash', badge: 'bg-teal', shape: 'card-shape-b' },
+                { bg: 'bg-violet-wash', badge: 'bg-violet', shape: 'card-shape-c' },
+              ][i % 3];
               return (
                 <motion.div
                   key={i}
@@ -343,9 +355,9 @@ const Company = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="md:px-10 first:md:pl-0 last:md:pr-0"
+                  className={`${theme.bg} border border-gray-200 ${theme.shape} p-8`}
                 >
-                  <span className={`block text-5xl font-black ${accent} opacity-20 leading-none mb-5 tabular-nums`}>{String(i + 1).padStart(2, '0')}</span>
+                  <div className={`w-11 h-11 rounded-full ${theme.badge} text-white font-black text-sm flex items-center justify-center mb-5 tabular-nums`}>{String(i + 1).padStart(2, '0')}</div>
                   <h4 className="text-xl font-bold text-navy mb-3">{expert.title}</h4>
                   <p className="text-gray-600 leading-relaxed">{expert.description}</p>
                 </motion.div>
