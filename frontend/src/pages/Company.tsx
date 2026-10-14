@@ -321,7 +321,7 @@ const Company = () => {
       </section>
 
       {/* Technical Expertise */}
-      <section className="py-24 lg:py-28 px-6 bg-white">
+      <section className="py-24 lg:py-28 px-6 bg-grey-light">
         <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
