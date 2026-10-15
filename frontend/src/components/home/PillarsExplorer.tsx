@@ -134,6 +134,13 @@ const ComplianceChips = () => (
 
 const visuals = [RagFlow, ThroughputBars, ComplianceChips];
 
+// Real photography (Unsplash), one per pillar
+const pillarPhotos = [
+  { src: '/images/services/ai-a.webp', alt: 'Code on a laptop screen' },
+  { src: '/images/services/server-a.webp', alt: 'Technician working on server hardware' },
+  { src: '/images/services/access-control.webp', alt: 'Smart access control on a door' },
+];
+
 // Each feature as a short keyword + detail with its own icon (pillar order, feature order)
 const featureTiles: { icon: LucideIcon; key: string; detail: string }[][] = [
   [
@@ -164,7 +171,7 @@ const featureTiles: { icon: LucideIcon; key: string; detail: string }[][] = [
 export const PillarsExplorer = ({ pillars }: { pillars: Pillar[] }) => {
   const reduce = useReducedMotion();
   return (
-    <div className="grid lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr_auto_auto] border-t border-white/10">
+    <div className="grid lg:grid-cols-3 lg:grid-rows-[auto_auto_auto_1fr_auto_auto] border-t border-white/10">
       {pillars.map((p, i) => {
         const V = visuals[i];
         return (
@@ -174,8 +181,14 @@ export const PillarsExplorer = ({ pillars }: { pillars: Pillar[] }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="grid lg:grid-rows-subgrid lg:row-span-5 py-10 lg:px-10 lg:first:pl-0 lg:last:pr-0 border-b lg:border-b-0 lg:border-r lg:last:border-r-0 border-white/10"
+            className="grid lg:grid-rows-subgrid lg:row-span-6 py-10 lg:px-10 lg:first:pl-0 lg:last:pr-0 border-b lg:border-b-0 lg:border-r lg:last:border-r-0 border-white/10"
           >
+            <div className="group relative h-52 lg:h-56 mb-8 rounded-xl overflow-hidden">
+              <img src={pillarPhotos[i].src} alt={pillarPhotos[i].alt} loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/70 via-navy-dark/10 to-transparent" />
+              <span className="absolute left-0 bottom-0 h-1 w-16 bg-brand-orange" aria-hidden="true" />
+            </div>
             <p.icon className="w-6 h-6 text-white/70 mb-6" strokeWidth={1.75} />
             <h3 className="text-2xl font-bold text-white mb-4">{p.title}</h3>
             <p className="text-white/70 leading-relaxed mb-8">{p.description}</p>
