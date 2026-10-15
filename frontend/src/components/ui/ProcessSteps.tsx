@@ -1,5 +1,4 @@
 import { LucideIcon } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export interface ProcessStep {
   icon: LucideIcon;
@@ -11,42 +10,60 @@ interface ProcessStepsProps {
   steps: ProcessStep[];
 }
 
-/**
- * Bounded light-grey band with a chevron-style step flow.
- * Last step is highlighted in teal to mark the "complete / go-live" state.
- * Every step shares the same pointed chevron shape for visual consistency.
- */
-export const ProcessSteps = ({ steps }: ProcessStepsProps) => {
-  return (
-    <div className="bg-white">
-      <div className="flex flex-col lg:flex-row gap-3">
-        {steps.map((step, i) => {
-          const isLast = i === steps.length - 1;
-          const tone = isLast ? 'bg-teal' : i === 0 ? 'bg-navy' : 'bg-navy-mid';
+// Arrow-shaped step bar (title inside the chevron) with descriptions ruled below.
+// Earlier steps are navy; the last step is orange to mark the outcome.
+const firstClip = 'polygon(0 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 0 100%)';
+const midClip = 'polygon(0 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 0 100%, 22px 50%)';
 
-          return (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`relative flex-1 ${tone} text-white px-8 py-10 lg:px-10 rounded-2xl lg:rounded-none lg:[clip-path:polygon(0_0,calc(100%-20px)_0,100%_50%,calc(100%-20px)_100%,0_100%)]`}
+export const ProcessSteps = ({ steps }: ProcessStepsProps) => {
+  const tone = (i: number) =>
+    i === steps.length - 1 ? 'bg-[#2D4170]' : i % 2 === 0 ? 'bg-navy' : 'bg-navy-mid';
+
+  return (
+    <>
+      {/* Desktop: chevron bar + ruled description columns */}
+      <div className="hidden md:block">
+        <div className="flex">
+          {steps.map((step, i) => (
+            <div
+              key={step.title}
+              className={`flex-1 ${tone(i)} text-white py-6 pr-10 ${i === 0 ? 'pl-8 rounded-l-xl' : 'pl-12 -ml-3'}`}
+              style={{ clipPath: i === 0 ? firstClip : midClip }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center shrink-0 text-sm font-bold tabular-nums">
-                  {i + 1}
-                </div>
-                <span className="text-xs font-bold uppercase tracking-widest text-white/60">
-                  Step {i + 1}
+              <span className="flex items-center gap-3">
+                <step.icon className="w-5 h-5 shrink-0 opacity-80" />
+                <span className="block">
+                  <span className="block font-mono text-xs font-bold text-white/60">0{i + 1}</span>
+                  <span className="block text-lg lg:text-xl font-extrabold leading-tight">{step.title}</span>
                 </span>
-              </div>
-              <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-              <p className="text-sm text-white/70 leading-relaxed">{step.description}</p>
-            </motion.div>
-          );
-        })}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="grid mt-8" style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}>
+          {steps.map((step) => (
+            <p key={step.title} className="pr-8 pl-8 first:pl-0 border-l-2 first:border-l-0 border-gray-200 text-gray-800 leading-relaxed">
+              {step.description}
+            </p>
+          ))}
+        </div>
       </div>
-    </div>
+
+      {/* Mobile: stacked */}
+      <div className="md:hidden space-y-8">
+        {steps.map((step, i) => (
+          <div key={step.title}>
+            <div className={`${tone(i)} text-white rounded-xl px-6 py-5 flex items-center gap-3`}>
+              <step.icon className="w-5 h-5 shrink-0 opacity-80" />
+              <span>
+                <span className="block font-mono text-xs font-bold text-white/60">0{i + 1}</span>
+                <span className="block text-xl font-extrabold leading-tight">{step.title}</span>
+              </span>
+            </div>
+            <p className="mt-4 text-gray-800 leading-relaxed">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };

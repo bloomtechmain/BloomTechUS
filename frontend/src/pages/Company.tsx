@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
-import { Target, Eye, Lightbulb, Code, Wrench, MapPin, Globe, ChevronRight } from 'lucide-react';
+import { Target, Eye, Lightbulb, Code, Wrench, MapPin, Globe, ChevronRight, BadgeCheck, Briefcase, Building2, Workflow, BarChart3, Brain, Cloud } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { seoConfigs } from '../utils/seoConfig';
-import { Container, SectionHeading } from '../components/ui';
-import officeHero from '../assets/hero_bg_2.webp';
+import { PageHero, Section, Heading, BlockGrid, Explorer, PhotoBand, Hl } from '../components/service-details/kit';
 
 const Company = () => {
   const services = [
@@ -122,420 +121,214 @@ const Company = () => {
   return (
     <div className="bg-white">
       <SEO config={seoConfigs.company} />
-      
-      {/* Hero Section */}
-      <section className="relative bg-navy-gradient pt-40 pb-20 overflow-hidden">
-        <img src={officeHero} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/50"></div>
 
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 mb-7 text-xs font-semibold tracking-widest text-white/80 uppercase border border-white/15 rounded-full">
-              About BloomTechUSA
-            </div>
+      {/* Hero */}
+      <PageHero
+        photo={{ src: '/images/services/consulting-b.webp', alt: 'BloomTech team in a meeting room' }}
+        eyebrow="About BloomTechUSA"
+        title="AI machine learning & enterprise infrastructure experts"
+        text="A premier provider of AI machine learning solutions and enterprise infrastructure services, dedicated to delivering custom server design and machine learning expertise through innovative technology and strategic consulting."
+      >
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mt-10">
+          <Link to="/services/ai-machine-learning"
+            className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-brand-orange hover:bg-brand-orange-dark text-white font-bold whitespace-nowrap transition-colors">
+            Explore Our Services
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+          <a href="#mission" className="group inline-flex items-center gap-2 font-bold text-white hover:text-brand-orange transition-colors whitespace-nowrap">
+            Our Mission
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
+      </PageHero>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-[1.1] tracking-tight text-white">
-              AI machine learning & enterprise infrastructure experts
-            </h1>
-
-            <p className="text-lg md:text-xl text-white/70 mb-10 leading-relaxed max-w-2xl">
-              A premier provider of AI machine learning solutions and enterprise infrastructure services, dedicated to delivering custom server design and machine learning expertise through innovative technology and strategic consulting.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link
-                to="/services/ai-machine-learning"
-                className="px-7 py-3.5 bg-brand-orange text-white rounded-lg font-semibold hover:bg-brand-orange-dark transition-colors flex items-center gap-2 group"
-              >
-                Explore Our Services <ChevronRight className="w-4.5 h-4.5 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-              <a
-                href="#mission"
-                className="px-7 py-3.5 bg-transparent text-white border border-white/25 rounded-lg font-semibold hover:border-white/50 transition-colors"
-              >
-                Our Mission
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Stats Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-xl overflow-hidden border border-white/10 mt-16"
-          >
+      {/* Stats strip — hairline-divided, like the home page */}
+      <section className="bg-white border-b border-gray-200">
+        <div className="w-full px-4 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4">
             {stats.map((stat, i) => (
-              <div key={i} className="bg-navy-gradient text-center p-7">
-                <div className="text-3xl md:text-4xl font-bold text-brand-orange mb-1.5">{stat.value}</div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-white/50">{stat.label}</p>
+              <div key={i} className={`py-8 lg:py-10 px-4 lg:px-8 border-gray-200 ${i < 2 ? 'border-b lg:border-b-0' : ''} ${i % 2 === 0 ? 'pl-0' : 'border-l'} ${i === 0 ? 'lg:pl-0' : 'lg:border-l lg:pl-8'}`}>
+                <div className="text-3xl md:text-4xl font-extrabold text-navy leading-none mb-2">{stat.value}</div>
+                <p className="text-sm text-gray-600">{stat.label}</p>
               </div>
             ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Mission & Vision Section */}
-      <section id="mission" className="py-24 lg:py-28 px-6 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
-            {/* Mission */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="w-14 h-14 rounded-full bg-brand-orange flex items-center justify-center mb-7 shadow-lg shadow-orange-500/20">
-                <Target className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-4">Our Mission</h2>
-              <h3 className="text-2xl md:text-3xl font-bold text-navy mb-6 leading-snug">
-                AI machine learning & custom server solutions for business growth
-              </h3>
-              <p className="text-gray-600 leading-relaxed border-l-2 border-brand-orange/30 pl-6">
-                To empower clients with AI machine learning solutions and enterprise infrastructure services that transform data into actionable insights. BloomTech delivers custom server design and machine learning expertise with security-first architecture, ensuring seamless integration from C-suite executives to end-users through measurable value and operational excellence.
-              </p>
-            </motion.div>
-
-            {/* Vision */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <div className="w-14 h-14 rounded-full bg-teal flex items-center justify-center mb-7 shadow-lg shadow-teal-500/20">
-                <Eye className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-teal-dark mb-4">Our Vision</h2>
-              <h3 className="text-2xl md:text-3xl font-bold text-navy mb-6 leading-snug">
-                Leading the digital future
-              </h3>
-              <p className="text-gray-600 leading-relaxed border-l-2 border-teal/30 pl-6">
-                To establish BloomTech as the preeminent technology solutions provider within the United States, while aggressively expanding our global footprint to serve as a cornerstone of international digital infrastructure. We envision a future where every business, regardless of size, has access to enterprise-grade AI, infrastructure, and security — built on the same uncompromising standards we hold for our largest clients, and delivered by teams who treat your systems as rigorously as their own.
-              </p>
-            </motion.div>
           </div>
         </div>
       </section>
+
+      {/* Mission & Vision — photo cards */}
+      <div id="mission" className="scroll-mt-24">
+        <Section tone="white">
+          <BlockGrid
+            items={[
+              {
+                icon: Target,
+                image: { src: '/images/services/enterprise-b.webp', alt: 'Team collaborating in an open office' },
+                tag: 'Our Mission',
+                title: 'AI machine learning & custom server solutions for business growth',
+                desc: 'To empower clients with AI machine learning solutions and enterprise infrastructure services that transform data into actionable insights. BloomTech delivers custom server design and machine learning expertise with security-first architecture, ensuring seamless integration from C-suite executives to end-users through measurable value and operational excellence.',
+              },
+              {
+                icon: Eye,
+                image: { src: '/images/hero-bg-infra.webp', alt: 'Engineers working in a server room' },
+                tag: 'Our Vision',
+                title: 'Leading the digital future',
+                desc: 'To establish BloomTech as the preeminent technology solutions provider within the United States, while aggressively expanding our global footprint to serve as a cornerstone of international digital infrastructure. We envision a future where every business, regardless of size, has access to enterprise-grade AI, infrastructure, and security — built on the same uncompromising standards we hold for our largest clients, and delivered by teams who treat your systems as rigorously as their own.',
+              },
+            ]}
+          />
+        </Section>
+      </div>
 
       {/* The BloomTech Approach */}
-      <section className="py-24 lg:py-28 px-6 bg-grey-light">
-        <Container>
-          <SectionHeading
-            eyebrow="Our Philosophy"
-            title="Machine learning & enterprise infrastructure services"
-            description="Our AI machine learning solutions and enterprise infrastructure services combine technical expertise with security-first design. BloomTech's certified consultants deliver custom server solutions and machine learning infrastructure that integrate data protection at every level, ensuring every technical implementation supports your business objectives."
-            align="center"
-            className="mb-20 max-w-3xl"
-          />
+      <Section tone="grey">
+        <Heading
+          eyebrow="Our Philosophy"
+          title="Machine learning & enterprise infrastructure services"
+          image={{ src: '/images/team-engineers.webp', alt: 'Engineers reviewing code together' }}
+        >
+          <p>Our AI machine learning solutions and enterprise infrastructure services combine technical expertise with security-first design. BloomTech's certified consultants deliver custom server solutions and machine learning infrastructure that integrate data protection at every level, ensuring every technical implementation supports your business objectives.</p>
+        </Heading>
+        <BlockGrid
+          cols={3}
+          items={[
+            { num: '01', icon: BadgeCheck, title: 'Technical Mastery', desc: 'Our consultants possess certifications and deep expertise across all major platforms, ensuring world-class technical execution.' },
+            { num: '02', icon: Briefcase, title: 'Business Acumen', desc: "We don't just build technology—we understand your business objectives and align every solution to drive measurable outcomes." },
+            { num: '03', icon: Target, title: 'Outcome-Driven', desc: 'Every project is designed with clear KPIs and business outcomes in mind, ensuring tangible ROI and competitive advantage.' },
+          ]}
+        />
+      </Section>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { num: '01', title: 'Technical Mastery', bg: 'bg-brand-orange-wash', badge: 'bg-brand-orange', shape: 'card-shape-a', desc: 'Our consultants possess certifications and deep expertise across all major platforms, ensuring world-class technical execution.' },
-              { num: '02', title: 'Business Acumen', bg: 'bg-teal-wash', badge: 'bg-teal', shape: 'card-shape-b', desc: "We don't just build technology—we understand your business objectives and align every solution to drive measurable outcomes." },
-              { num: '03', title: 'Outcome-Driven', bg: 'bg-violet-wash', badge: 'bg-violet', shape: 'card-shape-c', desc: 'Every project is designed with clear KPIs and business outcomes in mind, ensuring tangible ROI and competitive advantage.' },
-            ].map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`${item.bg} border border-gray-200 ${item.shape} p-8`}
-              >
-                <div className={`w-11 h-11 rounded-full ${item.badge} text-white font-black flex items-center justify-center mb-5`}>{item.num}</div>
-                <h4 className="text-xl font-bold text-navy mb-3">{item.title}</h4>
-                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <PhotoBand photo={{ src: '/images/services/av-b.webp', alt: 'Modern office interior' }} />
 
       {/* Service Offerings */}
-      <section className="py-24 lg:py-28 px-6 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-16"
-          >
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange mb-4 block">What We Deliver</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-navy mb-5 leading-tight tracking-tight max-w-2xl">
-              Comprehensive service offerings
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl leading-relaxed">
-              A holistic suite of IT services designed to maximize Return on Investment (ROI) and future-proof organizational workflows.
-            </p>
-          </motion.div>
-
-          <div className="flex flex-col gap-4">
-            {services.map((service, i) => {
-              const theme = [
-                { bg: 'bg-brand-orange-wash', badge: 'bg-brand-orange', shape: 'card-shape-a' },
-                { bg: 'bg-teal-wash', badge: 'bg-teal', shape: 'card-shape-b' },
-                { bg: 'bg-violet-wash', badge: 'bg-violet', shape: 'card-shape-c' },
-                { bg: 'bg-gold-wash', badge: 'bg-gold', shape: 'card-shape-d' },
-              ][i % 4];
-              return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
-                className={`${theme.bg} border border-gray-200 ${theme.shape} p-7 md:p-9`}
-              >
-                <div className="flex flex-col md:flex-row gap-5 md:gap-10 items-start">
-                  <div className="flex items-center gap-4 min-w-fit md:w-16">
-                    <div className={`w-11 h-11 rounded-full ${theme.badge} text-white font-black text-sm flex items-center justify-center tabular-nums`}>{service.number}</div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-bold text-navy mb-5">
-                      {service.title}
-                    </h3>
-                    <ul className="space-y-3">
-                      {service.items.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-gray-600">
-                          <ChevronRight className="w-4.5 h-4.5 text-brand-orange mt-0.5 shrink-0" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <Section tone="white">
+        <Heading
+          eyebrow="What We Deliver"
+          title="Comprehensive service offerings"
+          sub="A holistic suite of IT services designed to maximize Return on Investment (ROI) and future-proof organizational workflows."
+        />
+        <Explorer
+          items={services.map((service, i) => ({
+            num: service.number,
+            icon: serviceIcons[i % serviceIcons.length],
+            title: service.title,
+            points: service.items,
+          }))}
+        />
+      </Section>
 
       {/* Technical Expertise */}
-      <section className="py-24 lg:py-28 px-6 bg-grey-light">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mb-16"
-          >
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange mb-4 block">Our Team</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-navy mb-5 leading-tight tracking-tight">
-              Elite technical expertise
-            </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-              BloomTech distinguishes itself through a rigorous talent acquisition process, maintaining a bench of elite professionals.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {expertise.map((expert, i) => {
-              const theme = [
-                { bg: 'bg-brand-orange-wash', badge: 'bg-brand-orange', shape: 'card-shape-a' },
-                { bg: 'bg-teal-wash', badge: 'bg-teal', shape: 'card-shape-b' },
-                { bg: 'bg-violet-wash', badge: 'bg-violet', shape: 'card-shape-c' },
-              ][i % 3];
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className={`${theme.bg} border border-gray-200 ${theme.shape} p-8`}
-                >
-                  <div className={`w-11 h-11 rounded-full ${theme.badge} text-white font-black text-sm flex items-center justify-center mb-5 tabular-nums`}>{String(i + 1).padStart(2, '0')}</div>
-                  <h4 className="text-xl font-bold text-navy mb-3">{expert.title}</h4>
-                  <p className="text-gray-600 leading-relaxed">{expert.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <Section tone="dark">
+        <Heading
+          light
+          eyebrow="Our Team"
+          title="Elite technical expertise"
+          sub="BloomTech distinguishes itself through a rigorous talent acquisition process, maintaining a bench of elite professionals."
+        />
+        <BlockGrid
+          dark
+          cols={3}
+          items={expertise.map((expert, i) => ({ icon: expert.icon, num: String(i + 1).padStart(2, '0'), title: expert.title, desc: expert.description }))}
+        />
+      </Section>
 
       {/* Global Delivery Model */}
-      <section className="py-24 lg:py-28 px-6 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mb-16"
-          >
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange mb-4 block">Where We Operate</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-navy mb-5 leading-tight tracking-tight">
-              Global delivery model
-            </h2>
-            <p className="text-gray-600 leading-relaxed mb-3">
-              With headquarters located at <span className="font-semibold text-navy">11801 Domain Blvd 3rd floor, Austin, TX</span>, BloomTechUSA leverages a distributed delivery model with key operational hubs across the globe.
-            </p>
-            <p className="text-gray-600 leading-relaxed">
-              This geographic diversity allows for localized support and a broad talent pool, ensuring that BloomTech can scale resources rapidly to meet the demands of any project, regardless of size or complexity.
-            </p>
-          </motion.div>
+      <Section tone="grey">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div className="lg:col-span-5">
+            <Heading eyebrow="Where We Operate" title="Global delivery model" className="mb-8">
+              <p>With headquarters located at <Hl>11801 Domain Blvd 3rd floor, Austin, TX</Hl>, BloomTechUSA leverages a distributed delivery model with key operational hubs across the globe.</p>
+              <p className="mt-4">This geographic diversity allows for localized support and a broad talent pool, ensuring that BloomTech can scale resources rapidly to meet the demands of any project, regardless of size or complexity.</p>
+            </Heading>
+            <ul className="flex flex-col gap-2">
+              {globalHubs.map((hub) => {
+                const on = selectedHub.id === hub.id;
+                return (
+                  <li key={hub.id}>
+                    <button type="button" onClick={() => setSelectedHub(hub)} onMouseEnter={() => setSelectedHub(hub)}
+                      className={`w-full flex items-start gap-4 rounded-xl px-5 py-4 text-left transition-colors ${on ? 'bg-navy text-white' : 'bg-white text-navy hover:bg-[#ECEFF4]'}`}>
+                      <span className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${on ? 'bg-white/10 text-white' : 'bg-grey-light text-navy-mid'}`}>
+                        <MapPin className="w-5 h-5" />
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="flex items-baseline justify-between gap-3">
+                          <span className="font-bold">{hub.name}</span>
+                          <span className={`text-xs font-semibold ${on ? 'text-white/60' : 'text-gray-500'}`}>{hub.location}</span>
+                        </span>
+                        <span className={`block text-sm mt-1 ${on ? 'text-white/75' : 'text-gray-600'}`}>{hub.description}</span>
+                        {on && <span className="block text-xs text-white/50 mt-2">{hub.address}</span>}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
-          <div className="grid lg:grid-cols-2 gap-10 items-start">
-            {/* Hub Cards - Left Side */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {globalHubs.map((hub, index) => (
-                <motion.div
-                  key={hub.id}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.07 }}
-                  onClick={() => setSelectedHub(hub)}
-                  className={`cursor-pointer rounded-xl p-6 border transition-colors ${
-                    selectedHub.id === hub.id
-                      ? 'bg-navy border-navy'
-                      : 'bg-navy-wash border-gray-200 hover:border-brand-orange/40'
-                  }`}
-                >
-                  <div className="flex items-start gap-3 mb-3">
-                    <MapPin className="w-4.5 h-4.5 mt-0.5 shrink-0 text-brand-orange" />
-                    <div className="flex-1">
-                      <h4 className={`font-bold mb-0.5 ${
-                        selectedHub.id === hub.id ? 'text-white' : 'text-navy'
-                      }`}>
-                        {hub.name}
-                      </h4>
-                      <p className={`text-xs font-semibold ${
-                        selectedHub.id === hub.id ? 'text-white/60' : 'text-gray-500'
-                      }`}>
-                        {hub.location}
-                      </p>
-                    </div>
-                  </div>
-                  <p className={`text-sm ${
-                    selectedHub.id === hub.id ? 'text-white/80' : 'text-gray-600'
-                  }`}>
-                    {hub.description}
-                  </p>
-                  <div className={`mt-4 pt-4 border-t ${
-                    selectedHub.id === hub.id ? 'border-white/15' : 'border-gray-100'
-                  }`}>
-                    <p className={`text-xs ${
-                      selectedHub.id === hub.id ? 'text-white/50' : 'text-gray-500'
-                    }`}>
-                      {hub.address}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Interactive Map - Right Side */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative h-full min-h-[560px]"
-            >
-              <div className="sticky top-24">
-                <div className="rounded-xl overflow-hidden shadow-lg border border-gray-200">
-                  <div className="p-5 bg-navy-gradient flex items-center justify-between">
-                      <div>
-                        <h3 className="text-white font-bold mb-0.5">{selectedHub.name}</h3>
-                        <p className="text-white/60 text-sm">{selectedHub.location}</p>
-                      </div>
-                      <a
-                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedHub.address)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-brand-orange text-white rounded-lg font-semibold text-xs uppercase tracking-wider hover:bg-brand-orange-dark transition-colors flex items-center gap-2"
-                      >
-                        Open Maps
-                        <ChevronRight className="w-4 h-4" />
-                      </a>
-                  </div>
-
-                  <motion.div
-                    key={selectedHub.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="relative h-[500px] bg-gray-100"
-                  >
-                    <iframe
-                      src={selectedHub.mapUrl}
-                      width="100%"
-                      height="100%"
-                      className="w-full h-full borderless-iframe"
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title={`Map of ${selectedHub.name}`}
-                    />
-                  </motion.div>
+          <div className="lg:col-span-7 lg:sticky lg:top-28">
+            <div className="rounded-2xl overflow-hidden bg-white shadow-[8px_8px_0_0_#101D36]">
+              <div className="flex items-center justify-between gap-4 px-6 py-4 bg-navy">
+                <div className="min-w-0">
+                  <h3 className="font-extrabold text-white">{selectedHub.name}</h3>
+                  <p className="text-sm text-white/60">{selectedHub.location}</p>
                 </div>
-
-                <div className="mt-4 bg-grey-light rounded-xl p-4 border border-gray-200">
-                  <div className="flex items-center gap-3">
-                    <Globe className="w-4.5 h-4.5 text-brand-orange shrink-0" />
-                    <p className="text-sm font-medium text-gray-600">
-                      Click on any hub to view its location on the map
-                    </p>
-                  </div>
-                </div>
+                <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedHub.address)}`}
+                  target="_blank" rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-1.5 text-sm font-bold text-white hover:text-brand-orange transition-colors whitespace-nowrap">
+                  Open Maps
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </a>
               </div>
-            </motion.div>
+              <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[520px] bg-grey-light">
+                <motion.div key={selectedHub.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }} className="absolute inset-0">
+                  <iframe
+                    src={selectedHub.mapUrl}
+                    width="100%"
+                    height="100%"
+                    className="borderless-iframe"
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`Map of ${selectedHub.name}`}
+                  />
+                </motion.div>
+              </div>
+              <div className="flex items-center gap-2 px-6 py-3 text-sm text-gray-500">
+                <Globe className="w-4 h-4" />
+                <p>Click on any hub to view its location on the map</p>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-6 bg-navy-gradient">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8"
-          >
-            <div>
-              <h2 className="text-2xl md:text-4xl font-bold text-white mb-3 leading-tight tracking-tight">
-                Ready to transform your business?
-              </h2>
-              <p className="text-white/60 leading-relaxed max-w-xl">
-                Let's discuss how BloomTechUSA can empower your organization with innovative technology solutions.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row items-start gap-4 shrink-0">
-              <a
-                href="#contact"
-                className="px-7 py-3.5 bg-brand-orange text-white rounded-lg font-semibold hover:bg-brand-orange-dark transition-colors flex items-center gap-2"
-              >
-                Get in Touch <ChevronRight className="w-4.5 h-4.5" />
-              </a>
-              <Link
-                to="/services/ai-machine-learning"
-                className="px-7 py-3.5 bg-transparent text-white border border-white/25 rounded-lg font-semibold hover:border-white/50 transition-colors"
-              >
-                View Our Services
-              </Link>
-            </div>
-          </motion.div>
+      {/* CTA */}
+      <Section tone="navy">
+        <div className="grid lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-8">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6">Ready to transform your business?</h2>
+            <p className="text-lg text-white/75 leading-relaxed max-w-2xl">Let's discuss how BloomTechUSA can empower your organization with innovative technology solutions.</p>
+          </div>
+          <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-start gap-5">
+            <a href="#contact"
+              className="group inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-brand-orange hover:bg-brand-orange-dark text-white font-bold whitespace-nowrap transition-colors">
+              Get in Touch
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <Link to="/services/ai-machine-learning" className="group inline-flex items-center gap-2 font-bold text-white hover:text-brand-orange transition-colors whitespace-nowrap">
+              View Our Services
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
-      </section>
+      </Section>
 
       <Footer />
     </div>
   );
 };
+
+const serviceIcons = [Building2, Workflow, BarChart3, Brain, Cloud];
 
 export default Company;

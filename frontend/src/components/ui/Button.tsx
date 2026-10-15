@@ -10,7 +10,7 @@ const variantClasses: Record<Variant, string> = {
 };
 
 const baseClasses =
-  'inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-lg font-semibold text-sm tracking-wide transition-colors active:scale-[0.98]';
+  'inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-sm tracking-wide transition-colors active:scale-[0.98]';
 
 interface SharedProps {
   variant?: Variant;
@@ -35,7 +35,7 @@ export const Button = ({ variant = 'primary', icon: Icon, children, className = 
     return (
       <Link to={to} className={classes}>
         {children}
-        
+        {Icon && <Icon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
       </Link>
     );
   }
@@ -44,7 +44,7 @@ export const Button = ({ variant = 'primary', icon: Icon, children, className = 
   return (
     <button {...buttonProps} className={classes}>
       {children}
-      
+      {Icon && <Icon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
     </button>
   );
 };

@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { Truck, PackageCheck, Layout, Cable, ClipboardCheck, Server, Zap } from 'lucide-react';
-import { ServiceBenefitsSidebar } from '../ServiceBenefitsSidebar';
+import { Truck, PackageCheck, Layout, Cable, ClipboardCheck, Server, Zap, Wind, Cpu, Network, Timer } from 'lucide-react';
+import { Overview, Section, Heading, BlockGrid, StepList, PhotoBand } from '../kit';
+import { svcPhotos } from '../servicePhotos';
 
 /**
  * RackAndRollContent Component
@@ -29,163 +29,53 @@ const processSteps = [
 
 export const RackAndRollContent = (_props: RackAndRollContentProps) => {
   return (
-    <section className="py-20 relative bg-grey-light">
-      <div className="max-w-[1200px] mx-auto px-6 xl:px-0">
+    <>
+      <Overview benefits={benefits} image={svcPhotos.rack.a}>
+        <p>
+          Efficiently scaling your data center or on-site server room requires more than just unboxing hardware. We provide comprehensive Rack &amp; Roll services &mdash; a turnkey solution for businesses that need high-density server deployments executed with precision, speed, and professional organization, from the moment equipment arrives at the dock to the second the first "ping" is sent.
+        </p>
+      </Overview>
 
-        {/* Overview & Client Benefits */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
-        >
-          <div className="lg:col-span-8">
-            <div className="flex items-center gap-3 mb-10">
-              <div className="h-10 w-2 bg-brand-orange rounded-full"></div>
-              <h2 className="text-2xl lg:text-3xl font-bold text-navy tracking-tight">Overview</h2>
-            </div>
-            <div className="bg-navy-wash border border-gray-200 rounded-[40px] p-8 lg:p-10">
-              <p className="text-lg lg:text-xl text-gray-700 leading-relaxed font-medium">
-                Efficiently scaling your data center or on-site server room requires more than just unboxing hardware. We provide comprehensive Rack &amp; Roll services &mdash; a turnkey solution for businesses that need high-density server deployments executed with precision, speed, and professional organization, from the moment equipment arrives at the dock to the second the first "ping" is sent.
-              </p>
-            </div>
-          </div>
-          <div className="lg:col-span-4">
-            <ServiceBenefitsSidebar benefits={benefits} />
-          </div>
-        </motion.div>
+      {/* Core Specializations */}
+      <Section tone="grey">
+        <Heading
+          title="From the Loading Dock to the First Ping"
+          sub="Turnkey physical and logical integration for your server room or data center"
+        />
+        <BlockGrid
+          items={[
+            { icon: Truck, title: 'Logistics & Receiving', desc: <>Inspection, inventory verification, and asset tagging the moment equipment arrives &mdash; so nothing is lost, damaged, or unaccounted for before installation begins.</> },
+            { icon: Server, title: 'Precision Rack Integration', desc: 'Strategic U-space placement, rail kit installation, and PDU/UPS integration planned for airflow, weight balance, and room to grow.' },
+            { icon: Cable, title: 'Professional Structured Cabling', desc: <>Color-coded patching, Velcro cable management, and end-to-end labeling &mdash; built to Cat6/Cat6a and fiber optic standards, not zip-tied chaos.</> },
+            { icon: Zap, title: 'Configuration & Burn-In', desc: 'POST verification, firmware updates, and IPMI/out-of-band management setup, so every device checks in healthy before go-live.' },
+          ]}
+        />
+      </Section>
 
-        {/* Core Specializations */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-20"
-        >
-          <div className="flex items-center gap-3 mb-16">
-            <div className="h-10 w-2 bg-brand-orange rounded-full"></div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-navy tracking-tight">
-              From the Loading Dock to the First Ping
-              <span className="block text-lg lg:text-xl text-gray-500 font-medium tracking-normal">Turnkey physical and logical integration for your server room or data center</span>
-            </h2>
-          </div>
+      <PhotoBand photo={svcPhotos.rack.b} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-split-navy rounded-[40px] p-6 md:p-10">
-            <div className="bg-navy-wash border border-gray-200 rounded-[32px] p-8 hover:shadow-sm transition-colors group relative overflow-hidden">
-                            <h3 className="text-xl font-bold text-navy mb-4">Logistics & Receiving</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Inspection, inventory verification, and asset tagging the moment equipment arrives &mdash; so nothing is lost, damaged, or unaccounted for before installation begins.
-              </p>
-            </div>
+      {/* 7-Step Process */}
+      <Section tone="white">
+        <Heading
+          title={<>Our Deployment Process</>}
+          sub={'Seven steps from "equipment arrives" to "fully live," executed with precision and speed'}
+        />
+        <StepList items={processSteps} />
+      </Section>
 
-            <div className="bg-navy-wash border border-gray-200 rounded-[32px] p-8 hover:shadow-sm transition-colors group relative overflow-hidden">
-                            <h3 className="text-xl font-bold text-navy mb-4">Precision Rack Integration</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Strategic U-space placement, rail kit installation, and PDU/UPS integration planned for airflow, weight balance, and room to grow.
-              </p>
-            </div>
-
-            <div className="bg-navy-wash border border-gray-200 rounded-[32px] p-8 hover:shadow-sm transition-colors group relative overflow-hidden">
-                            <h3 className="text-xl font-bold text-navy mb-4">Professional Structured Cabling</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Color-coded patching, Velcro cable management, and end-to-end labeling &mdash; built to Cat6/Cat6a and fiber optic standards, not zip-tied chaos.
-              </p>
-            </div>
-
-            <div className="bg-navy-wash border border-gray-200 rounded-[32px] p-8 hover:shadow-sm transition-colors group relative overflow-hidden">
-                            <h3 className="text-xl font-bold text-navy mb-4">Configuration & Burn-In</h3>
-              <p className="text-gray-600 leading-relaxed">
-                POST verification, firmware updates, and IPMI/out-of-band management setup, so every device checks in healthy before go-live.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* 7-Step Process */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-20"
-        >
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-6xl font-black text-navy tracking-tighter mb-6">
-              Our <span className="text-brand-orange">Deployment Process</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto font-medium tracking-tight">
-              Seven steps from "equipment arrives" to "fully live," executed with precision and speed
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-            {processSteps.map((item, idx) => (
-              <div
-                key={idx}
-                className="relative group p-8 rounded-[32px] bg-gray-50 border border-gray-200 hover:shadow-sm transition-all hover:-translate-y-2"
-              >
-                <div className="absolute -top-3 -right-3 w-12 h-12 bg-navy border-2 border-white rounded-2xl flex items-center justify-center text-brand-orange font-black text-lg z-10 shadow-sm">
-                  {item.step}
-                </div>
-                <div className="mb-8 text-gray-400 group-hover:text-brand-orange transition-colors">
-                  
-                </div>
-                <h4 className="text-xl font-black text-navy mb-3 tracking-tight leading-none">{item.title}</h4>
-                <p className="text-gray-500 text-[14px] leading-relaxed font-medium">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Standards & Benefits */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-10"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-navy-wash border border-gray-200 card-shape-a overflow-hidden group hover:shadow-sm transition-colors">
-              <div className="p-8 lg:p-10">
-                <div className="flex items-center gap-4 mb-6">
-                                    <h3 className="text-xl font-bold text-navy">ASHRAE-Compliant Airflow</h3>
-                </div>
-                <p className="text-gray-600 text-lg">Hot/cold aisle layouts designed to keep equipment running cool under full load.</p>
-              </div>
-            </div>
-
-            <div className="bg-navy-wash border border-gray-200 card-shape-b overflow-hidden group hover:shadow-sm transition-colors">
-              <div className="p-8 lg:p-10">
-                <div className="flex items-center gap-4 mb-6">
-                                    <h3 className="text-xl font-bold text-navy">High-Density Expertise</h3>
-                </div>
-                <p className="text-gray-600 text-lg">Specialized cooling and power planning for AMD EPYC and other high-density deployments.</p>
-              </div>
-            </div>
-
-            <div className="bg-navy-wash border border-gray-200 card-shape-b overflow-hidden group hover:shadow-sm transition-colors">
-              <div className="p-8 lg:p-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <h3 className="text-xl font-bold text-navy">Network+ Certified Integration</h3>
-                </div>
-                <p className="text-gray-600 text-lg">Cabling and configuration meeting Cat6 and fiber optic standards, every time.</p>
-              </div>
-            </div>
-
-            <div className="bg-navy-wash border border-gray-200 card-shape-a overflow-hidden group hover:shadow-sm transition-colors">
-              <div className="p-8 lg:p-10">
-                <div className="flex items-center gap-4 mb-6">
-                                    <h3 className="text-xl font-bold text-navy">Up to 40% Faster Deployment</h3>
-                </div>
-                <p className="text-gray-600 text-lg">A dedicated, process-driven team gets your rack live faster than ad-hoc internal deployment.</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+      {/* Standards & Benefits */}
+      <Section tone="dark">
+        <BlockGrid
+          dark
+          cols={4}
+          items={[
+            { icon: Wind, title: 'ASHRAE-Compliant Airflow', desc: 'Hot/cold aisle layouts designed to keep equipment running cool under full load.' },
+            { icon: Cpu, title: 'High-Density Expertise', desc: 'Specialized cooling and power planning for AMD EPYC and other high-density deployments.' },
+            { icon: Network, title: 'Network+ Certified Integration', desc: 'Cabling and configuration meeting Cat6 and fiber optic standards, every time.' },
+            { icon: Timer, title: 'Up to 40% Faster Deployment', desc: 'A dedicated, process-driven team gets your rack live faster than ad-hoc internal deployment.' },
+          ]}
+        />
+      </Section>
+    </>
   );
 };

@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion';
-import { ServiceFeatureCard } from './ServiceFeatureCard';
-import { ServiceBenefitsSidebar } from './ServiceBenefitsSidebar';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Cpu, Gpu, HardDrive, PlugZap, MonitorCog, ShieldCheck, Lock, Zap, BadgeDollarSign, SlidersHorizontal, LucideIcon } from 'lucide-react';
+import { Overview, Section, Heading, BlockGrid, PhotoBand } from './kit';
+import { svcPhotos } from './servicePhotos';
 
 /**
  * DefaultServiceContent Component
@@ -13,6 +14,15 @@ interface DefaultServiceContentProps {
   benefits?: string[];
 }
 
+// Split "Title: detail" / "Title - detail" strings into a bold title and its detail (text unchanged)
+const split = (f: string, sep: string) => {
+  const i = f.indexOf(sep);
+  return i > 0 ? { title: f.slice(0, i).trim(), desc: f.slice(i + sep.length).trim() } : { title: f, desc: undefined };
+};
+
+const featureIcons: LucideIcon[] = [Cpu, Gpu, HardDrive, PlugZap, MonitorCog, ShieldCheck];
+const benefitIcons: LucideIcon[] = [Lock, Zap, BadgeDollarSign, SlidersHorizontal];
+
 export const DefaultServiceContent = ({
   serviceName,
   longDesc,
@@ -20,48 +30,47 @@ export const DefaultServiceContent = ({
   benefits = []
 }: DefaultServiceContentProps) => {
   return (
-    <section className="py-20 lg:py-24 bg-grey-light">
-      <div className="max-w-[1400px] mx-auto px-6 xl:px-12 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20">
+    <>
+      <Overview image={svcPhotos.aiHardware.a}>
+        <p>
+          {longDesc || `Detailed information about ${serviceName} is currently being updated by our specialists. We deliver industry-leading solutions designed to accelerate your growth and secure your digital perimeter.`}
+        </p>
+      </Overview>
 
-        {/* Left Column: Description & Features */}
-        <div className="lg:col-span-8">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-2xl lg:text-3xl font-bold text-navy mb-6 tracking-tight">Overview</h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-14">
-              {longDesc || `Detailed information about ${serviceName} is currently being updated by our specialists. We deliver industry-leading solutions designed to accelerate your growth and secure your digital perimeter.`}
-            </p>
+      {benefits.length > 0 && (
+        <Section tone="dark">
+          <Heading light eyebrow="Client Benefits" title={serviceName} className="mb-10" />
+          <BlockGrid
+            dark
+            cols={4}
+            items={benefits.map((b, i) => ({ icon: benefitIcons[i % benefitIcons.length], ...split(b, ' - ') }))}
+          />
+          <div className="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <p className="text-white/50 text-xs font-semibold uppercase tracking-widest">Need a custom approach?</p>
+            <Link to="/contact"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-orange hover:bg-brand-orange-dark text-white font-bold text-sm whitespace-nowrap transition-colors">
+              Contact Solutions Architect
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
+        </Section>
+      )}
 
-            {features.length > 0 && (
-              <div>
-                <h3 className="text-xl font-bold text-navy mb-6 tracking-tight">Core Capabilities</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-split-navy rounded-[32px] p-6 md:p-8">
-                  {features.map((feature, idx) => (
-                    <ServiceFeatureCard key={idx} feature={feature} index={idx} />
-                  ))}
-                </div>
-              </div>
-            )}
-          </motion.div>
-        </div>
+      <PhotoBand photo={svcPhotos.aiHardware.b} />
 
-        {/* Right Column: Benefits Sidebar */}
-        <div className="lg:col-span-4">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-          >
-            <ServiceBenefitsSidebar benefits={benefits} />
-          </motion.div>
-        </div>
-
-      </div>
-    </section>
+      {features.length > 0 && (
+        <Section tone="grey">
+          <Heading title="Core Capabilities" />
+          <BlockGrid
+            cols={3}
+            items={features.map((f, idx) => ({
+              icon: featureIcons[idx % featureIcons.length],
+              num: String(idx + 1).padStart(2, '0'),
+              ...split(f, ':'),
+            }))}
+          />
+        </Section>
+      )}
+    </>
   );
 };

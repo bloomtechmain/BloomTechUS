@@ -1,5 +1,5 @@
 import { LucideIcon } from 'lucide-react';
-type Tone = 'navy' | 'orange' | 'teal' | 'grey' | 'white';
+type Tone = 'navy' | 'orange' | 'teal' | 'violet' | 'gold' | 'grey' | 'white';
 
 interface IconTileProps {
   icon: LucideIcon;
@@ -12,6 +12,8 @@ const toneClasses: Record<Tone, string> = {
   navy: 'bg-navy text-brand-orange',
   orange: 'bg-brand-orange text-white',
   teal: 'bg-teal text-white',
+  violet: 'bg-violet text-white',
+  gold: 'bg-gold text-white',
   grey: 'bg-grey-light text-navy',
   white: 'bg-white text-navy border border-border-grey',
 };

@@ -4,8 +4,8 @@ import { socialMedia } from '../utils/seoConfig';
 
 const Footer = () => {
   return (
-    <footer className="bg-navy-dark-gradient text-white py-24 px-6 border-t border-white/10">
-      <div className="max-w-[1550px] mx-auto px-6 xl:px-12 flex flex-col items-center">
+    <footer className="bg-navy-dark text-white py-24 px-6 border-t border-white/10">
+      <div className="w-full px-4 sm:px-8 lg:px-12 flex flex-col items-center">
         <div className="flex items-center gap-3 mb-16">
           <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden">
             <img src="/bloomtech-logo.png" alt="BloomTech Logo" className="w-full h-full object-cover" />

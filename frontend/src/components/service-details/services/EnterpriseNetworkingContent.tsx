@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
 import { Globe, Shuffle, Lock, Gauge, ShieldCheck, Building2, Timer } from 'lucide-react';
-import { ServiceBenefitsSidebar } from '../ServiceBenefitsSidebar';
+import { Overview, Section, Heading, Explorer, BlockGrid, PhotoBand } from '../kit';
+import { svcPhotos } from '../servicePhotos';
 
 /**
  * EnterpriseNetworkingContent Component
@@ -51,91 +51,26 @@ const whyItMatters = [
 
 export const EnterpriseNetworkingContent = (_props: EnterpriseNetworkingContentProps) => {
   return (
-    <section className="py-20 relative bg-grey-light">
-      <div className="max-w-[1200px] mx-auto px-6 xl:px-0">
+    <>
+      <Overview benefits={benefits} image={svcPhotos.enterprise.a}>
+        <p>
+          Deploy secure, lightning-fast enterprise networking solutions such as SD-WAN, multi-site VPNs, and highly redundant routing designed for maximum uptime and reliability. We connect every office, branch, and remote worker into one resilient, zero-downtime network.
+        </p>
+      </Overview>
 
-        {/* Overview & Client Benefits */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
-        >
-          <div className="lg:col-span-8">
-            <div className="flex items-center gap-3 mb-10">
-              <div className="h-10 w-2 bg-brand-orange rounded-full"></div>
-              <h2 className="text-2xl lg:text-3xl font-bold text-navy tracking-tight">Overview</h2>
-            </div>
-            <div className="bg-navy-wash border border-gray-200 rounded-[40px] p-8 lg:p-10">
-              <p className="text-lg lg:text-xl text-gray-700 leading-relaxed font-medium">
-                Deploy secure, lightning-fast enterprise networking solutions such as SD-WAN, multi-site VPNs, and highly redundant routing designed for maximum uptime and reliability. We connect every office, branch, and remote worker into one resilient, zero-downtime network.
-              </p>
-            </div>
-          </div>
-          <div className="lg:col-span-4">
-            <ServiceBenefitsSidebar benefits={benefits} />
-          </div>
-        </motion.div>
+      <Section tone="grey">
+        <Heading
+          title="Enterprise Connectivity, Engineered for Zero Downtime"
+          sub="Connecting every office, site, and remote worker without a single dropped packet"
+        />
+        <Explorer items={capabilities} />
+      </Section>
 
-        {/* Capabilities — bounded cards on the navy gradient, alternating accent color */}
-        <div className="mb-24">
-          <div className="flex items-center gap-3 mb-16">
-            <div className="h-10 w-2 bg-brand-orange rounded-full"></div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-navy tracking-tight">
-              Enterprise Connectivity, Engineered for Zero Downtime
-              <span className="block text-lg lg:text-xl text-gray-500 font-medium tracking-normal">Connecting every office, site, and remote worker without a single dropped packet</span>
-            </h2>
-          </div>
+      <PhotoBand photo={svcPhotos.enterprise.b} />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-split-navy rounded-[40px] p-6 md:p-10">
-            {capabilities.map((cap, idx) => {
-              const accent = idx % 2 === 0 ? 'brand-orange' : 'teal';
-              return (
-                <motion.div
-                  key={cap.num}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.06 }}
-                  className={`bg-navy-wash border border-gray-200 ${idx % 2 === 0 ? 'card-shape-a' : 'card-shape-b'} p-8 flex flex-col`}
-                >
-                  <div className={`inline-flex items-center justify-center w-11 h-11 rounded-xl text-white font-black text-sm mb-6 ${accent === 'brand-orange' ? 'bg-brand-orange' : 'bg-teal'}`}>
-                    {cap.num}
-                  </div>
-                  <h3 className="text-xl font-bold text-navy mb-3">{cap.title}</h3>
-                  <p className="text-gray-600 leading-relaxed text-sm mb-5">{cap.desc}</p>
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {cap.stack.map((s) => (
-                      <span key={s} className={`px-3 py-1.5 text-xs font-semibold rounded-md border ${accent === 'brand-orange' ? 'bg-brand-orange/10 text-brand-orange-dark border-brand-orange/20' : 'bg-teal-wash text-teal-dark border-teal/20'}`}>{s}</span>
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Why It Matters — real bounded cards with color, not a borderless strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 grid grid-cols-1 md:grid-cols-3 gap-6"
-        >
-          {whyItMatters.map((item, idx) => {
-            const accent = idx % 2 === 0 ? 'bg-brand-orange' : 'bg-teal';
-            return (
-              <div key={item.title} className={`bg-navy-wash border border-gray-200 ${idx % 2 === 0 ? 'card-shape-a' : 'card-shape-b'} p-7`}>
-                <div className={`w-9 h-2.5 rounded-full ${accent} mb-5`}></div>
-                <h3 className="text-base font-bold text-navy mb-1.5">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            );
-          })}
-        </motion.div>
-      </div>
-    </section>
+      <Section tone="dark">
+        <BlockGrid dark cols={3} items={whyItMatters} />
+      </Section>
+    </>
   );
 };

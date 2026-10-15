@@ -16,7 +16,6 @@ interface ServiceCTAProps {
 }
 
 export const ServiceCTA = ({ primaryButton, secondaryButton }: ServiceCTAProps) => {
-  const PrimaryIcon = primaryButton.icon;
 
   return (
     <div className="flex flex-wrap items-center gap-4">

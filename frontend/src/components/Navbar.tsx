@@ -34,7 +34,7 @@ const Navbar = memo(() => {
           : 'bg-white py-5 border-b border-gray-100 shadow-md'
       }`}
     >
-      <div className="max-w-[1550px] mx-auto px-6 xl:px-12 flex justify-between items-center h-[64px]">
+      <div className="w-full px-4 sm:px-8 lg:px-12 flex justify-between items-center h-[64px]">
         {/* Logo Section */}
         <Link to="/" className="flex items-center gap-2.5 cursor-pointer group shrink-0">
           <div className="w-9 h-9 rounded-[8px] flex items-center justify-center shadow-md transform group-hover:scale-110 transition-all duration-500 overflow-hidden">
@@ -99,7 +99,7 @@ const Navbar = memo(() => {
             onMouseEnter={() => setActiveMenu('services')}
             onMouseLeave={() => {setActiveMenu(null);}}
           >
-            <div className="max-w-[1550px] mx-auto px-6 xl:px-12">
+            <div className="w-full px-4 sm:px-8 lg:px-12">
 
               {/* Mega-Menu Navigation Links */}
               <div className="py-6 grid grid-cols-4 gap-8">

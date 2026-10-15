@@ -86,10 +86,9 @@ const ExpertFormModal: React.FC<ExpertFormModalProps> = ({ isOpen, onClose, serv
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-2xl bg-navy-gradient border border-white/20 rounded-[32px] overflow-hidden shadow-2xl shadow-brand-orange/20"
+            className="relative w-full max-w-2xl bg-navy border border-white/20 rounded-[32px] overflow-hidden shadow-2xl shadow-brand-orange/20"
           >
             {/* Background Glow */}
-            <div className="absolute top-[-20%] right-[-10%] w-64 h-64 bg-brand-orange/20 blur-[80px] rounded-full pointer-events-none"></div>
 
             <div className="p-8 md:p-10">
               <button

@@ -80,57 +80,19 @@ body {
   border: 0;
 }
 
-/* Dynamic background images using CSS variables */
-.dynamic-bg {
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-}
-
-/* Backdrop for card-grid panels — a strong diagonal sweep from a bright,
-   saturated navy down through to black, so the gradient is unmistakable
-   at a glance rather than a subtle tonal shift. */
-.bg-split-navy {
-  background: linear-gradient(160deg, #3C5A99 0%, var(--color-navy-mid) 35%, var(--color-navy) 65%, #000000 100%);
-}
-
-/* General-purpose navy gradient — replaces flat bg-navy on hero/CTA sections
-   and dark panels so large dark surfaces read as gradients, not flat fills. */
-.bg-navy-gradient {
-  background: linear-gradient(135deg, #3C5A99 0%, var(--color-navy-mid) 30%, var(--color-navy) 60%, #000000 100%);
-}
-
-/* Deeper variant for the footer and other "end of page" surfaces. */
-.bg-navy-dark-gradient {
-  background: linear-gradient(160deg, #2A3F6B 0%, var(--color-navy) 45%, #000000 100%);
-}
-
-/* Card shape variants — alternated by index across a grid so repeating cards
-   read as a deliberate, varied set instead of identical rounded rectangles.
-   Each variant also carries a thin top accent in a different brand color
-   (orange / teal / violet / gold) so grids read as colorful, not just navy. */
-.card-shape-a {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 2rem;
-  border-bottom-left-radius: 0.5rem;
-  border-top: 3px solid var(--color-brand-orange);
-}
-.card-shape-b {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 2rem;
-  border-top: 3px solid var(--color-teal);
-}
-.card-shape-c {
-  border-radius: 1.75rem;
-  border-top: 3px solid var(--color-violet);
-}
+/* Card shape variants — kept as class names for existing markup, but now a
+   single plain radius so cards read as one restrained system. */
+.card-shape-a,
+.card-shape-b,
+.card-shape-c,
 .card-shape-d {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 2.25rem;
-  border-bottom-left-radius: 0.5rem;
-  border-top: 3px solid var(--color-gold);
+  border-radius: 1rem;
+}
+
+/* Flowing dashed links in the service diagrams */
+@keyframes flow-dash {
+  to { stroke-dashoffset: -16; }
+}
+.flow-dash {
+  animation: flow-dash 0.9s linear infinite;
 }

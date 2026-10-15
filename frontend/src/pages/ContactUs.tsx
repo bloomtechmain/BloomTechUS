@@ -5,8 +5,7 @@ import { Phone, Mail, MapPin, Send, CheckCircle, Linkedin, Twitter, Facebook, In
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { seoConfigs } from '../utils/seoConfig';
-import { IconTile } from '../components/ui';
-import datacenterHero from '../assets/hero_bg_3.webp';
+import { PageHero, Section, Heading } from '../components/service-details/kit';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -105,139 +104,92 @@ const ContactUs = () => {
   return (
     <div className="bg-white">
       <SEO config={seoConfigs.contact} />
-      
-      {/* Hero Section */}
-      <section className="relative bg-navy-gradient pt-32 pb-20 overflow-hidden">
-        <img src={datacenterHero} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/50"></div>
 
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-3xl"
-          >
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 mb-6 text-xs font-semibold tracking-widest text-white/80 uppercase border border-white/15 rounded-full">
-              <Mail className="w-3.5 h-3.5 text-brand-orange" />
-              Get In Touch
-            </div>
+      {/* Hero */}
+      <PageHero
+        photo={{ src: '/images/hero-bg-software.webp', alt: 'Team working together on laptops' }}
+        eyebrow="Get In Touch"
+        title={<>Professional IT consulting <span className="text-white/55">&amp; enterprise technology solutions</span></>}
+        text="From IT consulting and custom software to infrastructure, AI, and cybersecurity — our certified experts deliver technology solutions tailored to your business."
+      />
 
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-[1.15] tracking-tight text-white">
-              Professional IT consulting <span className="text-brand-orange">&amp; enterprise technology solutions</span>
-            </h1>
-
-            <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
-              From IT consulting and custom software to infrastructure, AI, and cybersecurity — our certified experts deliver technology solutions tailored to your business.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Information Bar — one continuous strip instead of separate padded boxes */}
-      <section className="py-16 px-6 bg-split-navy relative -mt-16 z-20">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-navy-wash rounded-[28px] border border-gray-200 shadow-lg divide-y divide-gray-200 md:divide-y-0 md:flex md:divide-x"
-          >
+      {/* Contact information strip — hairline-divided */}
+      <section className="bg-white border-b border-gray-200">
+        <div className="w-full px-4 sm:px-8 lg:px-12">
+          <div className="grid md:grid-cols-3">
             {contactInfo.map((info, i) => {
               const Icon = info.icon;
               return (
-                <div key={i} className="flex items-center gap-4 p-7 md:flex-1">
-                  <IconTile icon={Icon} tone={i === 0 ? 'orange' : i === 1 ? 'teal' : 'navy'} />
-                  <div className="min-w-0">
-                    <h3 className="text-[11px] font-bold uppercase tracking-widest text-gray-500 mb-1">
-                      {info.title}
-                    </h3>
-                    {info.link ? (
-                      <a
-                        href={info.link}
-                        target={info.link.startsWith('http') ? '_blank' : undefined}
-                        rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className="text-navy font-semibold leading-snug hover:text-brand-orange transition-colors whitespace-pre-line block"
-                      >
-                        {info.content}
-                      </a>
-                    ) : (
-                      <p className="text-navy font-semibold leading-snug whitespace-pre-line">
-                        {info.content}
-                      </p>
-                    )}
-                  </div>
-                </div>
+                <a key={i} href={info.link}
+                  target={info.link.startsWith('http') ? '_blank' : undefined}
+                  rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className={`group flex items-start gap-4 py-8 md:px-8 border-gray-200 ${i > 0 ? 'border-t md:border-t-0 md:border-l' : 'md:pl-0'}`}>
+                  <span className="w-12 h-12 rounded-xl bg-grey-light text-navy-mid flex items-center justify-center shrink-0 transition-colors group-hover:bg-navy group-hover:text-white">
+                    <Icon className="w-5 h-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">{info.title}</span>
+                    <span className="block font-bold text-navy whitespace-pre-line leading-snug group-hover:text-brand-orange-dark transition-colors">{info.content}</span>
+                  </span>
+                </a>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-24 lg:py-28 px-6 bg-grey-light">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <div className="grid lg:grid-cols-2 gap-14 items-start">
-            {/* Left Column - Information */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange mb-4 block">
-                Let's Connect
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5 leading-tight tracking-tight">
-                Request professional IT consulting & technology services
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                Looking for professional IT consulting, custom software, enterprise infrastructure, AI solutions, or a stronger digital presence? Contact us to explore how our certified consultants and engineers can transform your business. Our solution architects respond within 24 hours.
-              </p>
+      {/* Contact form */}
+      <Section tone="grey">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left column — information */}
+          <div className="lg:col-span-5">
+            <Heading eyebrow="Let's Connect" title="Request professional IT consulting & technology services" className="mb-10">
+              <p>Looking for professional IT consulting, custom software, enterprise infrastructure, AI solutions, or a stronger digital presence? Contact us to explore how our certified consultants and engineers can transform your business. Our solution architects respond within 24 hours.</p>
+            </Heading>
 
-              {/* Office Location Highlight */}
-              <div className="bg-navy-gradient rounded-xl p-7">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">
-                  Our Austin Hub
-                </h3>
-                <p className="text-white font-semibold text-lg mb-5 leading-relaxed">
-                  Located in the heart of the Domain, a premier center for technology and innovation.
-                </p>
-                <div className="flex items-start gap-3 text-white/60">
-                  <MapPin className="w-4.5 h-4.5 text-brand-orange mt-0.5 shrink-0" />
-                  <div>
-                    <p>BloomTech Corporation</p>
+            {/* Office location highlight */}
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
+              className="rounded-2xl overflow-hidden bg-navy">
+              <div className="relative h-44 overflow-hidden">
+                <img src="/images/services/av-b.webp" alt="Modern office interior" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy to-navy/10" />
+              </div>
+              <div className="p-7 -mt-8 relative">
+                <h3 className="text-xl font-extrabold text-white mb-2">Our Austin Hub</h3>
+                <p className="text-white/65 leading-relaxed mb-5">Located in the heart of the Domain, a premier center for technology and innovation.</p>
+                <div className="flex items-start gap-3 pt-5 border-t border-white/10">
+                  <span className="w-9 h-9 rounded-full bg-white/10 text-white/80 flex items-center justify-center shrink-0">
+                    <MapPin className="w-4 h-4" />
+                  </span>
+                  <div className="text-sm text-white/85 leading-relaxed">
+                    <p className="font-bold text-white">BloomTech Corporation</p>
                     <p>11801 Domain Blvd</p>
                     <p>Austin, TX 78758</p>
                   </div>
                 </div>
               </div>
             </motion.div>
+          </div>
 
-            {/* Right Column - Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-navy-wash rounded-xl p-8 md:p-10 shadow-sm border border-gray-200"
-            >
-              {isSubmitted ? (
-                <div className="flex flex-col items-center justify-center py-20">
-                  <div className="w-16 h-16 rounded-full bg-teal flex items-center justify-center mb-6">
-                    <CheckCircle className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-navy mb-3">Message Sent!</h3>
-                  <p className="text-gray-600 text-center">
-                    Thank you for reaching out. We'll get back to you within 24 hours.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Right column — form */}
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-7 rounded-2xl bg-white p-7 sm:p-10 shadow-[8px_8px_0_0_#101D36]">
+            {isSubmitted ? (
+              <div className="py-16 text-center">
+                <span className="w-16 h-16 rounded-full bg-navy text-white flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle className="w-8 h-8" />
+                </span>
+                <h3 className="text-2xl font-extrabold text-navy mb-2">Message Sent!</h3>
+                <p className="text-gray-600">
+                  Thank you for reaching out. We'll get back to you within 24 hours.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid sm:grid-cols-2 gap-6">
                   {/* Name Field */}
                   <div>
-                    <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label htmlFor="name" className={labelCls}>
                       Name (First & Last)
                     </label>
                     <input
@@ -246,33 +198,14 @@ const ContactUs = () => {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-orange focus:outline-none focus:ring-1 focus:ring-brand-orange transition-colors text-navy"
                       placeholder="John Doe"
+                      className={inputCls}
                     />
-                  </div>
-
-                  {/* Email Field */}
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Business Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-orange focus:outline-none focus:ring-1 focus:ring-brand-orange transition-colors text-navy"
-                      placeholder="john.doe@company.com"
-                    />
-                    <p className="text-xs text-gray-500 mt-2 font-medium">
-                      So we can send you relevant technical documentation
-                    </p>
                   </div>
 
                   {/* Company Field */}
                   <div>
-                    <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label htmlFor="company" className={labelCls}>
                       Company Name
                     </label>
                     <input
@@ -281,197 +214,173 @@ const ContactUs = () => {
                       required
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-orange focus:outline-none focus:ring-1 focus:ring-brand-orange transition-colors text-navy"
                       placeholder="Your Company"
+                      className={inputCls}
                     />
                   </div>
+                </div>
 
-                  {/* Area of Interest */}
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">
-                      Area of Interest
-                    </label>
-                    <div className="space-y-2.5">
-                      {interestOptions.map((interest, i) => (
-                        <label
-                          key={i}
-                          className="flex items-start gap-3 cursor-pointer group"
-                        >
+                {/* Email Field */}
+                <div>
+                  <label htmlFor="email" className={labelCls}>
+                    Business Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="john.doe@company.com"
+                    className={inputCls}
+                  />
+                  <p className="text-xs text-gray-500 mt-2">
+                    So we can send you relevant technical documentation
+                  </p>
+                </div>
+
+                {/* Area of Interest */}
+                <div>
+                  <label className={labelCls}>
+                    Area of Interest
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {interestOptions.map((interest, i) => {
+                      const on = formData.interests.includes(interest);
+                      return (
+                        <label key={i}
+                          className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold cursor-pointer select-none transition-colors ${on ? 'bg-navy text-white' : 'bg-grey-light text-navy hover:bg-[#ECEFF4]'}`}>
                           <input
                             type="checkbox"
-                            checked={formData.interests.includes(interest)}
+                            checked={on}
                             onChange={() => handleInterestToggle(interest)}
-                            className="mt-0.5 w-4.5 h-4.5 rounded border-gray-300 text-brand-orange focus:ring-brand-orange cursor-pointer"
+                            className="sr-only"
                           />
-                          <span className="text-gray-600 group-hover:text-navy transition-colors text-[15px]">
-                            {interest}
+                          <span className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${on ? 'bg-brand-orange' : 'bg-white'}`}>
+                            {on && <CheckCircle className="w-3 h-3 text-white" />}
                           </span>
+                          {interest}
                         </label>
-                      ))}
-                    </div>
+                      );
+                    })}
                   </div>
+                </div>
 
-                  {/* Message Field */}
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      required
-                      rows={5}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-brand-orange focus:outline-none focus:ring-1 focus:ring-brand-orange transition-colors text-navy resize-none"
-                      placeholder="Briefly describe your project goals or challenges"
-                    />
-                  </div>
+                {/* Message Field */}
+                <div>
+                  <label htmlFor="message" className={labelCls}>
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    required
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Briefly describe your project goals or challenges"
+                    className={`${inputCls} resize-none`}
+                  />
+                </div>
 
-                  {error && (
-                    <p className="text-red-500 text-sm font-bold">{error}</p>
+                {error && (
+                  <p className="text-sm font-semibold text-red-600">{error}</p>
+                )}
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-10 py-4 rounded-xl bg-brand-orange hover:bg-brand-orange-dark disabled:opacity-60 text-white font-bold transition-colors"
+                >
+                  {loading ? (
+                    <div className="w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </>
                   )}
+                </button>
+              </form>
+            )}
+          </motion.div>
+        </div>
+      </Section>
 
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full px-8 py-4 bg-brand-orange text-white rounded-lg font-semibold hover:bg-brand-orange-dark disabled:opacity-60 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2.5 group"
-                  >
-                    {loading ? (
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    ) : (
-                      <>
-                        Send Message
-                        <Send className="w-4.5 h-4.5 group-hover:translate-x-0.5 transition-transform" />
-                      </>
-                    )}
-                  </button>
-                </form>
-              )}
-            </motion.div>
+      {/* Social media */}
+      <Section tone="dark">
+        <div className="grid lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-6">
+            <Heading light eyebrow="Connect With Us" title="Follow our journey" sub="Stay updated with the latest insights, innovations, and success stories from BloomTechUSA." className="mb-0" />
+          </div>
+          <div className="lg:col-span-6">
+            <div className="flex flex-wrap gap-3 mb-6">
+              {[
+                { href: '#linkedin', Icon: Linkedin },
+                { href: '#twitter', Icon: Twitter },
+                { href: '#facebook', Icon: Facebook },
+                { href: '#instagram', Icon: Instagram },
+                { href: '#youtube', Icon: Youtube },
+              ].map(({ href, Icon }) => (
+                <a key={href} href={href} aria-label={href.slice(1)}
+                  className="w-14 h-14 rounded-xl bg-white/[0.06] text-white/80 flex items-center justify-center transition-all hover:bg-white hover:text-navy hover:-translate-y-1">
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
+            <div className="rounded-xl bg-white/[0.05] p-5">
+              <p className="text-sm text-white/65 leading-relaxed">
+                <span className="font-bold text-white">Coming Soon:</span> Join our growing community across all major social platforms. Get exclusive insights, behind-the-scenes content, and be the first to know about our latest innovations and thought leadership.
+              </p>
+            </div>
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* Social Media Section */}
-      <section className="py-20 px-6 bg-navy-gradient">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange mb-4 block">
-              Connect With Us
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight tracking-tight">
-              Follow our journey
-            </h2>
-            <p className="text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Stay updated with the latest insights, innovations, and success stories from BloomTechUSA.
-            </p>
-
-            {/* Social Media Icons */}
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <a
-                href="#linkedin"
-                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-orange/50 hover:bg-white/10 transition-colors"
-              >
-                <Linkedin className="w-5 h-5 text-white/70 group-hover:text-brand-orange transition-colors" />
-              </a>
-              <a
-                href="#twitter"
-                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-orange/50 hover:bg-white/10 transition-colors"
-              >
-                <Twitter className="w-5 h-5 text-white/70 group-hover:text-brand-orange transition-colors" />
-              </a>
-              <a
-                href="#facebook"
-                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-orange/50 hover:bg-white/10 transition-colors"
-              >
-                <Facebook className="w-5 h-5 text-white/70 group-hover:text-brand-orange transition-colors" />
-              </a>
-              <a
-                href="#instagram"
-                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-orange/50 hover:bg-white/10 transition-colors"
-              >
-                <Instagram className="w-5 h-5 text-white/70 group-hover:text-brand-orange transition-colors" />
-              </a>
-              <a
-                href="#youtube"
-                className="group w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-brand-orange/50 hover:bg-white/10 transition-colors"
-              >
-                <Youtube className="w-5 h-5 text-white/70 group-hover:text-brand-orange transition-colors" />
-              </a>
-            </div>
-
-            {/* Social Media Placeholder Note */}
-            <div className="mt-12 max-w-xl mx-auto">
-              <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-                <p className="text-white/60 leading-relaxed text-sm">
-                  <span className="text-brand-orange font-semibold">Coming Soon:</span> Join our growing community across all major social platforms. Get exclusive insights, behind-the-scenes content, and be the first to know about our latest innovations and thought leadership.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="mb-10">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange mb-4 block">
-                Visit Us
+      {/* Map */}
+      <Section tone="white">
+        <Heading eyebrow="Visit Us" title="Find us in Austin" className="mb-10" />
+        <div className="rounded-2xl overflow-hidden bg-white shadow-[8px_8px_0_0_#101D36]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-6 py-5 bg-navy">
+            <div className="flex items-center gap-3 min-w-0">
+              <span className="w-10 h-10 rounded-full bg-white/10 text-white/80 flex items-center justify-center shrink-0">
+                <MapPin className="w-4 h-4" />
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy leading-tight tracking-tight">
-                Find us in Austin
-              </h2>
-            </div>
-
-            <div className="rounded-xl overflow-hidden shadow-lg border border-gray-200">
-              <div className="p-5 bg-navy-gradient flex items-center justify-between">
-                <div>
-                  <h3 className="text-white font-bold mb-0.5">Austin Headquarters</h3>
-                  <p className="text-white/60 text-sm">11801 Domain Blvd, Austin, TX 78758</p>
-                </div>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=11801+Domain+Blvd+Austin+TX+78758"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2.5 bg-brand-orange text-white rounded-lg font-semibold text-sm hover:bg-brand-orange-dark transition-colors"
-                >
-                  Open in Maps
-                </a>
-              </div>
-              <div className="h-[420px] bg-gray-100">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3441.9419!2d-97.7211!3d30.3947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cb3d4b769d67%3A0x1234567890abcdef!2s11801%20Domain%20Blvd%2C%20Austin%2C%20TX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
-                  width="100%"
-                  height="100%"
-                  className="w-full h-full borderless-iframe"
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="BloomTech Austin Office Location"
-                />
+              <div className="min-w-0">
+                <h3 className="font-extrabold text-white">Austin Headquarters</h3>
+                <p className="text-sm text-white/60">11801 Domain Blvd, Austin, TX 78758</p>
               </div>
             </div>
-          </motion.div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=11801+Domain+Blvd+Austin+TX+78758"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-brand-orange hover:bg-brand-orange-dark text-white text-sm font-bold whitespace-nowrap transition-colors"
+            >
+              Open in Maps
+            </a>
+          </div>
+          <div className="h-[380px] lg:h-[460px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3441.9419!2d-97.7211!3d30.3947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cb3d4b769d67%3A0x1234567890abcdef!2s11801%20Domain%20Blvd%2C%20Austin%2C%20TX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              className="borderless-iframe"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="BloomTech Austin Office Location"
+            />
+          </div>
         </div>
-      </section>
+      </Section>
 
       <Footer />
     </div>
   );
 };
+
+const labelCls = 'block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2';
+const inputCls = 'w-full rounded-xl bg-grey-light px-4 py-3.5 text-navy placeholder:text-gray-400 outline-none transition-shadow focus:bg-white focus:ring-2 focus:ring-navy';
 
 export default ContactUs;
