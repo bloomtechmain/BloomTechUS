@@ -4,25 +4,8 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// All routes to pre-render
-const routes = [
-  '/',
-  '/company',
-  '/contact',
-  '/services/ai-machine-learning',
-  '/services/custom-ai-hardware',
-  '/services/it-network-infrastructure',
-  '/services/custom-server-design-deployment',
-  '/services/custom-nas-storage',
-  '/services/rack-and-roll-services',
-  '/services/cloud-hosting-deployment',
-  '/services/custom-crm-erp-solutions',
-  '/services/professional-it-consulting',
-  '/services/security-data-protection',
-  '/services/av-smart-workspaces',
-  '/services/custom-websites-design',
-  '/services/online-marketing-services',
-];
+// Static pages; service routes are added from servicesData at build time
+const staticRoutes = ['/', '/company', '/contact'];
 
 async function prerender() {
   console.log('🚀 Starting pre-rendering process...\n');
@@ -44,7 +27,8 @@ async function prerender() {
   }
   
   // Import the server entry
-  const { render } = await import('./dist/server/entry-server.js');
+  const { render, serviceSlugs, siteUrl } = await import('./dist/server/entry-server.js');
+  const routes = [...staticRoutes, ...serviceSlugs.map(slug => `/services/${slug}`)];
   
   // Read the client build HTML template
   const template = fs.readFileSync(clientTemplatePath, 'utf-8');
@@ -52,6 +36,21 @@ async function prerender() {
   // Create a directory for prerendered pages if needed
   const prerenderDir = path.resolve(__dirname, './dist/client');
   
+  // React 19 renders <title>, <meta> and <link> where the component sits, i.e. inside #root.
+  // Crawlers only trust them in <head> (Google ignores a canonical in <body>), so move them there.
+  // The client hoists these tags itself, so this does not affect hydration.
+  const headTag = /<title>[^<]*<\/title>|<meta [^>]*\/?>|<link rel="(?:canonical|preload)"[^>]*\/?>/g;
+  const renderPage = (route) => {
+    const { html: appHtml } = render(route);
+    const headTags = appHtml.match(headTag) || [];
+    let html = template.replace('<!--app-html-->', appHtml.replace(headTag, ''));
+    // The page's own <title> replaces the generic one from index.html
+    if (headTags.some(tag => tag.startsWith('<title>'))) {
+      html = html.replace(/<title>[^<]*<\/title>/, '');
+    }
+    return html.replace('</head>', `${headTags.join('')}</head>`);
+  };
+
   let successCount = 0;
   let errorCount = 0;
 
@@ -59,20 +58,7 @@ async function prerender() {
     try {
       console.log(`📄 Pre-rendering: ${route}`);
       
-      // Render the route
-      const { html: appHtml, helmetContext } = render(route);
-      const { helmet } = helmetContext;
-      
-      // Inject the app HTML into template
-      let html = template.replace('<!--app-html-->', appHtml);
-      
-      // Inject helmet meta tags if available
-      if (helmet) {
-        html = html.replace(
-          '</head>',
-          `${helmet.title?.toString() || ''}${helmet.meta?.toString() || ''}${helmet.link?.toString() || ''}${helmet.script?.toString() || ''}</head>`
-        );
-      }
+      const html = renderPage(route);
 
       // Determine output path
       const routePath = route === '/' ? '/index.html' : `${route}/index.html`;
@@ -93,6 +79,25 @@ async function prerender() {
       errorCount++;
     }
   }
+
+  // 404 page: Cloudflare Pages serves 404.html with a real 404 status for unknown URLs
+  fs.writeFileSync(path.resolve(prerenderDir, '404.html'), renderPage('/404'));
+  console.log('📄 Saved 404.html');
+
+  // Sitemap built from the same route list, using the trailing-slash URLs Cloudflare serves
+  const today = new Date().toISOString().slice(0, 10);
+  const sitemapUrls = routes.map(route => `  <url>
+    <loc>${siteUrl}${route === '/' ? '/' : `${route}/`}</loc>
+    <lastmod>${today}</lastmod>
+    <priority>${route === '/' ? '1.0' : route.startsWith('/services/') ? '0.8' : '0.9'}</priority>
+  </url>`);
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapUrls.join('\n')}
+</urlset>
+`;
+  fs.writeFileSync(path.resolve(prerenderDir, 'sitemap.xml'), sitemap);
+  console.log(`🗺️  Saved sitemap.xml (${routes.length} URLs)`);
 
   console.log('\n' + '='.repeat(60));
   console.log(`✅ Pre-rendering complete!`);

@@ -35,7 +35,6 @@ const SEO: React.FC<SEOProps> = ({ config, breadcrumbs, noindex = false }) => {
     <Helmet>
       {/* Primary Meta Tags */}
       <title>{title}</title>
-      <meta name="title" content={title} />
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       {canonical && <link rel="canonical" href={canonical} />}
@@ -50,19 +49,15 @@ const SEO: React.FC<SEOProps> = ({ config, breadcrumbs, noindex = false }) => {
       <meta property="og:locale" content="en_US" />
 
       {/* Twitter */}
-      <meta property="twitter:card" content={twitterCard} />
-      <meta property="twitter:url" content={canonical || 'https://www.bloomtechusa.com'} />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
-      {ogImage && <meta property="twitter:image" content={ogImage} />}
+      <meta name="twitter:card" content={twitterCard} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      {ogImage && <meta name="twitter:image" content={ogImage} />}
       <meta name="twitter:creator" content="@BloomtechU8895" />
       <meta name="twitter:site" content="@BloomtechU8895" />
 
       {/* Additional SEO Meta Tags */}
       <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
-      <meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow"} />
-      <meta name="bingbot" content={noindex ? "noindex, nofollow" : "index, follow"} />
-      
       {/* Geographic Tags */}
       <meta name="geo.region" content="US-TX" />
       <meta name="geo.placename" content="Austin" />

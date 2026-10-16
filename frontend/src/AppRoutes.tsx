@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import ServiceDetails from './pages/ServiceDetails';
 import Company from './pages/Company';
 import ContactUs from './pages/ContactUs';
+import NotFound from './pages/NotFound';
 
 function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ function AppRoutes() {
         <Route path="/company" element={<Company />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/services/:serviceId" element={<ServiceDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

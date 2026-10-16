@@ -110,7 +110,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
     title: 'About BloomTechUSA - AI Machine Learning & Enterprise Infrastructure Experts',
     description: 'Learn about BloomTechUSA\'s mission to deliver AI machine learning solutions, enterprise infrastructure services, and custom server design. CISA-certified machine learning and infrastructure experts.',
     keywords: 'AI machine learning, enterprise infrastructure, custom server, machine learning services, infrastructure solutions, AI experts Austin, company profile',
-    canonical: `${baseUrl}/company`,
+    canonical: `${baseUrl}/company/`,
     ogImage: defaultOGImage,
     ogType: 'website'
   },
@@ -118,7 +118,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
     title: 'Contact BloomTechUSA - Professional IT Consulting & Technology Solutions',
     description: 'Get in touch with BloomTechUSA for professional IT consulting, custom software, enterprise infrastructure, AI & machine learning, security, and digital presence services. Located in Austin, TX. Call (737) 329-8158.',
     keywords: 'contact bloomtech, IT consulting, professional IT consulting, enterprise infrastructure, custom software, AI machine learning, cybersecurity, Austin IT company',
-    canonical: `${baseUrl}/contact`,
+    canonical: `${baseUrl}/contact/`,
     ogImage: defaultOGImage,
     ogType: 'website',
     schema: localBusinessSchema
@@ -131,7 +131,7 @@ export const serviceSEO: Record<string, SEOConfig> = {
     title: 'AI Platform Integration - Claude & AWS Bedrock - BloomTechUSA',
     description: 'We integrate AI platforms like Anthropic\'s Claude into your existing application via API, hosted on AWS (including AWS Bedrock). No rebuild required — add AI capability to the app you already run.',
     keywords: 'AI integration, Claude API integration, AWS Bedrock, Anthropic Claude, AI platform integration, AWS AI hosting, existing application AI',
-    canonical: `${baseUrl}/services/ai-machine-learning`,
+    canonical: `${baseUrl}/services/ai-machine-learning/`,
     ogImage: `${baseUrl}/images/Custom_AI_Development.jpg`,
     schema: {
       '@context': 'https://schema.org',
@@ -142,95 +142,102 @@ export const serviceSEO: Record<string, SEOConfig> = {
       description: 'Integrating AI platforms like Anthropic Claude into existing applications via API, hosted and scaled on AWS.'
     }
   },
+  'custom-mobile-web-applications': {
+    title: 'Custom Mobile & Web Application Development - BloomTechUSA',
+    description: 'High-performance, business-centric mobile and web applications. Tailored workflows, conversion-first design, sub-second load times, and code and data you fully own.',
+    keywords: 'custom mobile app development, custom web application development, business applications, web portals, app development Austin',
+    canonical: `${baseUrl}/services/custom-mobile-web-applications/`,
+    ogImage: `${baseUrl}/images/services/mobile-web.webp`
+  },
   'custom-ai-hardware': {
     title: 'Custom AI Hardware & High-Performance Computing - BloomTechUSA',
     description: 'Purpose-built AI hardware solutions. High-density GPU servers, custom workstations for machine learning, and on-premise AI infrastructure for secure, high-performance computing.',
     keywords: 'AI hardware, GPU servers, machine learning hardware, custom AI workstations, high-performance computing',
-    canonical: `${baseUrl}/services/custom-ai-hardware`,
+    canonical: `${baseUrl}/services/custom-ai-hardware/`,
     ogImage: `${baseUrl}/images/AI_Hardware.jpg`
   },
   'it-network-infrastructure': {
     title: 'Enterprise Infrastructure & Custom Server Solutions - BloomTechUSA',
     description: 'Enterprise infrastructure services and custom server design. Infrastructure servers with L3 switching, SD-WAN, high-availability networks, and custom server deployment for enterprise infrastructure needs.',
     keywords: 'enterprise infrastructure, custom server, infrastructure services, infrastructure servers, enterprise networking, IT infrastructure, custom server design, network infrastructure',
-    canonical: `${baseUrl}/services/it-network-infrastructure`,
+    canonical: `${baseUrl}/services/it-network-infrastructure/`,
     ogImage: `${baseUrl}/images/Enterprise_Network.jpg`
   },
   'enterprise-networking': {
     title: 'Enterprise Networking & Multi-Site Connectivity - BloomTechUSA',
     description: 'SD-WAN, redundant routing, and secure multi-site VPNs for zero-downtime enterprise connectivity. Bandwidth optimization and QoS for business-critical applications.',
     keywords: 'enterprise networking, SD-WAN, multi-site VPN, redundant connectivity, bandwidth optimization, QoS, network failover',
-    canonical: `${baseUrl}/services/enterprise-networking`,
+    canonical: `${baseUrl}/services/enterprise-networking/`,
     ogImage: `${baseUrl}/images/Enterprise_Network.jpg`
   },
   'custom-server-design-deployment': {
     title: 'Custom Server Design & Enterprise Infrastructure Deployment - BloomTechUSA',
     description: 'Custom server solutions and enterprise infrastructure deployment. Purpose-built infrastructure servers optimized for virtualization and AI machine learning workloads. High-density custom server design and enterprise infrastructure services.',
     keywords: 'custom server, infrastructure servers, enterprise infrastructure, custom server design, server infrastructure, server deployment, AMD EPYC, virtualization, infrastructure services',
-    canonical: `${baseUrl}/services/custom-server-design-deployment`,
+    canonical: `${baseUrl}/services/custom-server-design-deployment/`,
     ogImage: `${baseUrl}/images/IT_network_and_Inferstructure.jpg`
   },
   'custom-nas-storage': {
     title: 'Custom NAS Storage Solutions with ZFS - BloomTechUSA',
     description: 'Enterprise-grade network attached storage with ZFS integration. Custom NAS design for data integrity, high-availability storage, and scalable file systems.',
     keywords: 'custom NAS, ZFS storage, network storage, enterprise NAS, data integrity, file server',
-    canonical: `${baseUrl}/services/custom-nas-storage`,
+    canonical: `${baseUrl}/services/custom-nas-storage/`,
     ogImage: `${baseUrl}/images/Custom_Nas_Design.jpg`
   },
   'rack-and-roll-services': {
     title: 'Rack & Roll Server Deployment Services - BloomTechUSA',
     description: 'Turnkey server room deployment and integration. High-density rack design, cable management, cooling solutions, and complete data center setup services.',
     keywords: 'server deployment, rack installation, data center setup, server room design, rack and roll',
-    canonical: `${baseUrl}/services/rack-and-roll-services`,
+    canonical: `${baseUrl}/services/rack-and-roll-services/`,
     ogImage: `${baseUrl}/images/rack_and_roll.jpg`
   },
   'cloud-hosting-deployment': {
     title: 'Cloud Hosting & Application Deployment (AWS, Azure, DigitalOcean, Railway) - BloomTechUSA',
     description: 'High-performance cloud hosting and automated deployment on AWS, Microsoft Azure, DigitalOcean, or Railway. CI/CD pipelines, container orchestration, and managed cloud infrastructure matched to your platform and budget.',
     keywords: 'cloud hosting, application deployment, AWS hosting, Azure hosting, DigitalOcean, Railway deployment, CI/CD, container orchestration, managed hosting, DevOps',
-    canonical: `${baseUrl}/services/cloud-hosting-deployment`,
+    canonical: `${baseUrl}/services/cloud-hosting-deployment/`,
     ogImage: `${baseUrl}/images/Cloud_application_Deployment.jpg`
   },
   'custom-crm-erp-solutions': {
     title: 'Custom CRM & ERP Solutions - BloomTechUSA',
     description: 'Bespoke CRM and ERP platforms for unified business operations. Custom workflow automation, data integration, and single source of truth for enterprise resource planning.',
     keywords: 'custom CRM, custom ERP, business automation, workflow automation, enterprise software',
-    canonical: `${baseUrl}/services/custom-crm-erp-solutions`,
-    ogImage: `${baseUrl}/images/CRM_&_ERP.jpg`
+    canonical: `${baseUrl}/services/custom-crm-erp-solutions/`,
+    ogImage: `${baseUrl}/images/CRM_%26_ERP.jpg`
   },
   'professional-it-consulting': {
     title: 'Professional IT Consulting & Strategic Advisory - BloomTechUSA',
     description: 'CISA-certified IT consulting services. Strategic advisory, IT governance, risk management, fractional CTO/CISO services, and compliance consulting.',
     keywords: 'IT consulting, CISA certified, IT governance, risk management, fractional CTO, CISO services',
-    canonical: `${baseUrl}/services/professional-it-consulting`,
+    canonical: `${baseUrl}/services/professional-it-consulting/`,
     ogImage: `${baseUrl}/images/IT_Consolting.jpg`
   },
   'security-data-protection': {
     title: 'Cybersecurity & Data Protection Services - BloomTechUSA',
     description: 'Multi-layered security architecture and data protection. Zero Trust security, EDR implementation, perimeter hardening, and compliance with SOC2, HIPAA, PCI-DSS, and NIST.',
     keywords: 'cybersecurity, data protection, Zero Trust, EDR, SOC2, HIPAA, PCI-DSS, security consulting',
-    canonical: `${baseUrl}/services/security-data-protection`,
+    canonical: `${baseUrl}/services/security-data-protection/`,
     ogImage: `${baseUrl}/images/IT_Consolting.jpg`
   },
   'av-smart-workspaces': {
     title: 'Smart Workspace Solutions - BloomTechUSA',
     description: 'Complete A-Z office setup services. Site visits, workspace planning, furniture, networking, power, AV, and security, installed and configured for new or upgraded offices.',
     keywords: 'office setup, smart workspaces, office network setup, office AV installation, workspace planning, office technology',
-    canonical: `${baseUrl}/services/av-smart-workspaces`,
+    canonical: `${baseUrl}/services/av-smart-workspaces/`,
     ogImage: `${baseUrl}/images/rack_and_roll.jpg`
   },
   'custom-websites-design': {
     title: 'Custom Website Design & Development - BloomTechUSA',
     description: 'Conversion-focused website design and development. Clean, optimized code, responsive design, and high-performance web applications built for business growth.',
     keywords: 'website design, web development, custom websites, responsive design, web applications',
-    canonical: `${baseUrl}/services/custom-websites-design`,
+    canonical: `${baseUrl}/services/custom-websites-design/`,
     ogImage: `${baseUrl}/images/digital-marketing.jpg`
   },
   'online-marketing-services': {
     title: 'SEO & Online Marketing Services - BloomTechUSA',
     description: 'Data-driven digital marketing and SEO services. Technical SEO, AI-powered content strategy, and online visibility optimization for business growth.',
     keywords: 'SEO services, online marketing, digital marketing, content strategy, search optimization',
-    canonical: `${baseUrl}/services/online-marketing-services`,
+    canonical: `${baseUrl}/services/online-marketing-services/`,
     ogImage: `${baseUrl}/images/digital-marketing.jpg`
   }
 };
@@ -238,7 +245,22 @@ export const serviceSEO: Record<string, SEOConfig> = {
 // Helper function to get SEO config
 export const getSEOConfig = (page: string, serviceId?: string): SEOConfig => {
   if (serviceId && serviceSEO[serviceId]) {
-    return serviceSEO[serviceId];
+    const config = serviceSEO[serviceId];
+    // Every service page gets Service markup; the name is the title without the brand suffix
+    return config.schema ? config : {
+      ...config,
+      schema: {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: config.title.replace(/ - BloomTechUSA$/, ''),
+        url: config.canonical,
+        provider: organizationSchema,
+        areaServed: 'US',
+        description: config.description
+      }
+    };
   }
   return seoConfigs[page] || seoConfigs.home;
 };
+
+export const siteUrl = baseUrl;
