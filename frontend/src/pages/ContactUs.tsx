@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 import { Phone, Mail, MapPin, Send, CheckCircle, Linkedin, Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
-import { seoConfigs } from '../utils/seoConfig';
+import { seoConfigs, socialMedia } from '../utils/seoConfig';
 import { PageHero, Section, Heading } from '../components/service-details/kit';
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -316,13 +316,14 @@ const ContactUs = () => {
           <div className="lg:col-span-6">
             <div className="flex flex-wrap gap-3 mb-6">
               {[
-                { href: '#linkedin', Icon: Linkedin },
-                { href: '#twitter', Icon: Twitter },
-                { href: '#facebook', Icon: Facebook },
-                { href: '#instagram', Icon: Instagram },
-                { href: '#youtube', Icon: Youtube },
-              ].map(({ href, Icon }) => (
-                <a key={href} href={href} aria-label={href.slice(1)}
+                { label: 'linkedin', href: '#linkedin', Icon: Linkedin },
+                { label: 'twitter', href: '#twitter', Icon: Twitter },
+                { label: 'facebook', href: socialMedia.facebook, Icon: Facebook },
+                { label: 'instagram', href: '#instagram', Icon: Instagram },
+                { label: 'youtube', href: '#youtube', Icon: Youtube },
+              ].map(({ label, href, Icon }) => (
+                <a key={label} href={href} aria-label={label}
+                  {...(href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}
                   className="w-14 h-14 rounded-xl bg-white/[0.06] text-white/80 flex items-center justify-center transition-all hover:bg-white hover:text-navy hover:-translate-y-1">
                   <Icon className="w-5 h-5" />
                 </a>

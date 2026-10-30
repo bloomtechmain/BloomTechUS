@@ -17,7 +17,7 @@ const defaultOGImage = `${baseUrl}/bloomtech-logo.png`;
 
 // Social Media URLs
 export const socialMedia = {
-  facebook: 'https://www.facebook.com/profile.php?id=61563215399815',
+  facebook: 'https://www.facebook.com/bloomtechusa/',
   twitter: 'https://x.com/BloomtechU8895',
   linkedin: 'https://linkedin.com/company/bloomtech-usa',
   instagram: 'https://www.instagram.com/bloomtech_usa',
