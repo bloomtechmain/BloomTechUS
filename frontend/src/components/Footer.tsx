@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Linkedin, Phone, MapPin, Network, Layout, MessageCircle } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Linkedin, Phone, MapPin, Network, Layout } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import { socialMedia } from '../utils/seoConfig';
 
 const Footer = () => {
@@ -102,7 +103,7 @@ const Footer = () => {
                 aria-label="Contact us on WhatsApp"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center opacity-60 hover:opacity-100 hover:border-brand-orange hover:bg-brand-orange/10 transition-all"
               >
-                <MessageCircle size={18} />
+                <WhatsAppIcon size={18} />
               </a>
             </div>
           </div>
@@ -113,6 +114,12 @@ const Footer = () => {
                 <Phone size={16} className="mt-0.5 shrink-0 text-brand-orange" />
                 <a href={`tel:${socialMedia.phone}`} className="font-bold hover:text-brand-orange transition-colors">
                   {socialMedia.phone}
+                </a>
+              </div>
+              <div className="flex items-start gap-2 text-sm opacity-60">
+                <WhatsAppIcon size={16} className="mt-0.5 shrink-0 text-brand-orange" />
+                <a href={`https://wa.me/${socialMedia.whatsapp}`} target="_blank" rel="noopener noreferrer" className="font-bold hover:text-brand-orange transition-colors">
+                  WhatsApp
                 </a>
               </div>
               <div className="flex items-start gap-2 text-sm opacity-60">

@@ -2,6 +2,7 @@ import { ReactNode, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Check, LucideIcon, Mail, MapPin, Phone } from 'lucide-react';
+import WhatsAppIcon from '../WhatsAppIcon';
 
 /*
  * Service-page design kit — the home page's visual language (eyebrow + rule,
@@ -492,7 +493,8 @@ export const CtaBand = ({ eyebrow, title, text, button, onClick, cardTitle, card
         <div className="divide-y divide-white/10 border-y border-white/10">
           {[
             { icon: MapPin, label: 'Office', value: '11801 Domain Blvd, Austin, TX 78758', href: undefined },
-            { icon: Phone, label: 'Phone', value: '(737) 329-8158', href: 'tel:+17373298158' },
+            { icon: Phone, label: 'Phone', value: '(512) 809-0673', href: 'tel:+15128090673' },
+            { icon: WhatsAppIcon, label: 'WhatsApp', value: '(512) 809-0673', href: 'https://wa.me/15128090673' },
             { icon: Mail, label: 'Email', value: email, href: `mailto:${email}` },
           ].map(({ icon: Icon, label, value, href }) => {
             const inner = (
@@ -507,7 +509,7 @@ export const CtaBand = ({ eyebrow, title, text, button, onClick, cardTitle, card
               </>
             );
             return href
-              ? <a key={label} href={href} className="flex items-center gap-4 py-4 hover:opacity-80 transition-opacity">{inner}</a>
+              ? <a key={label} href={href} {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="flex items-center gap-4 py-4 hover:opacity-80 transition-opacity">{inner}</a>
               : <div key={label} className="flex items-center gap-4 py-4">{inner}</div>;
           })}
         </div>

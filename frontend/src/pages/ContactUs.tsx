@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { Phone, Mail, MapPin, Send, CheckCircle, Linkedin, Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { seoConfigs, socialMedia } from '../utils/seoConfig';
@@ -84,8 +85,14 @@ const ContactUs = () => {
     {
       icon: Phone,
       title: 'Phone',
-      content: '(737) 329-8158',
-      link: 'tel:+17373298158',
+      content: '(512) 809-0673',
+      link: 'tel:+15128090673',
+    },
+    {
+      icon: WhatsAppIcon,
+      title: 'WhatsApp',
+      content: '(512) 809-0673',
+      link: 'https://wa.me/15128090673',
     },
     {
       icon: Mail,
@@ -116,14 +123,14 @@ const ContactUs = () => {
       {/* Contact information strip — hairline-divided */}
       <section className="bg-white border-b border-gray-200">
         <div className="w-full px-4 sm:px-8 lg:px-12">
-          <div className="grid md:grid-cols-3">
+          <div className="grid lg:grid-cols-4">
             {contactInfo.map((info, i) => {
               const Icon = info.icon;
               return (
                 <a key={i} href={info.link}
                   target={info.link.startsWith('http') ? '_blank' : undefined}
                   rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className={`group flex items-start gap-4 py-8 md:px-8 border-gray-200 ${i > 0 ? 'border-t md:border-t-0 md:border-l' : 'md:pl-0'}`}>
+                  className={`group flex items-start gap-4 py-8 lg:px-8 border-gray-200 ${i > 0 ? 'border-t lg:border-t-0 lg:border-l' : 'lg:pl-0'}`}>
                   <span className="w-12 h-12 rounded-xl bg-grey-light text-navy-mid flex items-center justify-center shrink-0 transition-colors group-hover:bg-navy group-hover:text-white">
                     <Icon className="w-5 h-5" />
                   </span>

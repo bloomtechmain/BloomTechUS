@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { ArrowRight, Server, Globe, ShieldCheck, Brain, Clock, BadgeCheck, Sparkles, FileCode, Cloud, Lock, Building2, Database, Megaphone, Monitor, Lightbulb, Search, Layers, Rocket, Phone, Mail } from 'lucide-react';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { seoConfigs } from '../utils/seoConfig';
@@ -346,10 +347,11 @@ const Home = () => {
 
             <div className="lg:col-span-5 divide-y divide-white/10 border-y border-white/10">
               {[
-                { icon: Phone, label: 'Call', value: '(737) 329-8158', href: 'tel:+17373298158' },
+                { icon: Phone, label: 'Call', value: '(512) 809-0673', href: 'tel:+15128090673' },
+                { icon: WhatsAppIcon, label: 'WhatsApp', value: '(512) 809-0673', href: 'https://wa.me/15128090673' },
                 { icon: Mail, label: 'Email', value: 'info@bloomtechus.com', href: 'mailto:info@bloomtechus.com' },
               ].map(({ icon: Icon, label, value, href }) => (
-                <a key={label} href={href} className="group flex items-center gap-4 py-5">
+                <a key={label} href={href} {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="group flex items-center gap-4 py-5">
                   <span className="w-10 h-10 rounded-full bg-white/10 text-brand-orange flex items-center justify-center shrink-0">
                     <Icon className="w-4 h-4" />
                   </span>

@@ -21,8 +21,8 @@ export const socialMedia = {
   twitter: 'https://x.com/BloomtechU8895',
   linkedin: 'https://linkedin.com/company/bloomtech-usa',
   instagram: 'https://www.instagram.com/bloomtech_usa',
-  whatsapp: '17373298158', // Format for WhatsApp link
-  phone: '+1 737 329 8158',
+  whatsapp: '15128090673', // Format for WhatsApp link
+  phone: '+1 512 809 0673',
   email: 'info@bloomtechusa.com'
 };
 
@@ -116,7 +116,7 @@ export const seoConfigs: Record<string, SEOConfig> = {
   },
   contact: {
     title: 'Contact BloomTechUSA - Professional IT Consulting & Technology Solutions',
-    description: 'Get in touch with BloomTechUSA for professional IT consulting, custom software, enterprise infrastructure, AI & machine learning, security, and digital presence services. Located in Austin, TX. Call (737) 329-8158.',
+    description: 'Get in touch with BloomTechUSA for professional IT consulting, custom software, enterprise infrastructure, AI & machine learning, security, and digital presence services. Located in Austin, TX. Call (512) 809-0673.',
     keywords: 'contact bloomtech, IT consulting, professional IT consulting, enterprise infrastructure, custom software, AI machine learning, cybersecurity, Austin IT company',
     canonical: `${baseUrl}/contact/`,
     ogImage: defaultOGImage,
